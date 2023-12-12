@@ -377,7 +377,12 @@ public class Main {
 
                 } else {
                     System.out.println("잘못된 목적지인 " + 목적지 + "을 선택한 것 같아");
+                    System.out.println("잘못된 목적지를 정했으므로 난 그냥 집에서 안나가기로 결정했다");
                     System.out.println("나는 오늘 굶어야하는 운명인가봐");
+                    System.out.println("라고 생각한 순간 여자친구가 주고 갔던 파스타면이 떠올랐다");
+                    System.out.println("찬장을 열어보니 파스타가 하나 들어있었다.");
+                    파스타 = 파스타 + 1;
+                    System.out.println("다행히도 나는 저녁을 먹을 수 있게 되었다");
                 }
             // 현금이 1000원인 경우 동네슈퍼에서 라면, 쫄면
             }else if(현금 == 1000) {
@@ -395,10 +400,322 @@ public class Main {
                 System.out.println("================");
             }else // 현금이 0원 이하인 경우, 이 경우는 운이 좋은 경우이며 신용카드를 사용할 수 있다.
             {
+                //================================ 신용카드 루트 =========================================
                 // 신용카드를 가져간다
                 System.out.println("오오! 신용카드를 가져가야겠어");
                 System.out.println("신용 카드는 내가 원하는 어떤 저녁이든 사먹을 수 있어");
                 System.out.println("그리고 저녁 재료를 사러 어디든 갈 수 있어");
+                String 신용카드 = "신용카드";
+
+                if (목적지.equals("편의점")) {
+                    // 편의점 : 체력 소모x, 원래가격 + 500
+                    System.out.println("나는" + 목적지 + "에 도착했다");
+                    System.out.println("나는 나의 상태를 확인했다");
+                    System.out.println("================");
+                    System.out.println("현금 : " + 현금);
+                    System.out.println("체력 : " + 체력);
+                    System.out.println("라면 : " + 라면);
+                    System.out.println("파스타 : " + 파스타);
+                    System.out.println("쫄면 : " + 쫄면);
+                    System.out.println("================");
+
+                    System.out.println("나는 가격표를 봤다");
+                    System.out.println("라면 : 1500원");
+                    System.out.println("파스타 : 3500원");
+                    System.out.println("쫄면 : 2000원");
+
+                    // 무엇을 살 것인지?
+                    System.out.println("무엇을 살꺼지?");
+                    String 저녁 = sc.next();
+                    if (저녁.equals("라면")) {
+                        if (신용카드.equals("신용카드")) {
+                            라면 = 라면 + 1;
+                            System.out.println("나는 라면을 샀다");
+                            System.out.println("================");
+                            System.out.println("현금 : " + 현금);
+                            System.out.println("체력 : " + 체력);
+                            System.out.println("라면 : " + 라면);
+                            System.out.println("파스타 : " + 파스타);
+                            System.out.println("쫄면 : " + 쫄면);
+                            System.out.println("================");
+                        } else {
+                            System.out.println("나는 신용카드 한도 초과라서 저녁을 사지 못했다.");
+                            System.out.println("집으로 오는 길에 친구를 만나 라면 하나를 얻었다");
+                            라면 = 라면 + 1;
+                            System.out.println("================");
+                            System.out.println("현금 : " + 현금);
+                            System.out.println("체력 : " + 체력);
+                            System.out.println("라면 : " + 라면);
+                            System.out.println("파스타 : " + 파스타);
+                            System.out.println("쫄면 : " + 쫄면);
+                            System.out.println("================");
+                        }
+
+                    } else if (저녁.equals("파스타")) {
+
+                        if(신용카드.equals("신용카드")) {
+                            파스타 = 파스타 + 1;
+                            System.out.println("나는 파스타를 샀다");
+                            System.out.println("================");
+                            System.out.println("현금 : " + 현금);
+                            System.out.println("체력 : " + 체력);
+                            System.out.println("라면 : " + 라면);
+                            System.out.println("파스타 : " + 파스타);
+                            System.out.println("쫄면 : " + 쫄면);
+                            System.out.println("================");
+                        } else {
+                            System.out.println("나는 신용카드 한도 초과라서 저녁을 사지 못했다.");
+                            System.out.println("집으로 오는 길에 친구를 만나 라면 하나를 얻었다");
+                            라면 = 라면 + 1;
+                            System.out.println("================");
+                            System.out.println("현금 : " + 현금);
+                            System.out.println("체력 : " + 체력);
+                            System.out.println("라면 : " + 라면);
+                            System.out.println("파스타 : " + 파스타);
+                            System.out.println("쫄면 : " + 쫄면);
+                            System.out.println("================");
+                        }
+
+                    } else if (저녁.equals("쫄면")) {
+                        if(신용카드.equals("신용카드")) {
+                            쫄면 = 쫄면 + 1;
+                            System.out.println("나는 파스타를 샀다");
+                            System.out.println("================");
+                            System.out.println("현금 : " + 현금);
+                            System.out.println("체력 : " + 체력);
+                            System.out.println("라면 : " + 라면);
+                            System.out.println("파스타 : " + 파스타);
+                            System.out.println("쫄면 : " + 쫄면);
+                            System.out.println("================");
+                        }else{
+                            System.out.println("나는 신용카드 한도 초과라서 저녁을 사지 못했다.");
+                            System.out.println("집으로 오는 길에 친구를 만나 라면 하나를 얻었다");
+                            라면 = 라면 + 1;
+                            System.out.println("================");
+                            System.out.println("현금 : " + 현금);
+                            System.out.println("체력 : " + 체력);
+                            System.out.println("라면 : " + 라면);
+                            System.out.println("파스타 : " + 파스타);
+                            System.out.println("쫄면 : " + 쫄면);
+                            System.out.println("================");
+                        }
+                    }else{
+                        System.out.println(저녁 + "가 뭔지는 잘 몰라도 저녁은 굶어야겠지?");
+                    }
+                // =================================================================================================
+                // 목적지가 "동네슈퍼"인 경우
+                } else if (목적지.equals("동네슈퍼")) {
+                    System.out.println("나는" + 목적지 + "에 도착했다");
+                    체력 = 체력 - 5;
+                    System.out.println("나는 나의 상태를 확인했다");
+                    System.out.println("================");
+                    System.out.println("현금 : " + 현금);
+                    System.out.println("체력 : " + 체력);
+                    System.out.println("라면 : " + 라면);
+                    System.out.println("파스타 : " + 파스타);
+                    System.out.println("쫄면 : " + 쫄면);
+                    System.out.println("================");
+
+                    System.out.println("나는 가격표를 봤다");
+                    System.out.println("라면 : 1000원");
+                    System.out.println("파스타 : 3000원");
+                    System.out.println("쫄면 : 1500원");
+
+                    System.out.println("무엇을 살꺼야?");
+                    String 저녁 = sc.next();
+                    if(저녁.equals("라면")){
+                        if(신용카드.equals("신용카드")){
+                            라면 = 라면 + 1;
+                            System.out.println("나는 라면을 샀다");
+                            System.out.println("================");
+                            System.out.println("현금 : " + 현금);
+                            System.out.println("체력 : " + 체력);
+                            System.out.println("라면 : " + 라면);
+                            System.out.println("파스타 : " + 파스타);
+                            System.out.println("쫄면 : " + 쫄면);
+                            System.out.println("================");
+                        }else{
+                            System.out.println("나는 신용카드 한도 초과라서 저녁을 사지 못했다.");
+                            System.out.println("그런 나를 불쌍히 여긴 동네 슈퍼 아주머니께서 라면하나를 주셨다");
+                            라면 = 라면 + 1;
+                            System.out.println("================");
+                            System.out.println("현금 : " + 현금);
+                            System.out.println("체력 : " + 체력);
+                            System.out.println("라면 : " + 라면);
+                            System.out.println("파스타 : " + 파스타);
+                            System.out.println("쫄면 : " + 쫄면);
+                            System.out.println("================");
+                        }
+                    }else if(저녁.equals("파스타")){
+                        if(신용카드.equals("신용카드")) {
+                            파스타 = 파스타 + 1;
+                            System.out.println("나는 파스타를 샀다");
+                            System.out.println("================");
+                            System.out.println("현금 : " + 현금);
+                            System.out.println("체력 : " + 체력);
+                            System.out.println("라면 : " + 라면);
+                            System.out.println("파스타 : " + 파스타);
+                            System.out.println("쫄면 : " + 쫄면);
+                            System.out.println("================");
+                        }else{
+                            System.out.println("나는 신용카드 한도 초과라서 저녁을 사지 못했다.");
+                            System.out.println("그런 나를 불쌍히 여긴 동네 슈퍼 아주머니께서 라면하나를 주셨다");
+                            라면 = 라면 + 1;
+                            System.out.println("================");
+                            System.out.println("현금 : " + 현금);
+                            System.out.println("체력 : " + 체력);
+                            System.out.println("라면 : " + 라면);
+                            System.out.println("파스타 : " + 파스타);
+                            System.out.println("쫄면 : " + 쫄면);
+                            System.out.println("================");
+                        }
+
+                    }else if(저녁.equals("쫄면")){
+                        if(신용카드.equals("신용카드")) {
+                            쫄면 = 쫄면 + 1;
+                            System.out.println("나는 쫄면을 샀다");
+                            System.out.println("================");
+                            System.out.println("현금 : " + 현금);
+                            System.out.println("체력 : " + 체력);
+                            System.out.println("라면 : " + 라면);
+                            System.out.println("파스타 : " + 파스타);
+                            System.out.println("쫄면 : " + 쫄면);
+                            System.out.println("================");
+                        }else{
+                            System.out.println("나는 신용카드 한도 초과라서 저녁을 사지 못했다.");
+                            System.out.println("그런 나를 불쌍히 여긴 동네 슈퍼 아주머니께서 라면하나를 주셨다");
+                            라면 = 라면 + 1;
+                            System.out.println("================");
+                            System.out.println("현금 : " + 현금);
+                            System.out.println("체력 : " + 체력);
+                            System.out.println("라면 : " + 라면);
+                            System.out.println("파스타 : " + 파스타);
+                            System.out.println("쫄면 : " + 쫄면);
+                            System.out.println("================");
+                        }
+                    }else{
+                        System.out.println(저녁 + "가 뭔지는 잘 몰라도 저녁은 굶어야겠지?");
+                    }
+
+                    // =================================================================================================
+                    // 목적지가 "대형할인마트"인 경우 -> 버스비 * 2, 할인가격 500
+                } else if (목적지.equals("대형할인마트")) {
+                    System.out.println("나는" + 목적지 + "에 도착했다");
+                    System.out.println("나는 나의 상태를 확인했다");
+                    System.out.println("================");
+                    System.out.println("현금 : " + 현금);
+                    System.out.println("체력 : " + 체력);
+                    System.out.println("라면 : " + 라면);
+                    System.out.println("파스타 : " + 파스타);
+                    System.out.println("쫄면 : " + 쫄면);
+                    System.out.println("================");
+                    System.out.println("나는 가격표를 봤다");
+                    System.out.println("라면 : 500원");
+                    System.out.println("파스타 : 2500원");
+                    System.out.println("쫄면 : 1000원");
+                    System.out.println("역시 대형할인마트는 싸구만");
+                    System.out.println("무엇을 살꺼야?");
+
+                    String 저녁 = sc.next();
+                    if(현금 > 500){
+                        if (저녁.equals("라면")) {
+                            if (신용카드.equals("신용카드")) {
+                                라면 = 라면 + 1;
+                                System.out.println("나는 라면을 샀다");
+                                System.out.println("================");
+                                System.out.println("현금 : " + 현금);
+                                System.out.println("체력 : " + 체력);
+                                System.out.println("라면 : " + 라면);
+                                System.out.println("파스타 : " + 파스타);
+                                System.out.println("쫄면 : " + 쫄면);
+                                System.out.println("================");
+                            } else {
+                                System.out.println("나는 신용카드 한도 초과라서 저녁을 사지 못했다.");
+                                System.out.println("그런 나를 불쌍히 여긴 동네 슈퍼 아주머니께서 라면하나를 주셨다");
+                                라면 = 라면 + 1;
+                                System.out.println("================");
+                                System.out.println("현금 : " + 현금);
+                                System.out.println("체력 : " + 체력);
+                                System.out.println("라면 : " + 라면);
+                                System.out.println("파스타 : " + 파스타);
+                                System.out.println("쫄면 : " + 쫄면);
+                                System.out.println("================");
+                            }
+                        } else if (저녁.equals("파스타")) {
+                            if (신용카드.equals("신용카드")) {
+                                파스타 = 파스타 + 1;
+                                System.out.println("나는 파스타를 샀다");
+                                System.out.println("================");
+                                System.out.println("현금 : " + 현금);
+                                System.out.println("체력 : " + 체력);
+                                System.out.println("라면 : " + 라면);
+                                System.out.println("파스타 : " + 파스타);
+                                System.out.println("쫄면 : " + 쫄면);
+                                System.out.println("================");
+                            } else {
+                                System.out.println("나는 신용카드 한도 초과라서 저녁을 사지 못했다.");
+                                System.out.println("그런 나를 불쌍히 여긴 동네 슈퍼 아주머니께서 라면하나를 주셨다");
+                                라면 = 라면 + 1;
+                                System.out.println("================");
+                                System.out.println("현금 : " + 현금);
+                                System.out.println("체력 : " + 체력);
+                                System.out.println("라면 : " + 라면);
+                                System.out.println("파스타 : " + 파스타);
+                                System.out.println("쫄면 : " + 쫄면);
+                                System.out.println("================");
+                            }
+
+                        } else if (저녁.equals("쫄면")) {
+                            if (신용카드.equals("신용카드")) {
+                                쫄면 = 쫄면 + 1;
+                                System.out.println("나는 쫄면을 샀다");
+                                System.out.println("================");
+                                System.out.println("현금 : " + 현금);
+                                System.out.println("체력 : " + 체력);
+                                System.out.println("라면 : " + 라면);
+                                System.out.println("파스타 : " + 파스타);
+                                System.out.println("쫄면 : " + 쫄면);
+                                System.out.println("================");
+                            } else {
+                                System.out.println("나는 신용카드 한도 초과라서 저녁을 사지 못했다.");
+                                System.out.println("그런 나를 불쌍히 여긴 동네 슈퍼 아주머니께서 라면하나를 주셨다");
+                                라면 = 라면 + 1;
+                                System.out.println("================");
+                                System.out.println("현금 : " + 현금);
+                                System.out.println("체력 : " + 체력);
+                                System.out.println("라면 : " + 라면);
+                                System.out.println("파스타 : " + 파스타);
+                                System.out.println("쫄면 : " + 쫄면);
+                                System.out.println("================");
+                            }
+                        } else {
+                            System.out.println(저녁 + "가 뭔지는 잘 몰라도 저녁은 굶어야겠지?");
+                        }
+                        System.out.println("이제 집으로 가볼까?");
+
+                        // 현금이 1500원 이하인 경우에는 걸어가야 한다 체력 -3
+                        if (현금 < 1500) {
+                            System.out.println("아... 버스비를 생각하지 못했다");
+                            체력 = 체력 - 3;
+                            System.out.println("나는 털레 털레 집으로 걸어갔다.");
+                        } else {
+                            System.out.println("나는 버스를 정류장으로 향했다");
+                            System.out.println("버스를 타고 나는 집에 도착했다");
+                        }
+                    }
+                    else{
+                        System.out.println("버스비로 이미 돈을 다 써버린 나는");
+                        System.out.println("털레 털레 집으로 돌아가는 중이었다.");
+                        체력 = 체력 - 3;
+                        System.out.println("집으로 돌아가던중 여자친구를 만나 라면하나를 얻었다");
+                        라면 = 라면 + 1;
+                    }
+
+                } else {
+                    System.out.println("잘못된 목적지인 " + 목적지 + "을 선택한 것 같아");
+                    System.out.println("나는 오늘 굶어야하는 운명인가봐");
+                }
+
             }
         }
         else{
@@ -444,10 +761,22 @@ public class Main {
         // 여기서는 특정한 행동 1번에 체력이 1 됩니다.
         System.out.println("현관문 앞에서 나는 도어락의 비번을 누른다");
         System.out.println("음... 비밀번호가 뭐였더라?");
+        System.out.println("맞아 비밀번호는 현재 나의 상태를 전부 더한 숫자로 정했지");
+        System.out.println("(현금 + 체력 + 라면 + 파스타 + 쫄면)");
+        System.out.println("(현금이 1000원 미만이면 1000원으로 계산한다)");
 
         // 도어락 비밀 번호 4자리를 기억해봅니다
         // 비밀번호는 ((현금 * 체력) + 라면 + 파스타 + 쫄면)을 계산한 수 입니다.
-        int 현관_비밀번호 = (현금*체력) + 라면 + 파스타 + 쫄면;
+        // 현금이 1000원 미만인 경우는 현금을 1000원으로 계산한다
+        int 현관_비밀번호 = 0;
+        if(현금 >= 1000){
+            현관_비밀번호 = 현금 + 체력 + 라면 + 파스타 + 쫄면;
+        }else{
+            현금 = 1000;
+            현관_비밀번호 = 현금 + 체력 + 라면 + 파스타 + 쫄면;
+            현금 = 0;
+        }
+
         int 누른_비밀번호 = sc.nextInt();
 
         // 현관_비밀번호와 누른_비밀번호를 비교합니다.
@@ -478,6 +807,7 @@ public class Main {
 
         System.out.println("나는 간신히 현관문을 열고 들어왔다");
         System.out.println("신발을 벗고 나는 무엇을 먼저 준비할지 생각에 빠졌다");
+        System.out.println("0) 밥상을 차린다. 1) 냄비를 준비한다. 2) 프라이팬을 준비한다.");
 
         // 0) 밥상을 차린다. 1) 냄비를 준비한다. 2) 프라이팬을 준비한다.
         int 준비행동 = sc.nextInt();
@@ -487,10 +817,13 @@ public class Main {
         boolean 준비행동_냄비 = false;
         boolean 준비행동_프라이팬 = false;
 
-        // 준비행동 카운터 3 지점
         // 밥상을 차린다.
+        // 준비행동 카운터 2 지점
+        준비행동_카운터--;
         if (준비행동 == 0) {
             System.out.println("나는 밥상을 펼치려고한다. ");
+            System.out.println("반잔은 뭘로 선택할래? 0) 단무지 1) 김치 2) 피클");
+
             // 반잔은 뭘로 선택할래? 0) 단무지 1) 김치 2) 피클
             int 반찬 = sc.nextInt();
 
@@ -563,28 +896,147 @@ public class Main {
                     }else{
                         체력 = 체력 - 1;
                         System.out.println("냉장고 문이 열렸다");
-                        System.out.println("나는 어렵게 단무지를 꺼낼수 있었다");
+                        System.out.println("나는 어렵게 피클을 꺼낼수 있었다");
                     }
                 }else{
                     체력 = 체력 - 1;
-                    System.out.println("손쉽게 냉장고문을 연 나는 단무지를 꺼내 밥상위에 놓았다");
-                    System.out.println("역시 면발에는 단무지지!");
+                    System.out.println("손쉽게 냉장고문을 연 나는 피클을 꺼내 밥상위에 놓았다");
+                    System.out.println("역시 면발에는 피클이지!");
                 }
             }else{
                 System.out.println("그래 반찬이 뭐가 필요하겠어, 그냥 먹자");
                 System.out.println("얼른 먹고 팀노바 과제나 해야지 뭐");
             }
             준비행동_밥상 = true;
+
+        // 냄비에 물을 준비한다
         }else if(준비행동 == 1) {
             체력 = 체력 - 1;
             System.out.println("나는 냄비를 준비하려고 한다");
-            System.out.println("냄비에 물을 넣는다.");
+            System.out.println("어떤 냄비를 써야할까?");
+            // 편수냄비, 양푼냄비
+            System.out.println("어떤 냄비를 사용하시겠습니까? 편수냄비? 양푼냄비");
+            String 냄비종류 = sc.next();
+            if(냄비종류.equals("편수냄비")){
+                System.out.println("난 편수냄비를 선택했다.");
+            }else{
+                System.out.println("난 양푼냄비를 선택했다.");
+            }
+            System.out.println(냄비종류 + "를 선택한 나는 물을 끓일 준비를 한다.");
+            System.out.println("물을 어떤 기구를 사용하여 끓이시겠습니까?");
+            System.out.println("(가스버너 or 하이라이트)");
 
+            // 가스버너, 하이라이트
+            String 물끓이는도구 = sc.next();
+            if(물끓이는도구.equals("하이라이트")){
+                System.out.println("난 " + 물끓이는도구 + "를 선택했다.");
+            }else{
+                System.out.println("난 " + 물끓이는도구 + "를 선택했다.");
+            }
+            System.out.println("난 물을 끓이고 있다.");
+            System.out.println("물을 얼마나 끓이겠습니까?");
+            System.out.println("100도 or 90도 or 80도");
+
+            // 100도, 90도, 80도
+            String 물온도 = sc.next();
+            if(물온도.equals("100도")){
+                System.out.println("난 " + 물온도 + "를 선택했다.");
+            }else if(물온도.equals("90도")) {
+                System.out.println("난 " + 물온도 + "를 선택했다.");
+            }else if(물온도.equals("80도")){
+                System.out.println("난 " + 물온도 + "를 선택했다.");
+            }else{
+                System.out.println("물온도를 잘못 정한 나는 그냥 100도의 물온도로 끓였다");
+                물온도 = "100도";
+            }
+            System.out.println("난 물을 " + 냄비종류 + "에  " + 물온도 +" 만큼 끓였다");
             준비행동_냄비 = true;
+
+        // 나는 프라이팬을 준비하려고 한다
         }else if(준비행동 == 2){
             체력 = 체력 - 1;
             System.out.println("나는 프라이팬을 준비하려고 한다");
+            System.out.println("프라이팬에 나는 집에 있던 계란을 구우려고 한다.");
+            System.out.println("프라이팬에 기름을 두른다, 어떤 기름을 쓸꺼야?");
+            System.out.println("(올리브유 or 식용유)");
 
+            // 기름을 두른다, 올리브유? 식용유?
+            String 기름종류 = sc.next();
+            if(기름종류.equals("올리브유")){
+                System.out.println("난 프라이팬에 올리브유를 둘렀다");
+                System.out.println("올리브유는 높은 온도에서는 타기때문에 160도보다 낮은 온도에서 구워야지");
+                System.out.println("몇 도의 온도에서 구울꺼야?");
+                System.out.println("우리집 올리브유는 Extra birgin이라 발화점이 160도라는 걸 기억해");
+                System.out.println("식용유는 Extra birgin이라 발화점이 250도라는 걸 기억해");
+
+                int 올리브유_온도 = sc.nextInt();
+
+                if(올리브유_온도 > 160){
+                    System.out.println(올리브유_온도 + "는 너무 높은 온도를 설정했어, 온도를 140 정도로 내려보자");
+                }else if(올리브유_온도 > 140 && 올리브유_온도 <= 160){
+                    System.out.println("발화점은 160도지만 " + 올리브유_온도 + "는 여전히 높은 온도야");
+                    System.out.println("온도를 조금 낮춰서 140도 정도에서 구워보자");
+                }else if(올리브유_온도 > 80 && 올리브유_온도 <= 140){
+                    System.out.println(올리브유_온도 + "도는 적당한 온도야");
+                    System.out.println("계란이 맛있게 구워지겠어");
+                }else{
+                    System.out.println("너무 낮은 온도인 것 같아");
+                    System.out.println("계란은 구워지겠지만 너무 느리게 익을 것 같아");
+                    System.out.println("100도 이상의 온도에서 계란은 굽자");
+                }
+            }else if(기름종류.equals("식용유")) {
+
+                int 식용유_온도 = sc.nextInt();
+
+                if (식용유_온도 > 250) {
+                    System.out.println(식용유_온도 + "는 너무 높은 온도를 설정했어, 온도를 200 정도로 내려보자");
+                } else if (식용유_온도 > 220 && 식용유_온도 <= 250) {
+                    System.out.println("발화점은 250도지만 " + 식용유_온도 + "는 여전히 높은 온도야");
+                    System.out.println("온도를 조금 낮춰서 200도 정도에서 구워보자");
+                } else if (식용유_온도 > 150 && 식용유_온도 <= 220) {
+                    System.out.println(식용유_온도 + "도는 적당한 온도야");
+                    System.out.println("계란이 맛있게 구워지겠어");
+                } else {
+                    System.out.println("너무 낮은 온도인 것 같아");
+                    System.out.println("계란은 구워지겠지만 너무 느리게 익을 것 같아");
+                    System.out.println("100도 이상의 온도에서 계란은 굽자");
+                }
+            }
+
+            // 계란은 몇 개 구울 것인가?
+            System.out.println("몇 개의 계란을 구울꺼야?");
+            // 1개, 2개, 3개
+            int 계란수 = sc.nextInt();
+            if(계란수 == 1) {
+                System.out.println("계란을 " + 계란수 + "개만 굽다니 좀 모자르지 않아?");
+                System.out.println("하지만 나의 선택이니 뭐 그렇게 굽자");
+                System.out.println("난 계란을 1개 구웠다");
+            }else if(계란수 == 2){
+                System.out.println("계란을 " + 계란수 + "개만 굽다니 딱 적당하게 먹을 수 있겠어?");
+                System.out.println("적당한 단백질 섭취는 오히려 몸에 좋지");
+                System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+            }else if(계란수 == 3){
+                System.out.println("계란을 " + 계란수 + "개만 굽다니 너무 많이 굽지않아?");
+                System.out.println("하지만 나의 선택이니 뭐 그렇게 굽자");
+                System.out.println("다이어트는 내일부터 하는걸로~");
+                System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+            }else if(계란수 == 0){
+                System.out.println("계란을 굽지 않겠다니, 다이어트를 하려고 그러는거야?");
+                System.out.println("하지만 나의 선택이니 뭐 그렇게 굽자");
+                System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+            }else if(계란수 > 3){
+                System.out.println("계란을 " + 계란수 + "개만 굽다니 좀 말이 안되는 것 같아");
+                System.out.println("적정량의 계란을 구워야겠어");
+                계란수 = 2;
+                System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+            }else{
+                System.out.println("요리할 계란 개수를 정확히 정해봐");
+                System.out.println("정하지 못하면 그냥 하나만 굽자");
+                계란수 = 1;
+                System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+            }
+
+            System.out.println("난 계란은 맛있게 구웠다");
             준비행동_프라이팬 = true;
         }else{
             if(체력 <= 0) {
@@ -593,16 +1045,146 @@ public class Main {
                 System.out.println("체력이 얼마 없어, 최대한 빨리 해먹자");
             }
         }
-        // 준비행동 카운터 2 지점
-        준비행동_카운터 = 준비행동_카운터 - 1;
+
+        // 준비행동 카운터 1 지점
+        준비행동_카운터--;
         if(준비행동_카운터 > 0 && ((준비행동_밥상 == true) || (준비행동_냄비 == true) || (준비행동_프라이팬 == true))) {
 
-            // 밥상을 먼저 준비한 경우
+            // 이전에 밥상을 먼저 준비한 경우
             if(준비행동_밥상 == true){
-                if(준비행동 == 2){
+                System.out.println("그리고 무엇을 준비할꺼야?");
+                System.out.println("1) 냄비를 준비한다. 2) 프라이팬을 준비한다.");
+                준비행동 = sc.nextInt();
+
+                // 냄비 준비
+                if(준비행동 == 1) {
+                    체력 = 체력 - 1;
+                    System.out.println("나는 냄비를 준비하려고 한다");
+                    System.out.println("어떤 냄비를 써야할까?");
+                    // 편수냄비, 양푼냄비
+                    System.out.println("어떤 냄비를 사용하시겠습니까? 편수냄비? 양푼냄비");
+                    String 냄비종류 = sc.next();
+                    if (냄비종류.equals("편수냄비")) {
+                        System.out.println("난 편수냄비를 선택했다.");
+                    } else {
+                        System.out.println("난 양푼냄비를 선택했다.");
+                    }
+                    System.out.println(냄비종류 + "를 선택한 나는 물을 끓일 준비를 한다.");
+                    System.out.println("물을 어떤 기구를 사용하여 끓이시겠습니까?");
+                    System.out.println("(가스버너 or 하이라이트)");
+
+                    // 가스버너, 하이라이트
+                    String 물끓이는도구 = sc.next();
+                    if (물끓이는도구.equals("하이라이트")) {
+                        System.out.println("난 " + 물끓이는도구 + "를 선택했다.");
+                    } else {
+                        System.out.println("난 " + 물끓이는도구 + "를 선택했다.");
+                    }
+                    System.out.println("난 물을 끓이고 있다.");
+                    System.out.println("물을 얼마나 끓이겠습니까?");
+                    System.out.println("100도 or 90도 or 80도");
+
+                    // 100도, 90도, 80도
+                    String 물온도 = sc.next();
+                    if(물온도.equals("100도")){
+                        System.out.println("난 " + 물온도 + "를 선택했다.");
+                    }else if(물온도.equals("90도")) {
+                        System.out.println("난 " + 물온도 + "를 선택했다.");
+                    }else if(물온도.equals("80도")){
+                        System.out.println("난 " + 물온도 + "를 선택했다.");
+                    }else{
+                        System.out.println("물온도를 잘못 정한 나는 그냥 100도의 물온도로 끓였다");
+                        물온도 = "100도";
+                    }
+                    System.out.println("난 물을 " + 냄비종류 + "에 " + 물온도 + " 만큼 끓였다");
+                    준비행동_냄비 = true;
+
+                // 프라이팬을 준비할 경우
+                }else if(준비행동 == 2) {
                     체력 = 체력 - 1;
                     System.out.println("나는 프라이팬을 준비하려고 한다");
 
+                    System.out.println("프라이팬에 나는 집에 있던 계란을 구우려고 한다.");
+                    System.out.println("프라이팬에 기름을 두른다, 어떤 기름을 쓸꺼야?");
+                    System.out.println("(올리브유 or 식용유)");
+
+                    // 기름을 두른다, 올리브유? 식용유?
+                    String 기름종류 = sc.next();
+                    if (기름종류.equals("올리브유")) {
+                        System.out.println("난 프라이팬에 올리브유를 둘렀다");
+                        System.out.println("올리브유는 높은 온도에서는 타기때문에 160도보다 낮은 온도에서 구워야지");
+                        System.out.println("몇 도의 온도에서 구울꺼야?");
+                        System.out.println("우리집 올리브유는 Extra birgin이라 발화점이 160도라는 걸 기억해");
+                        System.out.println("식용유는 Extra birgin이라 발화점이 250도라는 걸 기억해");
+
+                        int 올리브유_온도 = sc.nextInt();
+
+                        if (올리브유_온도 > 160) {
+                            System.out.println(올리브유_온도 + "는 너무 높은 온도를 설정했어, 온도를 140 정도로 내려보자");
+                        } else if (올리브유_온도 > 140 && 올리브유_온도 <= 160) {
+                            System.out.println("발화점은 160도지만 " + 올리브유_온도 + "는 여전히 높은 온도야");
+                            System.out.println("온도를 조금 낮춰서 140도 정도에서 구워보자");
+                        } else if (올리브유_온도 > 80 && 올리브유_온도 <= 140) {
+                            System.out.println(올리브유_온도 + "도는 적당한 온도야");
+                            System.out.println("계란이 맛있게 구워지겠어");
+                        } else {
+                            System.out.println("너무 낮은 온도인 것 같아");
+                            System.out.println("계란은 구워지겠지만 너무 느리게 익을 것 같아");
+                            System.out.println("100도 이상의 온도에서 계란은 굽자");
+                        }
+                    } else if (기름종류.equals("식용유")) {
+
+                        int 식용유_온도 = sc.nextInt();
+
+                        if (식용유_온도 > 250) {
+                            System.out.println(식용유_온도 + "는 너무 높은 온도를 설정했어, 온도를 200 정도로 내려보자");
+                        } else if (식용유_온도 > 220 && 식용유_온도 <= 250) {
+                            System.out.println("발화점은 250도지만 " + 식용유_온도 + "는 여전히 높은 온도야");
+                            System.out.println("온도를 조금 낮춰서 200도 정도에서 구워보자");
+                        } else if (식용유_온도 > 150 && 식용유_온도 <= 220) {
+                            System.out.println(식용유_온도 + "도는 적당한 온도야");
+                            System.out.println("계란이 맛있게 구워지겠어");
+                        } else {
+                            System.out.println("너무 낮은 온도인 것 같아");
+                            System.out.println("계란은 구워지겠지만 너무 느리게 익을 것 같아");
+                            System.out.println("100도 이상의 온도에서 계란은 굽자");
+                        }
+                    }
+
+                    // 계란은 몇 개 구울 것인가?
+                    System.out.println("몇 개의 계란을 구울꺼야?");
+                    // 1개, 2개, 3개
+                    int 계란수 = sc.nextInt();
+                    if (계란수 == 1) {
+                        System.out.println("계란을 " + 계란수 + "개만 굽다니 좀 모자르지 않아?");
+                        System.out.println("하지만 나의 선택이니 뭐 그렇게 굽자");
+                        System.out.println("난 계란을 1개 구웠다");
+                    } else if (계란수 == 2) {
+                        System.out.println("계란을 " + 계란수 + "개만 굽다니 딱 적당하게 먹을 수 있겠어?");
+                        System.out.println("적당한 단백질 섭취는 오히려 몸에 좋지");
+                        System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                    } else if (계란수 == 3) {
+                        System.out.println("계란을 " + 계란수 + "개만 굽다니 너무 많이 굽지않아?");
+                        System.out.println("하지만 나의 선택이니 뭐 그렇게 굽자");
+                        System.out.println("다이어트는 내일부터 하는걸로~");
+                        System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                    } else if (계란수 == 0) {
+                        System.out.println("계란을 굽지 않겠다니, 다이어트를 하려고 그러는거야?");
+                        System.out.println("하지만 나의 선택이니 뭐 그렇게 굽자");
+                        System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                    } else if (계란수 > 3) {
+                        System.out.println("계란을 " + 계란수 + "개만 굽다니 좀 말이 안되는 것 같아");
+                        System.out.println("적정량의 계란을 구워야겠어");
+                        계란수 = 2;
+                        System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                    } else {
+                        System.out.println("요리할 계란 개수를 정확히 정해봐");
+                        System.out.println("정하지 못하면 그냥 하나만 굽자");
+                        계란수 = 1;
+                        System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                    }
+
+                    System.out.println("난 계란은 맛있게 구웠다");
                     준비행동_프라이팬 = true;
                 }else {
                     if (체력 <= 0) {
@@ -611,10 +1193,369 @@ public class Main {
                         System.out.println("체력이 얼마 없어, 최대한 빨리 해먹자");
                     }
                 }
+
+            }else if(준비행동_냄비 == true) {
+
+                // 이전에 냄비를 먼저 준비한 경우 ========================================================
+                System.out.println("그리고 무엇을 준비할꺼야?");
+                System.out.println("0) 밥상을 차린다. 2) 프라이팬을 준비한다.");
+                준비행동 = sc.nextInt();
+
+                if (준비행동 == 0) {
+                    System.out.println("나는 밥상을 펼치려고한다. ");
+                    System.out.println("반잔은 뭘로 선택할래? 0) 단무지 1) 김치 2) 피클");
+
+                    // 반잔은 뭘로 선택할래? 0) 단무지 1) 김치 2) 피클
+                    int 반찬 = sc.nextInt();
+
+                    // 반찬 -> 단무지
+                    if (반찬 == 0) {
+                        System.out.println("나는 단무지를 꺼내기 위해 냉장고로 향했다");
+                        System.out.println("나는 냉장고 문을 당긴다 연다");
+
+                        boolean 열자_냉장고문 = 랜덤.nextBoolean();
+                        if (열자_냉장고문 == false) {
+                            체력 = 체력 - 1;
+                            System.out.println("냉장고문이 열리지 않는다");
+                            System.out.println("나는 힘껏 냉장고문을 당겨본다");
+                            boolean 다시열자_냉장고문 = 랜덤.nextBoolean();
+                            if (다시열자_냉장고문 == false) {
+                                System.out.println("모든 힘을 다해 냉장고 문을 열었다");
+                                체력 = 체력 - 2;
+                                System.out.println("나는 간신히 단무지를 꺼낼수 있었다. 정말 힘들게");
+                            } else {
+                                체력 = 체력 - 1;
+                                System.out.println("냉장고 문이 열렸다");
+                                System.out.println("나는 어렵게 단무지를 꺼낼수 있었다");
+                            }
+                        } else {
+                            체력 = 체력 - 1;
+                            System.out.println("손쉽게 냉장고문을 연 나는 단무지를 꺼내 밥상위에 놓았다");
+                            System.out.println("역시 면발에는 단무지지!");
+                        }
+
+                        //반찬 -> 김치
+                    } else if (반찬 == 1) {
+                        System.out.println("나는 김치를 꺼내기 위해 냉장고로 향했다");
+                        System.out.println("나는 냉장고 문을 당긴다 연다");
+
+                        boolean 열자_냉장고문 = 랜덤.nextBoolean();
+                        if (열자_냉장고문 == false) {
+                            체력 = 체력 - 1;
+                            System.out.println("냉장고문이 열리지 않는다");
+                            System.out.println("나는 힘껏 냉장고문을 당겨본다");
+                            boolean 다시열자_냉장고문 = 랜덤.nextBoolean();
+                            if (다시열자_냉장고문 == false) {
+                                System.out.println("모든 힘을 다해 냉장고 문을 열었다");
+                                체력 = 체력 - 2;
+                                System.out.println("나는 간신히 김치를 꺼낼수 있었다. 정말 힘들게");
+                            } else {
+                                체력 = 체력 - 1;
+                                System.out.println("냉장고 문이 열렸다");
+                                System.out.println("나는 어렵게 김치를 꺼낼 수 있었다");
+                            }
+                        } else {
+                            체력 = 체력 - 1;
+                            System.out.println("손쉽게 냉장고문을 연 나는 김치를 꺼내 밥상위에 놓았다");
+                            System.out.println("역시 면발에는 김치지!");
+                        }
+                        //반찬 -> 피클
+                    } else if (반찬 == 2) {
+                        System.out.println("나는 피클을 꺼내기 위해 냉장고로 향했다");
+                        System.out.println("나는 냉장고 문을 당긴다 연다");
+
+                        boolean 열자_냉장고문 = 랜덤.nextBoolean();
+                        if (열자_냉장고문 == false) {
+                            체력 = 체력 - 1;
+                            System.out.println("냉장고문이 열리지 않는다");
+                            System.out.println("나는 힘껏 냉장고문을 당겨본다");
+                            boolean 다시열자_냉장고문 = 랜덤.nextBoolean();
+                            if (다시열자_냉장고문 == false) {
+                                System.out.println("모든 힘을 다해 냉장고 문을 열었다");
+                                체력 = 체력 - 2;
+                                System.out.println("나는 간신히 단무지를 꺼낼수 있었다. 정말 힘들게");
+                            } else {
+                                체력 = 체력 - 1;
+                                System.out.println("냉장고 문이 열렸다");
+                                System.out.println("나는 어렵게 피클을 꺼낼수 있었다");
+                            }
+                        } else {
+                            체력 = 체력 - 1;
+                            System.out.println("손쉽게 냉장고문을 연 나는 피클을 꺼내 밥상위에 놓았다");
+                            System.out.println("역시 면발에는 피클이지!");
+                        }
+                    } else {
+                        System.out.println("그래 반찬이 뭐가 필요하겠어, 그냥 먹자");
+                        System.out.println("얼른 먹고 팀노바 과제나 해야지 뭐");
+                    }
+                    준비행동_밥상 = true;
+
+                    // 프라이팬 준비
+                } else if (준비행동 == 2) {
+                    체력 = 체력 - 1;
+                    System.out.println("나는 프라이팬을 준비하려고 한다");
+
+                    System.out.println("프라이팬에 나는 집에 있던 계란을 구우려고 한다.");
+                    System.out.println("프라이팬에 기름을 두른다, 어떤 기름을 쓸꺼야?");
+                    System.out.println("(올리브유 or 식용유)");
+
+                    // 기름을 두른다, 올리브유? 식용유?
+                    String 기름종류 = sc.next();
+                    if (기름종류.equals("올리브유")) {
+                        System.out.println("난 프라이팬에 올리브유를 둘렀다");
+                        System.out.println("올리브유는 높은 온도에서는 타기때문에 160도보다 낮은 온도에서 구워야지");
+                        System.out.println("몇 도의 온도에서 구울꺼야?");
+                        System.out.println("우리집 올리브유는 Extra birgin이라 발화점이 160도라는 걸 기억해");
+                        System.out.println("식용유는 Extra birgin이라 발화점이 250도라는 걸 기억해");
+
+                        int 올리브유_온도 = sc.nextInt();
+
+                        if (올리브유_온도 > 160) {
+                            System.out.println(올리브유_온도 + "는 너무 높은 온도를 설정했어, 온도를 140 정도로 내려보자");
+                        } else if (올리브유_온도 > 140 && 올리브유_온도 <= 160) {
+                            System.out.println("발화점은 160도지만 " + 올리브유_온도 + "는 여전히 높은 온도야");
+                            System.out.println("온도를 조금 낮춰서 140도 정도에서 구워보자");
+                        } else if (올리브유_온도 > 80 && 올리브유_온도 <= 140) {
+                            System.out.println(올리브유_온도 + "도는 적당한 온도야");
+                            System.out.println("계란이 맛있게 구워지겠어");
+                        } else {
+                            System.out.println("너무 낮은 온도인 것 같아");
+                            System.out.println("계란은 구워지겠지만 너무 느리게 익을 것 같아");
+                            System.out.println("100도 이상의 온도에서 계란은 굽자");
+                        }
+                    } else if (기름종류.equals("식용유")) {
+
+                        int 식용유_온도 = sc.nextInt();
+
+                        if (식용유_온도 > 250) {
+                            System.out.println(식용유_온도 + "는 너무 높은 온도를 설정했어, 온도를 200 정도로 내려보자");
+                        } else if (식용유_온도 > 220 && 식용유_온도 <= 250) {
+                            System.out.println("발화점은 250도지만 " + 식용유_온도 + "는 여전히 높은 온도야");
+                            System.out.println("온도를 조금 낮춰서 200도 정도에서 구워보자");
+                        } else if (식용유_온도 > 150 && 식용유_온도 <= 220) {
+                            System.out.println(식용유_온도 + "도는 적당한 온도야");
+                            System.out.println("계란이 맛있게 구워지겠어");
+                        } else {
+                            System.out.println("너무 낮은 온도인 것 같아");
+                            System.out.println("계란은 구워지겠지만 너무 느리게 익을 것 같아");
+                            System.out.println("100도 이상의 온도에서 계란은 굽자");
+                        }
+                    }
+
+                    // 계란은 몇 개 구울 것인가?
+                    System.out.println("몇 개의 계란을 구울꺼야?");
+                    // 1개, 2개, 3개
+                    int 계란수 = sc.nextInt();
+                    if (계란수 == 1) {
+                        System.out.println("계란을 " + 계란수 + "개만 굽다니 좀 모자르지 않아?");
+                        System.out.println("하지만 나의 선택이니 뭐 그렇게 굽자");
+                        System.out.println("난 계란을 1개 구웠다");
+                    } else if (계란수 == 2) {
+                        System.out.println("계란을 " + 계란수 + "개만 굽다니 딱 적당하게 먹을 수 있겠어?");
+                        System.out.println("적당한 단백질 섭취는 오히려 몸에 좋지");
+                        System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                    } else if (계란수 == 3) {
+                        System.out.println("계란을 " + 계란수 + "개만 굽다니 너무 많이 굽지않아?");
+                        System.out.println("하지만 나의 선택이니 뭐 그렇게 굽자");
+                        System.out.println("다이어트는 내일부터 하는걸로~");
+                        System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                    } else if (계란수 == 0) {
+                        System.out.println("계란을 굽지 않겠다니, 다이어트를 하려고 그러는거야?");
+                        System.out.println("하지만 나의 선택이니 뭐 그렇게 굽자");
+                        System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                    } else if (계란수 > 3) {
+                        System.out.println("계란을 " + 계란수 + "개만 굽다니 좀 말이 안되는 것 같아");
+                        System.out.println("적정량의 계란을 구워야겠어");
+                        계란수 = 2;
+                        System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                    } else {
+                        System.out.println("요리할 계란 개수를 정확히 정해봐");
+                        System.out.println("정하지 못하면 그냥 하나만 굽자");
+                        계란수 = 1;
+                        System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                    }
+
+                    System.out.println("난 계란은 맛있게 구웠다");
+
+                    준비행동_프라이팬 = true;
+                } else {
+                    if (체력 <= 0) {
+                        System.out.println("체력이 딸려서 더는 못 움직이곘어");
+                    } else {
+                        System.out.println("체력이 얼마 없어, 최대한 빨리 해먹자");
+                    }
+                }
+            }else if(준비행동_프라이팬 == true) {
+
+                // 프라이팬을 먼저 준비한 경우
+                System.out.println("그리고 무엇을 준비할꺼야?");
+                System.out.println("0) 밥상을 차린다. 1) 냄비를 준비한다.");
+                준비행동 = sc.nextInt();
+
+                // 밥상 준비
+                if (준비행동 == 0) {
+                    System.out.println("나는 밥상을 펼치려고한다. ");
+                    System.out.println("반잔은 뭘로 선택할래? 0) 단무지 1) 김치 2) 피클");
+
+                    // 반잔은 뭘로 선택할래? 0) 단무지 1) 김치 2) 피클
+                    int 반찬 = sc.nextInt();
+
+                    // 반찬 -> 단무지
+                    if (반찬 == 0) {
+                        System.out.println("나는 단무지를 꺼내기 위해 냉장고로 향했다");
+                        System.out.println("나는 냉장고 문을 당긴다 연다");
+
+                        boolean 열자_냉장고문 = 랜덤.nextBoolean();
+                        if (열자_냉장고문 == false) {
+                            체력 = 체력 - 1;
+                            System.out.println("냉장고문이 열리지 않는다");
+                            System.out.println("나는 힘껏 냉장고문을 당겨본다");
+                            boolean 다시열자_냉장고문 = 랜덤.nextBoolean();
+                            if (다시열자_냉장고문 == false) {
+                                System.out.println("모든 힘을 다해 냉장고 문을 열었다");
+                                체력 = 체력 - 2;
+                                System.out.println("나는 간신히 단무지를 꺼낼수 있었다. 정말 힘들게");
+                            } else {
+                                체력 = 체력 - 1;
+                                System.out.println("냉장고 문이 열렸다");
+                                System.out.println("나는 어렵게 단무지를 꺼낼수 있었다");
+                            }
+                        } else {
+                            체력 = 체력 - 1;
+                            System.out.println("손쉽게 냉장고문을 연 나는 단무지를 꺼내 밥상위에 놓았다");
+                            System.out.println("역시 면발에는 단무지지!");
+                        }
+
+                        //반찬 -> 김치
+                    } else if (반찬 == 1) {
+                        System.out.println("나는 김치를 꺼내기 위해 냉장고로 향했다");
+                        System.out.println("나는 냉장고 문을 당긴다 연다");
+
+                        boolean 열자_냉장고문 = 랜덤.nextBoolean();
+                        if (열자_냉장고문 == false) {
+                            체력 = 체력 - 1;
+                            System.out.println("냉장고문이 열리지 않는다");
+                            System.out.println("나는 힘껏 냉장고문을 당겨본다");
+                            boolean 다시열자_냉장고문 = 랜덤.nextBoolean();
+                            if (다시열자_냉장고문 == false) {
+                                System.out.println("모든 힘을 다해 냉장고 문을 열었다");
+                                체력 = 체력 - 2;
+                                System.out.println("나는 간신히 김치를 꺼낼수 있었다. 정말 힘들게");
+                            } else {
+                                체력 = 체력 - 1;
+                                System.out.println("냉장고 문이 열렸다");
+                                System.out.println("나는 어렵게 김치를 꺼낼 수 있었다");
+                            }
+                        } else {
+                            체력 = 체력 - 1;
+                            System.out.println("손쉽게 냉장고문을 연 나는 김치를 꺼내 밥상위에 놓았다");
+                            System.out.println("역시 면발에는 김치지!");
+                        }
+                        //반찬 -> 피클
+                    } else if (반찬 == 2) {
+                        System.out.println("나는 피클을 꺼내기 위해 냉장고로 향했다");
+                        System.out.println("나는 냉장고 문을 당긴다 연다");
+
+                        boolean 열자_냉장고문 = 랜덤.nextBoolean();
+                        if (열자_냉장고문 == false) {
+                            체력 = 체력 - 1;
+                            System.out.println("냉장고문이 열리지 않는다");
+                            System.out.println("나는 힘껏 냉장고문을 당겨본다");
+                            boolean 다시열자_냉장고문 = 랜덤.nextBoolean();
+                            if (다시열자_냉장고문 == false) {
+                                System.out.println("모든 힘을 다해 냉장고 문을 열었다");
+                                체력 = 체력 - 2;
+                                System.out.println("나는 간신히 단무지를 꺼낼수 있었다. 정말 힘들게");
+                            } else {
+                                체력 = 체력 - 1;
+                                System.out.println("냉장고 문이 열렸다");
+                                System.out.println("나는 어렵게 피클을 꺼낼수 있었다");
+                            }
+                        } else {
+                            체력 = 체력 - 1;
+                            System.out.println("손쉽게 냉장고문을 연 나는 피클을 꺼내 밥상위에 놓았다");
+                            System.out.println("역시 면발에는 피클이지!");
+                        }
+                    } else {
+                        System.out.println("그래 반찬이 뭐가 필요하겠어, 그냥 먹자");
+                        System.out.println("얼른 먹고 팀노바 과제나 해야지 뭐");
+                    }
+                    준비행동_밥상 = true;
+
+                    // 냄비 준비
+                } else if (준비행동 == 1) {
+                    체력 = 체력 - 1;
+                    System.out.println("나는 냄비를 준비하려고 한다");
+                    System.out.println("어떤 냄비를 써야할까?");
+                    // 편수냄비, 양푼냄비
+                    System.out.println("어떤 냄비를 사용하시겠습니까? 편수냄비? 양푼냄비");
+                    String 냄비종류 = sc.next();
+                    if (냄비종류.equals("편수냄비")) {
+                        System.out.println("난 편수냄비를 선택했다.");
+                    } else {
+                        System.out.println("난 양푼냄비를 선택했다.");
+                    }
+                    System.out.println(냄비종류 + "를 선택한 나는 물을 끓일 준비를 한다.");
+                    System.out.println("물을 어떤 기구를 사용하여 끓이시겠습니까?");
+                    System.out.println("(가스버너 or 하이라이트)");
+                    // 가스버너, 하이라이트
+                    String 물끓이는도구 = sc.next();
+                    if (물끓이는도구.equals("하이라이트")) {
+                        System.out.println("난 " + 물끓이는도구 + "를 선택했다.");
+                    } else {
+                        System.out.println("난 " + 물끓이는도구 + "를 선택했다.");
+                    }
+                    System.out.println("난 물을 끓이고 있다.");
+                    System.out.println("물을 얼마나 끓이겠습니까?");
+                    System.out.println("100도 or 90도 or 80도");
+
+                    // 100도, 90도, 80도
+                    String 물온도 = sc.next();
+                    if (물온도.equals("100도")) {
+                        System.out.println("난 " + 물온도 + "를 선택했다.");
+                    } else if (물온도.equals("90도")) {
+                        System.out.println("난 " + 물온도 + "를 선택했다.");
+                    } else if (물온도.equals("80도")) {
+                        System.out.println("난 " + 물온도 + "를 선택했다.");
+                    } else {
+                        System.out.println("물온도를 잘못 정한 나는 그냥 100도의 물온도로 끓였다");
+                        물온도 = "100도";
+                    }
+                    System.out.println("난 물을 " + 냄비종류 + "에 " + 물온도 + " 만큼 끓였다");
+                    준비행동_냄비 = true;
+
+                    준비행동_냄비 = true;
+                } else {
+                    if (체력 <= 0) {
+                        System.out.println("체력이 딸려서 더는 못 움직이곘어");
+                    } else {
+                        System.out.println("체력이 얼마 없어, 최대한 빨리 해먹자");
+                    }
+                }
+            }else{
+                if (체력 <= 0) {
+                    System.out.println("체력이 딸려서 더는 못 움직이곘어");
+                } else {
+                    System.out.println("체력이 얼마 없어, 최대한 빨리 해먹자");
+                }
             }
-            // 냄비를 먼저 준비한 경우
-            if (준비행동 == 0) {
+
+        }else{
+            if (체력 <= 0) {
+                System.out.println("체력이 딸려서 더는 못 움직이곘어");
+            } else {
+                System.out.println("체력이 얼마 없어, 최대한 빨리 해먹자");
+            }
+        }
+
+        // 준비행동 카운터 0 지점
+        준비행동_카운터--;
+        if(준비행동_카운터 == 0) {
+            if (준비행동_냄비 == true && 준비행동_프라이팬 == true) {
+
                 System.out.println("나는 밥상을 펼치려고한다. ");
+                System.out.println("반잔은 뭘로 선택할래? 0) 단무지 1) 김치 2) 피클");
+
                 // 반잔은 뭘로 선택할래? 0) 단무지 1) 김치 2) 피클
                 int 반찬 = sc.nextInt();
 
@@ -687,120 +1628,178 @@ public class Main {
                         } else {
                             체력 = 체력 - 1;
                             System.out.println("냉장고 문이 열렸다");
-                            System.out.println("나는 어렵게 단무지를 꺼낼수 있었다");
+                            System.out.println("나는 어렵게 피클을 꺼낼수 있었다");
                         }
                     } else {
                         체력 = 체력 - 1;
-                        System.out.println("손쉽게 냉장고문을 연 나는 단무지를 꺼내 밥상위에 놓았다");
-                        System.out.println("역시 면발에는 단무지지!");
+                        System.out.println("손쉽게 냉장고문을 연 나는 피클을 꺼내 밥상위에 놓았다");
+                        System.out.println("역시 면발에는 피클이지!");
                     }
                 } else {
                     System.out.println("그래 반찬이 뭐가 필요하겠어, 그냥 먹자");
                     System.out.println("얼른 먹고 팀노바 과제나 해야지 뭐");
                 }
                 준비행동_밥상 = true;
-            }else if(준비행동 == 2){
+
+                // 프라이팬 준비
+            } else if (준비행동_밥상 == true && 준비행동_냄비 == true) {
                 체력 = 체력 - 1;
                 System.out.println("나는 프라이팬을 준비하려고 한다");
 
-                준비행동_프라이팬 = true;
-            }
-            // 프라이팬을 먼저 준비한 경우
-            if (준비행동 == 0) {
-                System.out.println("나는 밥상을 펼치려고한다. ");
-                // 반잔은 뭘로 선택할래? 0) 단무지 1) 김치 2) 피클
-                int 반찬 = sc.nextInt();
+                System.out.println("프라이팬에 나는 집에 있던 계란을 구우려고 한다.");
+                System.out.println("프라이팬에 기름을 두른다, 어떤 기름을 쓸꺼야?");
+                System.out.println("(올리브유 or 식용유)");
 
-                // 반찬 -> 단무지
-                if(반찬 == 0) {
-                    System.out.println("나는 단무지를 꺼내기 위해 냉장고로 향했다");
-                    System.out.println("나는 냉장고 문을 당긴다 연다");
+                // 기름을 두른다, 올리브유? 식용유?
+                String 기름종류 = sc.next();
+                if (기름종류.equals("올리브유")) {
+                    System.out.println("난 프라이팬에 올리브유를 둘렀다");
+                    System.out.println("올리브유는 높은 온도에서는 타기때문에 160도보다 낮은 온도에서 구워야지");
+                    System.out.println("몇 도의 온도에서 구울꺼야?");
+                    System.out.println("우리집 올리브유는 Extra birgin이라 발화점이 160도라는 걸 기억해");
+                    System.out.println("식용유는 Extra birgin이라 발화점이 250도라는 걸 기억해");
 
-                    boolean 열자_냉장고문 = 랜덤.nextBoolean();
-                    if(열자_냉장고문 == false){
-                        체력 = 체력 - 1;
-                        System.out.println("냉장고문이 열리지 않는다");
-                        System.out.println("나는 힘껏 냉장고문을 당겨본다");
-                        boolean 다시열자_냉장고문 = 랜덤.nextBoolean();
-                        if(다시열자_냉장고문 == false){
-                            System.out.println("모든 힘을 다해 냉장고 문을 열었다");
-                            체력 = 체력 - 2;
-                            System.out.println("나는 간신히 단무지를 꺼낼수 있었다. 정말 힘들게");
-                        }else{
-                            체력 = 체력 - 1;
-                            System.out.println("냉장고 문이 열렸다");
-                            System.out.println("나는 어렵게 단무지를 꺼낼수 있었다");
-                        }
-                    }else{
-                        체력 = 체력 - 1;
-                        System.out.println("손쉽게 냉장고문을 연 나는 단무지를 꺼내 밥상위에 놓았다");
-                        System.out.println("역시 면발에는 단무지지!");
+                    int 올리브유_온도 = sc.nextInt();
+
+                    if (올리브유_온도 > 160) {
+                        System.out.println(올리브유_온도 + "는 너무 높은 온도를 설정했어, 온도를 140 정도로 내려보자");
+                    } else if (올리브유_온도 > 140 && 올리브유_온도 <= 160) {
+                        System.out.println("발화점은 160도지만 " + 올리브유_온도 + "는 여전히 높은 온도야");
+                        System.out.println("온도를 조금 낮춰서 140도 정도에서 구워보자");
+                    } else if (올리브유_온도 > 80 && 올리브유_온도 <= 140) {
+                        System.out.println(올리브유_온도 + "도는 적당한 온도야");
+                        System.out.println("계란이 맛있게 구워지겠어");
+                    } else {
+                        System.out.println("너무 낮은 온도인 것 같아");
+                        System.out.println("계란은 구워지겠지만 너무 느리게 익을 것 같아");
+                        System.out.println("100도 이상의 온도에서 계란은 굽자");
                     }
+                } else if (기름종류.equals("식용유")) {
 
-                    //반찬 -> 김치
-                }else if(반찬 == 1){
-                    System.out.println("나는 김치를 꺼내기 위해 냉장고로 향했다");
-                    System.out.println("나는 냉장고 문을 당긴다 연다");
+                    int 식용유_온도 = sc.nextInt();
 
-                    boolean 열자_냉장고문 = 랜덤.nextBoolean();
-                    if(열자_냉장고문 == false){
-                        체력 = 체력 - 1;
-                        System.out.println("냉장고문이 열리지 않는다");
-                        System.out.println("나는 힘껏 냉장고문을 당겨본다");
-                        boolean 다시열자_냉장고문 = 랜덤.nextBoolean();
-                        if(다시열자_냉장고문 == false){
-                            System.out.println("모든 힘을 다해 냉장고 문을 열었다");
-                            체력 = 체력 - 2;
-                            System.out.println("나는 간신히 김치를 꺼낼수 있었다. 정말 힘들게");
-                        }else{
-                            체력 = 체력 - 1;
-                            System.out.println("냉장고 문이 열렸다");
-                            System.out.println("나는 어렵게 김치를 꺼낼 수 있었다");
-                        }
-                    }else{
-                        체력 = 체력 - 1;
-                        System.out.println("손쉽게 냉장고문을 연 나는 김치를 꺼내 밥상위에 놓았다");
-                        System.out.println("역시 면발에는 김치지!");
+                    if (식용유_온도 > 250) {
+                        System.out.println(식용유_온도 + "는 너무 높은 온도를 설정했어, 온도를 200 정도로 내려보자");
+                    } else if (식용유_온도 > 220 && 식용유_온도 <= 250) {
+                        System.out.println("발화점은 250도지만 " + 식용유_온도 + "는 여전히 높은 온도야");
+                        System.out.println("온도를 조금 낮춰서 200도 정도에서 구워보자");
+                    } else if (식용유_온도 > 150 && 식용유_온도 <= 220) {
+                        System.out.println(식용유_온도 + "도는 적당한 온도야");
+                        System.out.println("계란이 맛있게 구워지겠어");
+                    } else {
+                        System.out.println("너무 낮은 온도인 것 같아");
+                        System.out.println("계란은 구워지겠지만 너무 느리게 익을 것 같아");
+                        System.out.println("100도 이상의 온도에서 계란은 굽자");
                     }
-                    //반찬 -> 피클
-                }else if(반찬 == 2){
-                    System.out.println("나는 피클을 꺼내기 위해 냉장고로 향했다");
-                    System.out.println("나는 냉장고 문을 당긴다 연다");
-
-                    boolean 열자_냉장고문 = 랜덤.nextBoolean();
-                    if(열자_냉장고문 == false){
-                        체력 = 체력 - 1;
-                        System.out.println("냉장고문이 열리지 않는다");
-                        System.out.println("나는 힘껏 냉장고문을 당겨본다");
-                        boolean 다시열자_냉장고문 = 랜덤.nextBoolean();
-                        if(다시열자_냉장고문 == false){
-                            System.out.println("모든 힘을 다해 냉장고 문을 열었다");
-                            체력 = 체력 - 2;
-                            System.out.println("나는 간신히 단무지를 꺼낼수 있었다. 정말 힘들게");
-                        }else{
-                            체력 = 체력 - 1;
-                            System.out.println("냉장고 문이 열렸다");
-                            System.out.println("나는 어렵게 단무지를 꺼낼수 있었다");
-                        }
-                    }else{
-                        체력 = 체력 - 1;
-                        System.out.println("손쉽게 냉장고문을 연 나는 단무지를 꺼내 밥상위에 놓았다");
-                        System.out.println("역시 면발에는 단무지지!");
-                    }
-                }else{
-                    System.out.println("그래 반찬이 뭐가 필요하겠어, 그냥 먹자");
-                    System.out.println("얼른 먹고 팀노바 과제나 해야지 뭐");
                 }
-                준비행동_밥상 = true;
-            }else if(준비행동 == 1) {
+
+                // 계란은 몇 개 구울 것인가?
+                System.out.println("몇 개의 계란을 구울꺼야?");
+                // 1개, 2개, 3개
+                int 계란수 = sc.nextInt();
+                if (계란수 == 1) {
+                    System.out.println("계란을 " + 계란수 + "개만 굽다니 좀 모자르지 않아?");
+                    System.out.println("하지만 나의 선택이니 뭐 그렇게 굽자");
+                    System.out.println("난 계란을 1개 구웠다");
+                } else if (계란수 == 2) {
+                    System.out.println("계란을 " + 계란수 + "개만 굽다니 딱 적당하게 먹을 수 있겠어?");
+                    System.out.println("적당한 단백질 섭취는 오히려 몸에 좋지");
+                    System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                } else if (계란수 == 3) {
+                    System.out.println("계란을 " + 계란수 + "개만 굽다니 너무 많이 굽지않아?");
+                    System.out.println("하지만 나의 선택이니 뭐 그렇게 굽자");
+                    System.out.println("다이어트는 내일부터 하는걸로~");
+                    System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                } else if (계란수 == 0) {
+                    System.out.println("계란을 굽지 않겠다니, 다이어트를 하려고 그러는거야?");
+                    System.out.println("하지만 나의 선택이니 뭐 그렇게 굽자");
+                    System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                } else if (계란수 > 3) {
+                    System.out.println("계란을 " + 계란수 + "개만 굽다니 좀 말이 안되는 것 같아");
+                    System.out.println("적정량의 계란을 구워야겠어");
+                    계란수 = 2;
+                    System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                } else {
+                    System.out.println("요리할 계란 개수를 정확히 정해봐");
+                    System.out.println("정하지 못하면 그냥 하나만 굽자");
+                    계란수 = 1;
+                    System.out.println("난 계란을 " + 계란수 + "개 구웠다");
+                }
+
+                System.out.println("난 계란은 맛있게 구웠다");
+
+                준비행동_프라이팬 = true;
+            } else if (준비행동_밥상 == true && 준비행동_프라이팬 == true) {
                 체력 = 체력 - 1;
                 System.out.println("나는 냄비를 준비하려고 한다");
-                System.out.println("냄비에 물을 넣는다.");
+                System.out.println("어떤 냄비를 써야할까?");
+                // 편수냄비, 양푼냄비
+                System.out.println("어떤 냄비를 사용하시겠습니까? 편수냄비? 양푼냄비");
+                String 냄비종류 = sc.next();
+                if (냄비종류.equals("편수냄비")) {
+                    System.out.println("난 편수냄비를 선택했다.");
+                } else {
+                    System.out.println("난 양푼냄비를 선택했다.");
+                }
+                System.out.println(냄비종류 + "를 선택한 나는 물을 끓일 준비를 한다.");
+                System.out.println("물을 어떤 기구를 사용하여 끓이시겠습니까?");
+                System.out.println("(가스버너 or 하이라이트)");
 
+                // 가스버너, 하이라이트
+                String 물끓이는도구 = sc.next();
+                if (물끓이는도구.equals("하이라이트")) {
+                    System.out.println("난 " + 물끓이는도구 + "를 선택했다.");
+                } else {
+                    System.out.println("난 " + 물끓이는도구 + "를 선택했다.");
+                }
+                System.out.println("난 물을 끓이고 있다.");
+                System.out.println("물을 얼마나 끓이겠습니까?");
+                System.out.println("100도 or 90도 or 80도");
+
+                // 100도, 90도, 80도
+                String 물온도 = sc.next();
+                if (물온도.equals("100도")) {
+                    System.out.println("난 " + 물온도 + "를 선택했다.");
+                } else if (물온도.equals("90도")) {
+                    System.out.println("난 " + 물온도 + "를 선택했다.");
+                } else if (물온도.equals("80도")) {
+                    System.out.println("난 " + 물온도 + "를 선택했다.");
+                } else {
+                    System.out.println("물온도를 잘못 정한 나는 그냥 100도의 물온도로 끓였다");
+                    물온도 = "100도";
+                }
+                System.out.println("난 물을 " + 냄비종류 + "에 " + 물온도 + " 만큼 끓였다");
                 준비행동_냄비 = true;
+            } else {
+                if ((준비행동_밥상 == false) && (준비행동_냄비 == false) && (준비행동_프라이팬 == false)) {
+                    System.out.println("후... 지치는구만 그냥 아무거나 준비하자");
+                }
             }
         }
 
+        if(준비행동_카운터 == 0 && ((준비행동_밥상 == true) && (준비행동_냄비 == true) && (준비행동_프라이팬 == true))) {
+            System.out.println("드디어 요리 도구 및 반찬이 준비가 되었다");
+            System.out.println("이제 저녁을 맛있게 저녁을 만들어 볼까?");
+        }
+        System.out.println("갑자기 냉장고에 있던 음료수가 생각이 났다");
+        System.out.println("나는 냉장고 앞으로 걸어갔다");
+        System.out.println("냉장고 문 손잡이를 잡고 나는 생각한다");
+        System.out.println("어떤 음료수를 마시지??");
+        System.out.println("0)탄산 음료 , 1) 이온 음료, 2) 단백질 음료");
+        System.out.println("어느 것도 정할수 없는 나는 하늘에 맡겨 보기로 했다");
+
+        int 음료선택 = 랜덤.nextInt(3);
+
+        if(음료선택 == 0){
+            System.out.println("오오 탄산 음료가 선택되었어");
+        }else if(음료선택 == 1){
+            System.out.println("오오 이온 음료가 선택되었어");
+        }else if(음료선택 == 2){
+            System.out.println("오오 단백질 음료가 선택되었어");
+        }
+        // 1)탄산 음료 , 2) 이온 음료, 3) 단백질 음료
+
+        System.out.println("나는 나의 상태를 한번 확인해 본다");
         System.out.println("===================");
         System.out.println("현금 : " + 현금);
         System.out.println("체력 : " + 체력);
@@ -810,39 +1809,7 @@ public class Main {
         System.out.println("===================");
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // =========================== 단계 3 : 요리하기 ===========================================
 
 
 
@@ -863,7 +1830,8 @@ public class Main {
         }
         else
         {
-            System.out.println("쫄면은 좀 별로지만 만들어볼까?");
+            System.out.println("쫄면은 좀 별로지만 만들어" +
+                    "dlw볼까?");
         }
 
         System.out.println("================================================");
