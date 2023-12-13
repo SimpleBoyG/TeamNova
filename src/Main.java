@@ -2208,6 +2208,7 @@ public class Main {
             else
             {
                 System.out.println("아주 그냥 재벌 나셨어? 안그래?");
+
             }
         }
         else
