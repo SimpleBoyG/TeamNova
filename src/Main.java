@@ -5,6 +5,10 @@ public class Main {
     public static void main(String[] args) {
 
         // =========================== 단계 1 : 저녁 재료 구하기 ===========================================
+        System.out.println("=====================================================================================");
+        System.out.println("============================= STEP 1 : 저녁 재료 구하기 ================================");
+        System.out.println("=====================================================================================");
+        System.out.println(" ");
         System.out.println("힘든 일을 끝내고 온 나는 집 현관문을 연다");
         System.out.println("그리고 생각한다, 아... 집에 오는길에 저녁을 사올껄");
         System.out.println("집에 들어온 나는 나의 상태를 확인한다");
@@ -747,7 +751,10 @@ public class Main {
         }
 
         // =========================== 단계 2 : 저녁 만들 준비하기 ===========================================
-        System.out.println("==============================================================================");
+        System.out.println("=====================================================================================");
+        System.out.println("========================== STEP 2 : 저녁 요리 도구 준비하기 =============================");
+        System.out.println("=====================================================================================");
+        System.out.println(" ");
         System.out.println("저녁밥을 사서 나는 집으로 돌아가는 중이다.");
         System.out.println("나는 나의 상태를 확인해봤다.");
         System.out.println("===================");
@@ -1808,31 +1815,233 @@ public class Main {
         System.out.println("쫄면 : " + 쫄면);
         System.out.println("===================");
 
-
         // =========================== 단계 3 : 요리하기 ===========================================
+        System.out.println("=====================================================================================");
+        System.out.println("================================ STEP 3 : 요리하기 ===================================");
+        System.out.println("=====================================================================================");
+        System.out.println(" ");
+
+        System.out.println("자~ 이제 요리를 시작해 볼까??");
+        System.out.println("어떤 요리를 만들어 볼까?");
+        System.out.println("나는 나의 상태를 한번 확인해 본다");
+        System.out.println("===================");
+        System.out.println("현금 : " + 현금);
+        System.out.println("체력 : " + 체력);
+        System.out.println("라면 : " + 라면);
+        System.out.println("파스타 : " + 파스타);
+        System.out.println("쫄면 : " + 쫄면);
+        System.out.println("===================");
+
+        if(체력 > 0) {
+            if ((라면 > 0) || (파스타 > 0) || (쫄면 > 0)) {
+
+                System.out.println("요리할 메뉴를 고르시오!");
+                System.out.println("1) 라면 2) 파스타 3)쫄면");
+                System.out.println(":");
+                int 메뉴 = sc.nextInt();
+
+                // 메뉴가 라면인데 라면이 있는 경우
+                if (메뉴 == 1 && 라면 == 1) {
+                    System.out.println("오오! 오늘은 라면이구만~ 만들어볼까?");
+                    System.out.println("나는 먼저 냄비의 물이 끓는지 확인했다");
+                    System.out.println("라면의 봉투를 뜯었다");
+                    System.out.println("무엇을 먼저 넣을까? 면? 스프?");
+
+                    String 라면순서 = sc.next();
+                    // 면 먼저
+                    if(라면순서.equals("면")){
+                        System.out.println("역시 라면은 면부터 넣어야 면이 잘익지");
+                        System.out.println("나는 면을 먼저 넣었다.");
+                        System.out.println("그리고 스프를 넣었다.");
+                        System.out.println("라면은 보글 보글 맛있게 끓고 있다");
+
+                        // 면 익음 정도는 어떤게 좋아? 꼬들면? 퍼진면?
+                        System.out.println("면 익음 정도는 어떻게 할래? 꼬들면? 퍼진면?");
+                        // 꼬들면
+                        String 면발 = sc.next();
+                        if(면발.equals("꼬들면")){
+                            System.out.println("난 꼬들면으로 먹는 것을 선택했다.");
+                            System.out.println("역시 면은 꼬들 꼬들한게 좋지.");
+                        // 퍼진면
+                        }else if(면발.equals("퍼진면")){
+                            System.out.println("난 퍼진면으로 먹는 것을 선택했다.");
+                            System.out.println("난 양이 많아지길 기다리고 있어");
+                        // 아무렇게나 먹기
+                        }else{
+                            System.out.println("면이 뭐가 중요한가 그냥 먹으면 배로 들어갈텐데");
+                            System.out.println("얼른 저녁을 먹자");
+                        }
+                    // 스프 먼저
+                    }else if(라면순서.equals("스프")){
+                        System.out.println("역시 라면은 스프부터 넣어야 면에 맛이 배이지");
+                        System.out.println("나는 스프를 먼저 넣었다.");
+                        System.out.println("그리고 면을 넣었다.");
+                        System.out.println("라면은 보글 보글 맛있게 끓고 있다");
+
+                        // 면 익음 정도는 어떤게 좋아? 꼬들면? 퍼진면?
+                        System.out.println("면 익음 정도는 어떻게 할래? 꼬들면? 퍼진면?");
+                        // 꼬들면
+                        String 면발 = sc.next();
+                        if(면발.equals("꼬들면")){
+                            System.out.println("난 꼬들면으로 먹는 것을 선택했다.");
+                            System.out.println("역시 면은 꼬들 꼬들한게 좋지.");
+                            // 퍼진면
+                        }else if(면발.equals("퍼진면")) {
+                            System.out.println("난 퍼진면으로 먹는 것을 선택했다.");
+                            System.out.println("난 양이 많아지길 기다리고 있어");
+                            // 아무렇게나 먹기
+                        }else{
+                            System.out.println("면이 뭐가 중요한가 그냥 먹으면 배로 들어갈텐데");
+                            System.out.println("얼른 저녁을 만들어 먹자");
+                        }
+                    }
+                    else{
+                        System.out.println("뭘 먼저 넣고 싶은지 모르겠으면 그냥 아무렇게나 넣어");
+                        System.out.println("얼른 저녁을 만들어 먹자");
+                    }
+
+                    // 계란을 넣어 먹을꺼야?
+                    System.out.println("라면에 계란을 넣어 먹을지 생각해보자, 어때?");
+                    System.out.println("계란을 넣을 꺼야? 0) No or 1) Yes");
+                    boolean 계란유무 = sc.nextBoolean();
+
+                    // 계란은 안넣는다
+                    if(계란유무 == false){
+                        System.out.println("오늘은 계란이 좀 별로야");
+                        System.out.println("난 라면의 국물 그대로의 맛을 느끼고 싶어");
+                    //계란은 넣는다
+                    }else{
+                        System.out.println("역시 라면의 마지막은 계란이 화룡점정이지~");
+                        System.out.println("라면은 정말 계란이랑 조합이 좋아");
+                        System.out.println("탄수화물 + 단백질 정말 좋구만~~");
+                    }
+
+                    System.out.println("드디어 라면이 다 끓여졌어");
+                    System.out.println("슬슬 먹어보도록 할까?");
+
+                    // 그릇 선택
+                    System.out.println("그전에 라면은 어떤 그릇에 옮겨 먹을래?");
+                    System.out.println("1)보울 2)냄비 3)냄비 뚜껑");
+                    // 1)보울 2) 냄비 3)냄비 뚜껑
+                    int 라면그릇 = sc.nextInt();
+
+                    // 보울 사용
+                    if(라면그릇 == 1)
+                    {
+                        System.out.println("설거지가 늘어나는 것은 싫지만 어떤 그릇을 사용하냐가 음식의 마무리지");
+                        System.out.println("난 다 끓인 라면을 보울에 옮겨 담았다");
+                        System.out.println("라면이 보울에 맛나게 옮겨 담아졌다");
+                    }
+                    // 냄비채로 사용
+                    else if(라면그릇 == 2)
+                    {
+                        System.out.println("설거지가 하나 늘어날 뿐이야");
+                        System.out.println("피곤한데 하나라도 더 줄여야지");
+                        System.out.println("난 라면을 냄비채로 밥상에 놓았다.");
+                    }
+                    // 냄비뚜껑 사용
+                    else if(라면그릇 == 3)
+                    {
+                        System.out.println("역시 남자라면 라면은 냄뚜에 먹어야지");
+                        System.out.println("설거지도 줄이고 좋지 뭐 ㅎㅎ");
+                        System.out.println("나는 라면 뚜껑을 덮은채로 라면을 밥상으로 가져갔다");
+                    }
+                    // 정하지 못했으면 냄비채로 먹기
+                    else
+                    {
+                        System.out.println("뭘 또 고민을 하고 그러나 ㅎㅎ");
+                        System.out.println("그냥 냄비채로 먹자 설거지도 줄일겸~");
+                    }
+                }
+                // 메뉴가 파스타인데 파스타가 있는 경우
+                else if (메뉴 == 2 && 파스타 == 1) {
+                    System.out.println("와우! 파스타~! 만들어볼까?");
+
+                    // 냄비에 물이 끓는지 확인한다.
+                    System.out.println("먼저 냄비의 물이 끓는지 확인해볼까?");
+                    // 냄비에 물이 끓고 있나? 네 or 아니오
+                    // 네
+                    // 사온 파스타면을 넣는다
+                    // 아니오
+                    // 물이 끓을때까지 기다리면
+                    // 다시 물을 확인한다.
+                    // 사온 파스타면을 넣는다
+
+                    // 사온 파스타면을 넣었다
+                    System.out.println("냄비에서 파스타면이 삶아지고 있다");
+
+                    // 면을 몇분동안 삶을 건가요?
+                    System.out.println("면을 몇 분동안 삶을껀지 타이머를 맞춰야 겠어");
+                    // 1~6분
+                    // 7~8분(완성면)
+                    // 9~10분(불은면)
+                    // 그외(무조건 불음)
+
+                    System.out.println("면이 삶아지는 동안 나는 파스타에 넣을 재료를 익혀볼까??");
+                    System.out.println("프라이팬을 먼저 준비해야지");
+                    // 프라이팬에 기름을 두른다
+                    // 어떤기름? 올리브유, 포도씨유, 화유
+                    // 올리브유 사용
+                    // 포도씨유 사용
+                    // 화유 사용
+                    // 아무 기름이나 사용
+
+
+                    System.out.println("아까 계란 굽고 썼던걸 쓰면 되겠어");
+                    System.out.println("난 파스타에 어떤 재료가 있는지 확인했다");
+
+                    // 영파,마늘,베이컨,페페론치노
+                    System.out.println("양파, 마늘, 베이컨, 페페론치노");
+                    System.out.println("다음의 재료들을 어떤 순서로 조리할꺼야?");
+                    System.out.println("1) 마늘, 베이컨 -> 양파 -> 페페론치노(정석)");
+                    System.out.println("2) 양파 -> 마늘, 베이컨-> 페페론치노(중급(양파기름용))");
+                    System.out.println("3) 모든 재료 한번에(초보용)");
+
+                    // 파스타는 정석대로
+                    // 중급자용으로
+                    // 초보자용으로
+
+                    System.out.println("삶았던 파스타 타이머가 마침 딱 끝났네");
+                    System.out.println("난 삶은 파스타를 프라이팬에 옮겨담았다");
+                    System.out.println("그리고는 파스타를 조리하기 시작했다");
+
+                    // 면수를 사용할 것인지 말것인지?
+                    // 면수 사용
+                    // 면수 미사용
+
+                    // 파마산 치즈를 사용할 것인지?
+                    // 사용?
+                    // 미사용
+
+                }
+                // 메뉴가 쫄면인데 쫄면이 있는 경우
+                else if (메뉴 == 3 && 쫄면 == 1)
+                {
+                    System.out.println("쫄면은 좀 별로지만 만들어볼까?");
+                }else {
+                    // 메뉴가 라면인데 라면이 없는 경우
+                    if(메뉴 == 1 && 라면 == 0){
+                        System.out.println("나는 라면을 만들고 싶었지만 라면을 사오지 않았다 ");
+
+                    // 메뉴가 파스타인데 파스타가 없는 경우
+                    }else if(메뉴 == 2 && 파스타 == 0){
+                        System.out.println("나는 파스타를 만들고 싶었지만 파스타를 사오지 않았다 ");
+
+                    // 메뉴가 쫄면인데 쫄면이 없는경우
+                    }else if(메뉴 == 3 && 쫄면 == 0){
+                        System.out.println("나는 쫄면을 만들고 싶었지만 쫄면을 사오지 않았다 ");
+
+                    // 메뉴 자체를 잘못 선택할 경우 1,2,3 이외의 선택
+                    }else{
+                        System.out.println("나는 메뉴를 잘못선택했다.");
+                    }
+                }
 
 
 
-        System.out.println("============================");
-        System.out.println("요리 메뉴를 고르시오!");
-        System.out.println("1) 라면  2) 파스타 3)쫄면");
-        System.out.println(":");
-        int FoodMenu = sc.nextInt();
-
-        System.out.println("================================================");
-        if (FoodMenu == 1)
-        {
-            System.out.println("오오! 오늘은 라면이구만~ 만들어볼까?");
+            }
         }
-        else if (FoodMenu == 2)
-        {
-            System.out.println("와우! 파스타~! 만들어볼까?");
-        }
-        else
-        {
-            System.out.println("쫄면은 좀 별로지만 만들어" +
-                    "dlw볼까?");
-        }
+
 
         System.out.println("================================================");
         System.out.println("물 온도는 어떻게 하지?");
@@ -1860,7 +2069,7 @@ public class Main {
         int Spicy = sc.nextInt();
         int RightFood = 0;
 
-        if(Spicy == 1 && FoodMenu == 1)
+        if(Spicy == 1)
         {
             if (WaterTemperature == 1)
             {
@@ -1871,7 +2080,7 @@ public class Main {
                 System.out.println("라면을 만들려고 했는데? 이상한 무언가가 만들어지고 있어");
             }
         }
-        else if(Spicy == 2 && FoodMenu == 2)
+        else if(Spicy == 2)
         {
             if(WaterTemperature == 1)
             {
@@ -1883,7 +2092,7 @@ public class Main {
                 System.out.println("파스타를 만들려고 했는데? 넌 뭐니?");
             }
         }
-        else if(Spicy == 3 && FoodMenu == 3)
+        else if(Spicy == 3)
         {
             if(WaterTemperature == 1)
             {
