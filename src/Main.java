@@ -1798,11 +1798,11 @@ public class Main {
         int 음료선택 = 랜덤.nextInt(3);
 
         if(음료선택 == 0){
-            System.out.println("오오 탄산 음료가 선택되었어");
+            System.out.println("오오! 탄산 음료가 선택되었어");
         }else if(음료선택 == 1){
-            System.out.println("오오 이온 음료가 선택되었어");
+            System.out.println("오오! 이온 음료가 선택되었어");
         }else if(음료선택 == 2){
-            System.out.println("오오 단백질 음료가 선택되었어");
+            System.out.println("오오! 단백질 음료가 선택되었어");
         }
         // 1)탄산 음료 , 2) 이온 음료, 3) 단백질 음료
 
@@ -1959,55 +1959,206 @@ public class Main {
 
                     // 냄비에 물이 끓는지 확인한다.
                     System.out.println("먼저 냄비의 물이 끓는지 확인해볼까?");
+                    System.out.println("1) 네 2) 아니오");
                     // 냄비에 물이 끓고 있나? 네 or 아니오
+                    int 냄비_물상태 = sc.nextInt();
+
                     // 네
+                    if(냄비_물상태 == 1){
+                        System.out.println("냄비에 물이 끓고 있다");
                     // 사온 파스타면을 넣는다
+                        System.out.println("냄비에 파스타면을 넣는다");
                     // 아니오
+                    }else if(냄비_물상태 == 2){
+                        System.out.println("냄비에 물이 아직 안 끓고있어");
                     // 물이 끓을때까지 기다리면
+                        System.out.println("물이 끓을때까지 조금만 기다리자");
                     // 다시 물을 확인한다.
+                        System.out.println("다시 물 상태를 확인해볼까?");
+                        System.out.println("물이 끓고 있구만");
                     // 사온 파스타면을 넣는다
+                        System.out.println("냄비에 사온 파스타 면을 넣는다.");
+                    }
 
                     // 사온 파스타면을 넣었다
                     System.out.println("냄비에서 파스타면이 삶아지고 있다");
 
                     // 면을 몇분동안 삶을 건가요?
                     System.out.println("면을 몇 분동안 삶을껀지 타이머를 맞춰야 겠어");
+                    System.out.println("타이머를 몇 분으로 맞출꺼야??");
+                    System.out.println("(0 ~ 10분)");
+
+                    int 타이머_분 = sc.nextInt();
+
                     // 1~6분
+                    if(타이머_분 > 0 && 타이머_분 <= 6) {
+                        System.out.println("시간이 너무 적은데? 이러면 면이 제대로 익지않아");
+
                     // 7~8분(완성면)
+                    }else if(타이머_분 == 7 && 타이머_분 == 8){
+                        System.out.println("적당한 시간을 맞췄군~");
+                        System.out.println("면이 잘 익을 것 같아");
+
                     // 9~10분(불은면)
+                    }else if(타이머_분 == 9 && 타이머_분 == 10){
+                        System.out.println("좀 시간을 많이 설정한 것 같아");
+                        System.out.println("면이 불을 것 같은데...");
+                        System.out.println("하지만 면이 불어도 상관없어");
+
                     // 그외(무조건 불음)
+                    }else{
+                        System.out.println("요리는 원래 감으로 하는거야");
+                        System.out.println("그냥 적당히 끓여서 사용하자");
+                    }
 
                     System.out.println("면이 삶아지는 동안 나는 파스타에 넣을 재료를 익혀볼까??");
                     System.out.println("프라이팬을 먼저 준비해야지");
-                    // 프라이팬에 기름을 두른다
-                    // 어떤기름? 올리브유, 포도씨유, 화유
-                    // 올리브유 사용
-                    // 포도씨유 사용
-                    // 화유 사용
-                    // 아무 기름이나 사용
-
-
                     System.out.println("아까 계란 굽고 썼던걸 쓰면 되겠어");
+
+                    // 프라이팬에 기름을 두른다
+                    System.out.println("프라이팬에 어떤 기름을 두를까?");
+
+                    // 어떤기름? 올리브유, 포도씨유, 화유
+                    System.out.println("0) 올리브유, 1) 포도씨유, 2) 화유");
+
+                    int 프라이팬_기름 = sc.nextInt();
+
+                    // 올리브유 사용
+                    if(프라이팬_기름 == 0) {
+                        System.out.println("올리브유를 한 번 사용해볼까?");
+                        System.out.println("나는 올리브유를 사용했다.");
+
+                    // 포도씨유 사용
+                    }else if(프라이팬_기름 == 1){
+                        System.out.println("포도씨유를 한 번 사용해볼까?");
+                        System.out.println("나는 올리브유를 사용했다.");
+
+                    // 화유 사용
+                    }else if(프라이팬_기름 == 2){
+                        System.out.println("화유를 한 번 사용해볼까?");
+                        System.out.println("나는 화유를 사용했다.");
+
+                    // 아무 기름이나 사용
+                    }else{
+                        System.out.println("그냥 아무기름이나 사용하자");
+                        int 랜덤_기름 = 랜덤.nextInt(3);
+
+                        // 랜덤 - 올리브유
+                        if(랜덤_기름 == 0){
+                            System.out.println("나는 올리브유를 사용했다");
+
+                        }else if(랜덤_기름 == 1){
+                            System.out.println("나는 포도씨유를 사용했다");
+
+                        }else{
+                            System.out.println("나는 화유를 사용했다");
+                        }
+                    }
+
                     System.out.println("난 파스타에 어떤 재료가 있는지 확인했다");
+                    System.out.println("나는 양파, 마늘, 베이컨, 페페론치노가 파스타 밀키트에 들어있었다");
+                    System.out.println("먼저 양파부터 썰어야겠어");
+
+                    // 양파를 얇게 or 굵게
+                    System.out.println("양파를 어떻게 썰까? 얇게? 굵게?");
+                    String 양파_굵기 = sc.next();
+
+                    // 얇게
+                    if(양파_굵기 == "얇게") {
+                        System.out.println("양파가 얇아야 맛있지");
+                        System.out.println("나는 양파를 얇게 썰었다");
+
+                    // 굵게
+                    }else if(양파_굵기 == "굵게"){
+                        System.out.println("양파가 굵어야 맛있지");
+                        System.out.println("나는 양파를 굵어야 썰었다");
+
+                    // 아무렇게나 썰자
+                    }else{
+                        System.out.println("양파는 아무렇게나 썰어먹어야 겠다");
+                        System.out.println("나는 양파를 아무렇게나 썰었다");
+                    }
+
+                    // 베이컨을 짧게 길게
+                    System.out.println("그다음 베이컨은 어떻게 썰까");
+
+                    System.out.println("베이컨을 어떻게 썰까? 짧게? 길게?");
+                    String 베이컨_길이 = sc.next();
+
+                    // 짧게
+                    if(베이컨_길이 == "짧게") {
+                        System.out.println("베이컨이 짧아야 맛있지");
+                        System.out.println("나는 베이컨를 짧게 썰었다");
+
+                    // 굵게
+                    }else if(베이컨_길이 == "길게"){
+                        System.out.println("베이컨은 길어야 맛있지");
+                        System.out.println("나는 베이컨을 길게 썰었다");
+
+                    // 아무렇게나 썰자
+                    }else{
+                        System.out.println("베이컨은 아무렇게나 썰어먹어야 겠다");
+                        System.out.println("나는 베이컨을 아무렇게나 썰었다");
+                    }
 
                     // 영파,마늘,베이컨,페페론치노
                     System.out.println("양파, 마늘, 베이컨, 페페론치노");
                     System.out.println("다음의 재료들을 어떤 순서로 조리할꺼야?");
-                    System.out.println("1) 마늘, 베이컨 -> 양파 -> 페페론치노(정석)");
-                    System.out.println("2) 양파 -> 마늘, 베이컨-> 페페론치노(중급(양파기름용))");
-                    System.out.println("3) 모든 재료 한번에(초보용)");
+                    System.out.println("===============================================");
+                    System.out.println("0) 마늘, 베이컨 -> 양파 -> 페페론치노(정석)");
+                    System.out.println("1) 양파 -> 마늘, 베이컨-> 페페론치노(중급(양파기름용))");
+                    System.out.println("2) 모든 재료 한번에(초보용)");
+                    System.out.println("===============================================");
+
+                    int 파스타_요리법 = sc.nextInt();
 
                     // 파스타는 정석대로
+                    if(파스타_요리법 == 1){
+                        System.out.println("");
                     // 중급자용으로
+                    }else if(파스타_요리법 == 2){
+                        System.out.println("");
                     // 초보자용으로
+                    }else if(파스타_요리법 == 3) {
+                        System.out.println("");
+                    // 아무렇게나 요리
+                    }else{
+                        System.out.println("");
+                    }
 
                     System.out.println("삶았던 파스타 타이머가 마침 딱 끝났네");
                     System.out.println("난 삶은 파스타를 프라이팬에 옮겨담았다");
                     System.out.println("그리고는 파스타를 조리하기 시작했다");
 
+                    System.out.println("난 파스타 이리 저리 요리했다.");
+                    System.out.println("파스타의 소스가 쫄았는데 면수를 사용할 꺼야?");
+                    System.out.println("(Yes or No)");
+
                     // 면수를 사용할 것인지 말것인지?
+                    String 면수_사용 = sc.next();
+
                     // 면수 사용
+                    if(면수_사용 == "Yes"){
+                        System.out.println("나는 면수를 사용했다");
+                        System.out.println("소스가 더 맛있게 만들어졌다");
+
                     // 면수 미사용
+                    }else {
+                        System.out.println("나는 면수를 사용하지 않았다");
+                        System.out.println("파스타가 타기 시작하는 것 같다");
+                        System.out.println("면수를 사용할까?");
+                        System.out.println("(Yes or No)");
+
+                        if(면수_사용 == "Yes"){
+                            System.out.println("나는 면수를 사용했다");
+                            System.out.println("소스가 더 맛있게 만들어졌다");
+
+                        // 면수 미사용
+                        }else {
+                            System.out.println("소스가 더 맛있게 만들어졌다");
+                        }
+                    }
+
 
                     // 파마산 치즈를 사용할 것인지?
                     // 사용?
