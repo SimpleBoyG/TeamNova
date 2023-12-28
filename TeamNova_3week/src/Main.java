@@ -8,40 +8,84 @@ public class Main {
     static int 반지름 = 0;
     static int 원_정확도 = 0;
     static int 사이즈_평균 = 0;
-    public static void type_Diamond(short 가로, short 세로){
+
+    public static void type_Diamond() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("다이아몬드 크기는 몇으로 선택하시겠습니까??");
+        System.out.println("다이아몬드 높이 :");
+
+        int 다이아몬드_크기 = sc.nextInt();
+
+        if ((다이아몬드_크기 % 2) == 0) {
+            다이아몬드_크기++;
+            가로 = 다이아몬드_크기;
+            세로 = 다이아몬드_크기;
+        }else if(다이아몬드_크기 == 1){
+            다이아몬드_크기 = 3;
+            가로 = 다이아몬드_크기;
+            세로 = 다이아몬드_크기;
+        }else{
+            가로 = 다이아몬드_크기;
+            세로 = 다이아몬드_크기;
+        }
+
+        System.out.println("높이 :" + 세로);
+
+        사이즈_평균 = (가로 + 세로) / 2;
+        if (사이즈_평균 < 500) {
+            System.out.println("다이아몬드 크기는 가로 : " + 가로 + " 세로 : " + 세로 + " 입니다.");
+        } else{
+            System.out.println("사이즈가 500을 초과했습니다, 원하는 모양이 나오지 않을수도 있습니다.");
+        }
         // 가로
-        char[][] arrCircle = new char[가로][세로];
+        char[][] arrDiamond = new char[가로][세로];
+        //사이즈 = 사이즈/2;
+        // 해상도 전시
+        for (int y = 0; y < 세로; y++) {
+            for (int x = 0; x < 가로; x++) {
+                arrDiamond[y][x] = '◻';
+            }
+        }
+        int y = 0;
+        for (y = 0; y < (가로 / 2) + 1; y++) {
+            // FillOut = 점의 색칠 X
+            int FillOut = (가로 / 2) - 1;
+            int x = 0;
+            for (; FillOut >= y; x++) {
+                arrDiamond[y][x] = '◻';
+                FillOut--;
+            }
+            // FillIn = 점의 색칠 O
+            for (int FillIn = 0; FillIn < (2 * y) + 1; FillIn++) {
+                arrDiamond[y][x] = '◼';
+                x++;
+            }
+        }
+        int k = (가로 / 2);
+        for (; y < 가로; y++) {
+            int FillOut = (가로 / 2) + 1;
+            int x = 0;
+            for (; y >= FillOut; x++) {
+                arrDiamond[y][x] = '◻';
+                FillOut++;
+            }
+            // FillIn = 점의 색칠 O
+            // k번째 색칠되는 곳
+            for (int FillIn = 0; FillIn < (2 * k) - 1; FillIn++) {
+                arrDiamond[y][x] = '◼';
+                x++;
+            }
+            k--;
+        }
+        for (int i = 0; i < 세로; i++) {
+            for (int j = 0; j < 가로; j++) {
+                System.out.print(arrDiamond[i][j]);
+            }
+            System.out.print("\n");
+        }
 
-//
-//
-
-//        사이즈 = 사이즈/2;
-//        for(int i=0; i<사이즈+1; i++) {
-//
-//            for(int j = 사이즈; j>i; j--) {
-//                System.out.print(" ");
-//            }
-//
-//            for(int k=0; k<(2*i)+1; k++) {
-//                System.out.print("*");
-//            }
-//            System.out.println(" ");
-//        }
-//
-//        int 다음단계_사이즈 = 사이즈;
-//        for(int i = 0; i<사이즈; i++)
-//        {
-//            for(int j= 0; j<=i; j++) {
-//                System.out.print(" ");
-//            }
-//
-//            for(int k = 0; k<(2*다음단계_사이즈)-1; k++) {
-//                System.out.print("*");
-//            }
-//            System.out.println(" ");
-//            다음단계_사이즈--;
-//        }
     }
+
 
 
     public static void type_Circle(){
@@ -101,8 +145,8 @@ public class Main {
         char[][] arrCircle = new char[가로][세로];
 
         //int 반지름 = 30;
-        for (int x = 0; x < 가로; x++) {
-            for (int y = 0; y < 세로; y++) {
+        for (int y = 0; y < 세로; y++) {
+            for (int x = 0; x < 가로; x++) {
                 int Value = (x-(가로/2))*(x-(가로/2)) + (y-(세로/2))*(y-(세로/2));
                 int 반지름_제곱 = (반지름*반지름);
                 if(Value < 반지름_제곱 + 원_정확도 && (Value > 반지름_제곱 - 원_정확도)  ) {
@@ -117,6 +161,36 @@ public class Main {
         }
 
 
+    }
+
+
+    public static void type_Star(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("별 모양의 높이는 몇으로 선택하시겠습니까??");
+        System.out.println("별 모양 높이 :");
+
+        char arrayStar[][] = new char[11][11];
+
+        int y = 0;
+
+        for (; y < 11; y++) {
+            for (int x = 0; x < 11; x++) {
+                arrayStar[y][x] = '◻';
+            }
+        }
+
+        // 상단 삼각형
+        for(y=1; y < 4; y++){
+            for(int 빈_점 = 0, )
+        }
+
+
+        for (int i = 0; i < 11; i++) {
+            for (int j = 0; j < 11; j++) {
+                System.out.print(arrayStar[i][j]);
+            }
+            System.out.print("\n");
+        }
     }
 
 
@@ -162,23 +236,29 @@ public class Main {
     }
 
 
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
         while(true){
         System.out.println("어떤 타입을 선택하시겠습니까??");
-        System.out.println("1) 다이아몬드 2)원");
+        System.out.println("1) 다이아몬드 2)원 3) 별");
         System.out.println(":");
         int 타입 = sc.nextInt();
 
             switch (타입){
                 // 다이아몬드
                 case 1:
-                    //type_Diamond(사이즈);
+                    type_Diamond();
                     break;
                 case 2:
                     type_Circle();
+                    break;
+                case 3:
+                    type_Star();
+                    break;
+                default:
                     break;
             }
         }
