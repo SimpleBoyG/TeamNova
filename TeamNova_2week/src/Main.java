@@ -58,7 +58,7 @@ public class Main {
             버스 체력 -2
             저녁은 무조건 1개만 살 수 있다
             */
-
+////
             String 목적지 = sc.next();
             System.out.println("나는 " + 목적지 + "를 가기로 정했다.");
 

@@ -13,7 +13,7 @@ public class Main {
         char[][] arrCircle = new char[가로][세로];
 
 //
-//////
+//
 
 //        사이즈 = 사이즈/2;
 //        for(int i=0; i<사이즈+1; i++) {
