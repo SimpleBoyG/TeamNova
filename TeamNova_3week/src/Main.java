@@ -1,5 +1,4 @@
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Main {
@@ -546,7 +545,6 @@ public class Main {
             흑돌_위치4--;
         }
 
-
         //==================================================================================================
         // 배열 전체 출력
         for (int i = 0; i < 세로; i++) {
@@ -560,7 +558,9 @@ public class Main {
 
     public static void type_Sudoku1() {
         Scanner sc = new Scanner(System.in);
-        int 스도쿠_개수 = 7;//sc.nextInt();
+        System.out.println("개수를 입력하세요.");
+        System.out.println(":");
+        int 스도쿠_개수 = sc.nextInt();
         Random rd = new Random();
         //int arraySudoku[][] = new int[스도쿠_개수][스도쿠_개수];
         int arraySudoku[][] = new int[스도쿠_개수][스도쿠_개수];
@@ -568,15 +568,16 @@ public class Main {
 
         long StartTime = System.currentTimeMillis();
 
-        for(int y = 0; y < 스도쿠_개수; y++){
-            for(int x = 0; x < 스도쿠_개수; x++) {
+        for (int y = 0; y < 스도쿠_개수; y++) {
+            for (int x = 0; x < 스도쿠_개수; x++) {
                 arraySudoku[y][x] = rd.nextInt(스도쿠_개수) + 1;
+
                 for (int z = 0; z < x; z++) {
-                    boolean bTemp = true;
                     if (arraySudoku[y][x] == arraySudoku[y][z]) {
                         x--;
                     }
                 }
+
                 for (int z = 0; z < y; z++) {
                     if (arraySudoku[y][x] == arraySudoku[z][x]) {
                         y--;
@@ -586,38 +587,210 @@ public class Main {
         }
         for (int y = 0; y < 스도쿠_개수; y++) {
             for (int x = 0; x < 스도쿠_개수; x++) {
-                System.out.print(arraySudoku[y][x]);
+                if(String.valueOf(arraySudoku[y][x]).length() == 1) {
+                    System.out.print("  "+arraySudoku[y][x]+" ");
+                }else{
+                    System.out.print("  "+arraySudoku[y][x]);
+                }
             }
             System.out.println();
         }
-//        for (int y = 0; y < 스도쿠_개수; y++) {
-//
-//            for (int x = 0; x < 스도쿠_개수; x++) {
-//                arraySudoku[y][x] = 스도쿠_값;
-//                OperationNum(arraySudoku, 스도쿠_개수);
-//                System.out.print(arraySudoku[y][x]);
-//            }
-//            System.out.print("\n");
-//        }
 
         long EndTime = System.currentTimeMillis();
-        System.out.println("걸린시간: " + ((EndTime - StartTime)/1000) + " 초");
+        System.out.println("걸린시간: " + ((EndTime - StartTime) / 1000) + " 초");
     }
 
-    public static int OperationNum(int[][] array, int num) {
-        int result = 0;
+    public static void type_Sudoku2() {
+        Scanner sc = new Scanner(System.in);
 
-        // =============================================================================
-        // 중복 없이 숫자 출력
-//        for (int y = 0; y < num; y++) {
-//            for (int x = 0; x < num; x++) {
-//                array[y][x] =
-//                if ()
-//            }
-//        }
+        System.out.println("개수를 입려해주세요.");
+        System.out.println(":");
+        int 스도쿠_개수 = sc.nextInt();
+
+        Random rd = new Random();
+
+        int arraySudoku[][] = new int[스도쿠_개수][스도쿠_개수];
+
+        long StartTime = System.currentTimeMillis(); // 시작 시간
+
+        searchNum(스도쿠_개수, 0, 0, arraySudoku);
+
+        for (int y = 0; y < 스도쿠_개수; y++) {
+            for (int x = 0; x < (스도쿠_개수); x++) {
+                if(String.valueOf(arraySudoku[y][x]).length() == 1) {
+                    System.out.print("  "+arraySudoku[y][x]+" ");
+                }else{
+                    System.out.print("  "+arraySudoku[y][x]);
+                }
+            }
+            System.out.println();
+        }
+
+        long EndTime = System.currentTimeMillis();
+        System.out.println("걸린시간: " + (EndTime - StartTime) + " ms");
+    }
+
+    public static Set<Integer> shuffles(int 스도쿠_개수){
+        int arrayNums[] = new int[스도쿠_개수];
+
+        for(int i = 0; i < 스도쿠_개수; i++){
+            arrayNums[i] = i + 1;
+        }
+
+        Random rd = new Random();
+        for(int i = 스도쿠_개수 - 1; i >= 0; i--){
+            int picked = rd.nextInt(i+1); // 인덱스를 추출
+            int tmpNum = arrayNums[picked];
+            arrayNums[picked] = arrayNums[i];
+            arrayNums[i] = tmpNum;
+        }
+
+        Set<Integer> shuffleSet = new LinkedHashSet<>();
+        for(int i = 0; i<arrayNums.length; i++){
+            shuffleSet.add(arrayNums[i]);
+        }
+
+        return shuffleSet;
+    }
+    public static Boolean searchNum(int 스도쿠_개수, int x, int y, int arraySudoku[][]) {
+
+        if (y == 스도쿠_개수) {
+            return true;
+        }
+        // array 스도쿠의 현재 x,y로 부터 위 상단에 값들
+        Set<Integer> collectedNums = shuffles(스도쿠_개수);
+
+        for (int prevY = y - 1; prevY >= 0; prevY--) {
+            collectedNums.remove(arraySudoku[prevY][x]);
+        }
+        for (int prevX = x - 1; prevX >= 0; prevX--) {
+            collectedNums.remove(arraySudoku[y][prevX]);
+        }
+
+        for (Iterator<Integer> iter = collectedNums.iterator(); iter.hasNext(); ) {
+            arraySudoku[y][x] = iter.next();
+
+            if (x + 1 < 스도쿠_개수) {
+                if (searchNum(스도쿠_개수, x + 1, y, arraySudoku)) {
+                    return true;
+                }
+            } else {
+                if (searchNum(스도쿠_개수, 0, y + 1, arraySudoku)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void type_Sudoku3() {
+        int size = 0;
+        int rand;
+        Random random = new Random(System.currentTimeMillis());
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("숫자를 입력하세요(2이상)");
+            size = sc.nextInt();
+            if (size < 2) {
+                System.out.println("2이상 숫자를 입력해주세요");
+            } else {
+                break;
+            }
+        }
+
+        //2차원 배열 size크기로 생성
+        int result[][] = new int[size][size];
+
+        //0으로 초기화
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                result[i][j] = 0;
+            }
+        }
+        //랜덤상수 size만큼 자연수가들어가게함
+        rand = random.nextInt(size) + 1;
+        int a;
+        int b;
+        int row;
+        int col;
+        boolean isSame = true;
+        int loopCount = 0;
+
+        long curTime = System.currentTimeMillis();
+        System.out.println("시작시간: "+ (curTime / 1000));
+
+        Loop2: while (true) {
+            loopCount=0;//초기화
+
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    row = j; //제이임
+                    col = i;    //아이임
 
 
-        return result;
+                    Loop1:
+                    while (true) {
+                        rand = random.nextInt(size) + 1;
+                        result[i][j] = rand;
+
+
+                        //기준 왼쪽값들 일치유무검사
+                        for (a = row - 1; a >= 0; a--) {
+                            while (isSame == true) {
+
+
+                                if (result[i][j] == result[i][a]) {
+                                    isSame = true;
+                                    continue Loop1;
+                                } else {
+                                    isSame = false;
+                                }
+                            }
+                            isSame = true;//빠져나오면 다시 초기화
+                        }
+
+
+                        //기준 위쪽값들 일치유무검사
+                        for (b = col - 1; b >= 0; b--) {
+                            while (isSame == true) {
+                                if (result[i][j] == result[b][j]) {
+                                    loopCount++;
+                                    if (loopCount > 300) { //마지막에 가까운 값이 가로 세로 겹쳐서 무한루프가 도는 경우가 발생하는데 300번이상 루프를 돌면 처음부터 스도쿠를 짜게한다.
+                                        continue Loop2;
+                                    }
+
+                                    isSame = true;
+                                    continue Loop1;
+                                } else {
+                                    isSame = false;
+                                }
+                            }
+                            isSame = true;//빠져나오면 다시 초기화
+                        }
+
+
+                        break;
+                    }
+                }
+            }
+
+
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    if(String.valueOf(result[i][j]).length() == 1) {
+                        System.out.print("  "+result[i][j]+" ");
+                    }else{
+                        System.out.print("  "+result[i][j]);
+                    }
+                }
+                System.out.println();
+            }
+            long curTime2 = System.currentTimeMillis();
+            System.out.println("걸린시간: " + (curTime2 - curTime)+ " ms");
+
+            break ;
+        }
     }
 
     public static void HappyNewYear() {
@@ -658,9 +831,9 @@ public class Main {
                 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                   """);
         System.out.println("어떤 타입을 선택하시겠습니까??");
-        System.out.println("1) 다이아몬드 2)원 3) 별 4) 오각별(타입1) 5)오각별(타입2-과제용)");
+        System.out.println("1) 다이아몬드 2)원 3) 별 4) 오각별(타입1) 5)오각별(타입2-과제용) 6) 스도쿠 1차 7) 스도쿠 2차(과제용)");
         System.out.println(":");
-        int 타입 = 6;//sc.nextInt();
+        int 타입 = sc.nextInt();
 
         switch (타입) {
             // 다이아몬드
@@ -683,6 +856,12 @@ public class Main {
                 type_Sudoku1();
                 break;
             case 7:
+                type_Sudoku2();
+                break;
+            case 8:
+                type_Sudoku3();
+                break;
+            case 9:
                 HappyNewYear();
                 break;
             default:
