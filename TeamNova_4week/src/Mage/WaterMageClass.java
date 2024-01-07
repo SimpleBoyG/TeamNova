@@ -12,27 +12,27 @@ public class WaterMageClass {
         this.name = MageName;
     }
 
-    public boolean FireBall(){
+    public boolean WaterBall(){
         System.out.println("아쿠아 볼을 시전했습니다.");
         return true;
     }
 
-    public boolean FireArrow(){
+    public boolean WaterArrow(){
         System.out.println("아쿠아 애로우를 시전했습니다.");
         return true;
     }
 
-    public boolean FireWall(){
+    public boolean WaterWall(){
         System.out.println("아쿠아 월을 시전했습니다.");
         return true;
     }
 
-    public boolean FireExplosion(){
+    public boolean WaterBomb(){
         System.out.println("워터 밤을 시전했습니다.");
         return true;
     }
 
-    public boolean FireMeteo(){
+    public boolean BigWave(){
         System.out.println("대해를 시전했습니다.");
         return true;
     }
