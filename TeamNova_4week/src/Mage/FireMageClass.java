@@ -1,5 +1,7 @@
 package Mage;
 
+import Monster.Monster;
+
 public class FireMageClass {
     public String name;
     public int MagicAttack = 10;
@@ -12,27 +14,27 @@ public class FireMageClass {
         this.name = MageName;
     }
 
-    public boolean FireBall(){
+    public boolean SkillLevel1(Monster monster){
         System.out.println("파이어 볼을 시전했습니다.");
         return true;
     }
 
-    public boolean FireArrow(){
+    public boolean SkillLevel2(Monster monster){
         System.out.println("파이어 애로우를 시전했습니다.");
         return true;
     }
 
-    public boolean FireWall(){
+    public boolean SkillLevel3(Monster monster){
         System.out.println("파이어 월을 시전했습니다.");
         return true;
     }
 
-    public boolean FireExplosion(){
+    public boolean SkillLevel4(Monster monster){
         System.out.println("익스플로젼을 시전했습니다.");
         return true;
     }
 
-    public boolean FireMeteo(){
+    public boolean SkillLevel5(Monster monster){
         System.out.println("메테오를 시전했습니다.");
         return true;
     }

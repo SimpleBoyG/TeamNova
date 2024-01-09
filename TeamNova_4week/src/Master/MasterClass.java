@@ -1,5 +1,7 @@
 package Master;
 
+import Monster.Monster;
+
 public class MasterClass {
     public String name;
     public int Attack = 10;
@@ -21,8 +23,9 @@ public class MasterClass {
         return true;
     }
 
-    public boolean ShildAttack(){
+    public boolean ShildAttack(Monster monster){
         System.out.println("방패로 공격했습니다.");
+        monster.Hp = monster.Hp - 5;
         return true;
     }
 

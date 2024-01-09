@@ -1,5 +1,8 @@
 package Hunting;
 
+import Mage.FireMageClass;
+import Master.MasterClass;
+
 import java.util.Scanner;
 
 public class HuntingMenu {
@@ -33,5 +36,29 @@ public class HuntingMenu {
     }
     public void AttackSelect(){
         System.out.println("공격할 준비를 합니다.");
+    }
+
+    // 마스터 메뉴
+    public int MasterMenu(MasterClass master){
+        System.out.println(master.name + "님의 공격 차례입니다.");
+        System.out.println("어떤 공격을 하시겠어요?");
+        System.out.println("1) 방패공격 2) 마법사 방어");
+        System.out.println(":");
+        Scanner sc = new Scanner(System.in);
+        int Result = sc.nextInt();
+
+        return Result;
+    }
+
+    // 마법사 메뉴
+    public int MageMenu(FireMageClass mage){
+        System.out.println(mage.name + "님의 공격 차례입니다.");
+        System.out.println("어떤 공격을 하시겠어요?");
+        System.out.println("1) SkillLevel1 2) SkillLevel2 3) SkillLevel3 4) SkillLevel4");
+        System.out.println(":");
+        Scanner sc = new Scanner(System.in);
+        int Result = sc.nextInt();
+
+        return Result;
     }
 }
