@@ -1,10 +1,10 @@
 package Main;
 
-import Hunting.BattleBeginnerStep;
-import Hunting.MonsterSearching;
-import Mage.FireMageClass;
-import Mage.WaterMageClass;
-import Master.MasterClass;
+import 사냥터.MonsterSearching;
+import 마법사.FireMageClass;
+import 마법사.WaterMageClass;
+import 마스터.MasterClass;
+import 마을.VillageInner;
 
 import java.util.Scanner;
 
@@ -27,7 +27,6 @@ public class Main {
         FireMageClass FireMage = new FireMageClass("불 마법사");
         WaterMageClass WaterMage = new WaterMageClass("불 마법사");
 
-
         while (true) {
             System.out.println("어디로 이동하시겠습니까?");
             System.out.println("1) 마을 2) 사냥터");
@@ -38,15 +37,16 @@ public class Main {
             switch (wherePlace) {
                 case 1:
                     System.out.println("마을로 돌아갑니다.");
+                    VillageInner village = new VillageInner(master, FireMage, WaterMage);
+                    village.goVillage();
+                    break;
                 case 2:
                     System.out.println("사냥터로 향합니다.");
-
                     // 몬스터 탐색
                     MonsterSearching ms = new MonsterSearching(master, FireMage, WaterMage);
                     ms.MonsterSearching();
 
                     break;
-
             }
             break;
 
