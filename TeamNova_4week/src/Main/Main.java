@@ -1,8 +1,7 @@
 package Main;
 
 import 사냥터.MonsterSearching;
-import 마법사.FireMageClass;
-import 마법사.WaterMageClass;
+import 마법사.MageClass;
 import 마스터.MasterClass;
 import 마을.VillageInner;
 
@@ -24,8 +23,7 @@ public class Main {
         System.out.println("플레이어 이름은 " + PlayerName + " 입니다.");
 
         MasterClass master = new MasterClass(PlayerName);
-        FireMageClass FireMage = new FireMageClass("불 마법사");
-        WaterMageClass WaterMage = new WaterMageClass("불 마법사");
+        MageClass Mage = new MageClass("마법사");
 
         while (true) {
             System.out.println("어디로 이동하시겠습니까?");
@@ -37,15 +35,14 @@ public class Main {
             switch (wherePlace) {
                 case 1:
                     System.out.println("마을로 돌아갑니다.");
-                    VillageInner village = new VillageInner(master, FireMage, WaterMage);
+                    VillageInner village = new VillageInner(master,Mage);
                     village.goVillage();
                     break;
                 case 2:
                     System.out.println("사냥터로 향합니다.");
                     // 몬스터 탐색
-                    MonsterSearching ms = new MonsterSearching(master, FireMage, WaterMage);
+                    MonsterSearching ms = new MonsterSearching(master,Mage);
                     ms.MonsterSearching();
-
                     break;
             }
             break;

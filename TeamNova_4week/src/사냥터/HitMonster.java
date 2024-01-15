@@ -1,7 +1,6 @@
 package 사냥터;
 
-import 마법사.FireMageClass;
-import 마법사.WaterMageClass;
+import 마법사.MageClass;
 import 마스터.MasterClass;
 
 import java.util.Random;
@@ -9,8 +8,7 @@ import java.util.Random;
 public class HitMonster {
     private int MeetingCount = 0;
     MasterClass master;
-    FireMageClass fire;
-    WaterMageClass water;
+    MageClass mage;
 
     HitMonster() {
         Random rd = new Random();
@@ -31,8 +29,6 @@ public class HitMonster {
                 InitMeetingCount();
                 Result = true;
                 HitMonster();
-
-
                 break;
             } else {
                 System.out.println("몬스터를 만나지 못했다.");
@@ -48,16 +44,15 @@ public class HitMonster {
         if (HM.HuntingMenu() == 1) {
             // 배틀 존으로 들어간다
             BattleBeginnerStep bbs = new BattleBeginnerStep();
-            bbs.BattleZone(master,fire,water);
+            bbs.BattleZone(master,mage);
 
         }
     }
 
     // 캐릭터 상태 정보 전달
-    public void setCharacterInfo(MasterClass master, FireMageClass fire, WaterMageClass water) {
+    public void setCharacterInfo(MasterClass master, MageClass mage) {
         this.master = master;
-        this.fire = fire;
-        this.water = water;
+        this.mage = mage;
     }
 
 }

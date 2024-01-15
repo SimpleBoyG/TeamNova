@@ -1,14 +1,20 @@
 package 마스터;
 
+import 마법사.MageClass;
+import 마을.무기상점.무기.Weapon;
+import 마을.방어구상점.방어구.Armor;
 import 몬스터.Monster;
 
 public class MasterClass {
     public String name;
     public int Attack = 10;
-    public int defence = 5;
+    public int Defence = 5;
     public int Hp = 100;
     public int Mp = 10;
-    int Experience;
+    public int Experience;
+    public int Cash = 5000;
+    public Weapon weapon;
+    public Armor armor;
 
     public MasterClass(String name){
         this.name = name;
@@ -39,5 +45,4 @@ public class MasterClass {
             }
         return Result;
     }
-
 }

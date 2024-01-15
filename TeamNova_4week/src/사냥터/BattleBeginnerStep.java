@@ -1,9 +1,9 @@
 package 사냥터;
 
-import 마법사.FireMageClass;
-import 마법사.WaterMageClass;
+import 마법사.MageClass;
 import 마스터.MasterClass;
 import 몬스터.Monster;
+import 문자열색상변경.TextColorChange;
 
 import java.util.Random;
 
@@ -11,10 +11,9 @@ public class BattleBeginnerStep {
 
     private String[] MonsterName = {"토끼", "슬라임", "오크"};
     private MasterClass master;
-    private FireMageClass fire;
-    private WaterMageClass water;
+    private MageClass mage;
     private BattleBeginnerStep bbs;
-
+    public TextColorChange textColor = new TextColorChange();
     Random rd = new Random();
     int MonsterIndex = rd.nextInt(3);
     HuntingMenu hm = new HuntingMenu();
@@ -26,10 +25,9 @@ public class BattleBeginnerStep {
     }
 
     // 캐릭터 상태 정보를 설정하는 메소드
-    public void setCharacterStatus(MasterClass master, FireMageClass fire, WaterMageClass water) {
+    public void setCharacterStatus(MasterClass master, MageClass mage) {
         this.master = master;
-        this.fire = fire;
-        this.water = water;
+        this.mage = mage;
     }
 
     // 마스터가 배틀할 때
@@ -39,12 +37,12 @@ public class BattleBeginnerStep {
     }
 
     // 메이지가 배틀할 때
-    public void MageBattle(FireMageClass fire) {
+    public void MageBattle(MageClass fire) {
         System.out.println("메이지가 공격합니다");
     }
 
     // 배틀 존
-    public void BattleZone(MasterClass master, FireMageClass fire, WaterMageClass water) {
+    public void BattleZone(MasterClass master, MageClass mage) {
         // 새로운 몬스터 생성
         Monster monster = createBattleMonster();
         // 배틀이 시작됩니다.
@@ -54,7 +52,7 @@ public class BattleBeginnerStep {
             boolean bMasterMenu = showActionSelect(master, monster);
             // 공격후 상태 확인
             if(bMasterMenu == true) {
-                showAllStatus(master, fire, monster);
+                showAllStatus(master, mage, monster);
             }
         }
     }
@@ -84,28 +82,34 @@ public class BattleBeginnerStep {
     }
 
     public void showMasterStatus(MasterClass master) {
-        System.out.println("=========" + master.name + "============");
-        System.out.println("HP : " + master.Hp);
-        System.out.println("MP : " + master.Mp);
-        System.out.println("========================================");
+        String TempStr = "=========" + master.name + "============";
+        textColor.CyanText(TempStr);
+        TempStr = "HP : " + master.Hp;
+        textColor.CyanText(TempStr);
+        TempStr = "MP : " + master.Mp;
+        textColor.CyanText(TempStr);
+        TempStr = "========================================";
     }
 
-    public void showMageStatus(FireMageClass fire) {
-        System.out.println("=========" + fire.name + "============");
-        System.out.println("HP : " + fire.Hp);
-        System.out.println("MP : " + fire.Mp);
+    public void showMageStatus(MageClass mage) {
+        System.out.println("=========" + mage.name + "============");
+        System.out.println("HP : " + mage.Hp);
+        System.out.println("MP : " + mage.Mp);
         System.out.println("========================================");
     }
 
     public void showMonsterStatus(Monster monster) {
-        System.out.println("=========" + monster.name + "============");
-        System.out.println("HP : " + monster.Hp);
-        System.out.println("========================================");
+        String TempStr = "=========" + monster.name + "============";
+        textColor.RedText(TempStr);
+        TempStr = "HP : " + monster.Hp;
+        textColor.RedText(TempStr);
+        TempStr = "========================================";
+        textColor.RedText(TempStr);
     }
 
-    public void showAllStatus(MasterClass master, FireMageClass fire, Monster monster) {
+    public void showAllStatus(MasterClass master, MageClass mage, Monster monster) {
         showMasterStatus(master);
-        showMageStatus(fire);
+        showMageStatus(mage);
         showMonsterStatus(monster);
     }
 }

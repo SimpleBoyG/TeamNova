@@ -1,33 +1,32 @@
 package 마을;
 
-import 마법사.FireMageClass;
-import 마법사.WaterMageClass;
+import 마법사.MageClass;
 import 마스터.MasterClass;
 import 마을.무기상점.WeaponShop;
 import 마을.방어구상점.ArmorShop;
 import 마을.아이템상점.ItemShop;
 import 마을.여관.Inn;
 import 사냥터.MonsterSearching;
+import 상태창.CharacterStatus;
+import 인벤토리.All_Inventory;
 
 import java.util.Scanner;
 
 public class VillageInner {
     MasterClass master;
-    FireMageClass fire;
-    WaterMageClass water;
-    public VillageInner(MasterClass master, FireMageClass fire, WaterMageClass water){
-        System.out.println("""      
-                마을
-                """);
-        this.master = master;
-        this.fire = fire;
-        this.water = water;
+    MageClass mage;
 
+    All_Inventory ai;
+    public VillageInner(MasterClass master, MageClass mage){
+        this.master = master;
+        this.mage = mage;
+        ai = new All_Inventory(master,mage);
     }
 
     public void goVillage(){
+        System.out.println("=============마을==============");
         System.out.println("마을입니다. 목적지를 선택해주세요.");
-        System.out.println("1) 무기 상점 2) 방어구 상점 3) 아이템 상점 4) 여관 5) 마을을 나갑니다.");
+        System.out.println("1) 무기 상점 2) 방어구 상점 3) 아이템 상점 4) 여관 5) 상태창 6) 인벤토리 7) 사냥터");
         Scanner sc = new Scanner(System.in);
         int selectDes = sc.nextInt();
         selectDestination(selectDes);
@@ -35,13 +34,13 @@ public class VillageInner {
 
     public void goWeaponShop(){
         System.out.println("무기 상점으로 갑니다.");
-        WeaponShop ws = new WeaponShop();
+        WeaponShop ws = new WeaponShop(this,ai,master,mage);
         ws.hereWeaponShop();
     }
 
     public void goArmorShop(){
         System.out.println("방어구 상점으로 갑니다.");
-        ArmorShop as = new ArmorShop();
+        ArmorShop as = new ArmorShop(this,ai,master,mage);
         as.hereArmorShop();
     }
 
@@ -57,9 +56,20 @@ public class VillageInner {
         Inn.hereInn();
     }
 
+    public void goStatusWindow(){
+        System.out.println("캐릭터 상태창을 확인합니다.");
+        CharacterStatus cs = new CharacterStatus(master,mage);
+        cs.showAllStatus();
+    }
+
+    public void goInventoryWindow(){
+        System.out.println("캐릭터 인벤토리창을 확인합니다.");
+        ai.showAllInventory(this);
+    }
+
     public void goHunting(){
-        System.out.println("사냥터로 향합니.");
-        MonsterSearching ms = new MonsterSearching(master, fire, water);
+        System.out.println("사냥터로 향합니다.");
+        MonsterSearching ms = new MonsterSearching(master, mage);
         ms.MonsterSearching();
     }
 
@@ -76,6 +86,12 @@ public class VillageInner {
                 break;
             case 4:
                 goInn();
+                break;
+            case 5:
+                goStatusWindow();
+                break;
+            case 6:
+                goInventoryWindow();
                 break;
             default:
                 goHunting();

@@ -1,7 +1,6 @@
 package 사냥터;
 
-import 마법사.FireMageClass;
-import 마법사.WaterMageClass;
+import 마법사.MageClass;
 import 마스터.MasterClass;
 
 import javax.swing.*;
@@ -10,6 +9,8 @@ import java.awt.event.KeyListener;
 
 public class MonsterSearching{
     static int MonsterCount = 0;
+    public MasterClass master;
+    public MageClass mage;
     private static final String[] IMAGES_KEYBOARD = { // 이미지 경로 문자열 저장
             "Image/keyboard.jpg",
             "Image/keyboard_down.png",
@@ -17,13 +18,10 @@ public class MonsterSearching{
             "Image/keyboard_right.png",
             "Image/keyboard_up.png"
     };
-    MasterClass master;
-    FireMageClass fire;
-    WaterMageClass water;
-    public MonsterSearching(MasterClass master, FireMageClass fire, WaterMageClass water){
+
+    public MonsterSearching(MasterClass master, MageClass mage){
         this.master = master;
-        this.fire = fire;
-        this.water = water;
+        this.mage = mage;
     }
     public void MonsterSearching() {
         JFrame frame = new JFrame("조작키");
@@ -60,6 +58,7 @@ public class MonsterSearching{
 
         if (HuntingMenu.HuntingStartMenu() == 1) {
             System.out.println("맵을 탐험합니다.");
+            System.out.println("방향키를 조정해주세요.");
             PanerTest.addKeyListener(new KeyListener() {
                 @Override
                 public void keyTyped(KeyEvent e) {
@@ -109,7 +108,7 @@ public class MonsterSearching{
     public boolean initMonsterCount(HitMonster HitMonster) {
         boolean Result = false;
         // 랜덤한 Hit 값이 결정됨
-        HitMonster.setCharacterInfo(master,fire,water);
+        HitMonster.setCharacterInfo(master,mage);
         if (HitMonster.HitMonsterStatus(MonsterCount) == true) {
             MonsterCount = 0;
             Result = true;

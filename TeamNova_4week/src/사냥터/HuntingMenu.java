@@ -1,6 +1,6 @@
 package 사냥터;
 
-import 마법사.FireMageClass;
+import 마법사.MageClass;
 import 마스터.MasterClass;
 
 import java.util.Scanner;
@@ -51,7 +51,7 @@ public class HuntingMenu {
     }
 
     // 마법사 메뉴
-    public int MageMenu(FireMageClass mage){
+    public int MageMenu(MageClass mage){
         System.out.println(mage.name + "님의 공격 차례입니다.");
         System.out.println("어떤 공격을 하시겠어요?");
         System.out.println("1) SkillLevel1 2) SkillLevel2 3) SkillLevel3 4) SkillLevel4");
