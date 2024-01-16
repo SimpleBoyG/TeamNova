@@ -4,8 +4,10 @@ import 마법사.MageClass;
 import 마스터.MasterClass;
 import 마을.VillageInner;
 import 마을.무기상점.무기.Weapon;
+import 마을.무기상점.무기.WeaponFactory;
 import 마을.무기상점.무기.레어무기.예리한양날검;
 import 마을.무기상점.무기.일반무기.양날검;
+import 마을.무기상점.무기.일반무기.휘어진지팡이;
 import 인벤토리.All_Inventory;
 
 import java.util.HashMap;
@@ -27,8 +29,11 @@ public class WeaponShop {
 
     // 무기 객체를 담을 자료구조
     Map<Integer, Weapon> Weapons = new HashMap<>();
-    Weapon weapon1 = new 양날검();
-    Weapon weapon2 = new 예리한양날검();
+    // 팩토리 객체
+    WeaponFactory weaponFactory = new WeaponFactory();
+    Weapon weapon1 = weaponFactory.getWeapon(양날검.class);
+    Weapon weapon2 = weaponFactory.getWeapon(예리한양날검.class);
+    Weapon weapon3 = weaponFactory.getWeapon(휘어진지팡이.class);
 
     //VillageInner vi = new VillageInner(master, fire, water);
     // 무기 저장
@@ -43,6 +48,7 @@ public class WeaponShop {
         // Map에 저장
         Weapons.put(1, weapon1);
         Weapons.put(2, weapon2);
+        Weapons.put(3, weapon3);
 
         if (WeaponBuy == 1) {
             SelectWeapon();
@@ -68,9 +74,15 @@ public class WeaponShop {
             int Key = entry.getKey();
             Weapon value = entry.getValue();
             if(value.getWeaponType().equals("마스터")) {
-                System.out.println(Key + ") " + "무기명 : " + value.getName() + " / " + "가격 : " + value.getPrice()+ " / " + "공격력 : " + value.getPhysicalAttack() + " / " + "타입 : " + value.getWeaponType());
+                System.out.println(Key + ") " + "무기명 : " + value.getName() + " / " +
+                        "가격 : " + value.getPrice()+ " / " +
+                        "공격력 : " + value.getPhysicalAttack() + " / " +
+                        "타입 : " + value.getWeaponType());
             }else{
-                System.out.println(Key + ") " + "무기명 : " + value.getName() + " / " + "가격 : " + value.getPrice() + " / " + "마법공격력 : " + value.getMagicAttack() + " / " + "타입 : " + value.getWeaponType());
+                System.out.println(Key + ") " + "무기명 : " + value.getName() + " / " +
+                        "가격 : " + value.getPrice() + " / " +
+                        "마법공격력 : " + value.getMagicAttack() + " / " +
+                        "타입 : " + value.getWeaponType());
             }
         }
     }

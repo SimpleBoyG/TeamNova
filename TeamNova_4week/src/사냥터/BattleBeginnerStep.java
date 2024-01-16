@@ -47,36 +47,33 @@ public class BattleBeginnerStep {
         Monster monster = createBattleMonster();
         // 배틀이 시작됩니다.
         System.out.println("배틀이 시작됩니다.");
-        while (monster.Hp != 0) {
+        boolean bMasterMenu = true;
+        while (monster.Hp != 0 && bMasterMenu != false) {
             // 마스터 메뉴 선택
-            boolean bMasterMenu = showActionSelect(master, monster);
+            bMasterMenu = showActionSelect(master, monster);
             // 공격후 상태 확인
-            if(bMasterMenu == true) {
+            if (bMasterMenu == true) {
                 showAllStatus(master, mage, monster);
             }
         }
     }
 
     public boolean showActionSelect(MasterClass master, Monster monster) {
-        boolean Result = false;
-        while (Result != true) {
-            switch (hm.MasterMenu(master)) {
-                case 1:
-                    master.Attack(monster);
-                    Result = true;
-                    break;
-                case 2:
-                    Result = master.ShildAttack(monster);
-                    break;
-                case 3:
-                    master.MageGuard();
-                    Result = true;
-                    break;
-                default:
-                    System.out.println("잘못 입력된 경우 일반공격을 합니다.");
-                    master.Attack(monster);
-                    Result = true;
-            }
+        boolean Result = true;
+        switch (hm.MasterMenu(master)) {
+            case 1:
+                master.Attack(monster);
+                break;
+            case 2:
+                Result = master.ShildAttack(monster);
+                break;
+            case 3:
+                master.MageGuard();
+                break;
+            default:
+                master.Run();
+                Result = false;
+                break;
         }
         return Result;
     }

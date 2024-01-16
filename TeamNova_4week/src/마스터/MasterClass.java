@@ -13,8 +13,8 @@ public class MasterClass {
     public int Mp = 10;
     public int Experience;
     public int Cash = 5000;
-    public Weapon weapon;
-    public Armor armor;
+    public Weapon equipedWeapon;
+    public Armor equipedArmor;
 
     public MasterClass(String name){
         this.name = name;
@@ -25,19 +25,19 @@ public class MasterClass {
     }
 
     public boolean Run(){
-        System.out.println("도망 갔습니다.");
+        System.out.println("전투에서 도망 갔습니다.");
         return true;
     }
 
     public void Attack(Monster monster){
         System.out.println("일반 공격을 했습니다.");
-        monster.Hp = monster.Hp - 5;
+        monster.Hp = monster.Hp - Attack;
     }
     public boolean ShildAttack(Monster monster){
         boolean Result = true;
             if (Mp > 1) {
                 System.out.println("방패로 공격을 했습니다.");
-                monster.Hp = monster.Hp - 5;
+                monster.Hp = monster.Hp - (Attack+5);
                 Mp = Mp - 2;
             } else {
                 System.out.println("Mp가 모자랍니다. 다른 선택을 해주세요");

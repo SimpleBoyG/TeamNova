@@ -31,26 +31,22 @@ public class Main {
             System.out.println(":");
             int wherePlace;
             wherePlace = sc.nextInt();
+            VillageInner village = new VillageInner(master,Mage);
 
             switch (wherePlace) {
                 case 1:
                     System.out.println("마을로 돌아갑니다.");
-                    VillageInner village = new VillageInner(master,Mage);
                     village.goVillage();
                     break;
                 case 2:
                     System.out.println("사냥터로 향합니다.");
                     // 몬스터 탐색
                     MonsterSearching ms = new MonsterSearching(master,Mage);
-                    ms.MonsterSearching();
+                    ms.MonsterSearching(village);
                     break;
             }
             break;
 
         }
-
-        // ============================= 배틀 ==========================================
-
-
     }
 }

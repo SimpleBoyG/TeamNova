@@ -2,6 +2,7 @@ package 사냥터;
 
 import 마법사.MageClass;
 import 마스터.MasterClass;
+import 마을.VillageInner;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -23,7 +24,7 @@ public class MonsterSearching{
         this.master = master;
         this.mage = mage;
     }
-    public void MonsterSearching() {
+    public void MonsterSearching(VillageInner vi) {
         JFrame frame = new JFrame("조작키");
 
         JTextArea textArea = new JTextArea();
@@ -100,8 +101,11 @@ public class MonsterSearching{
                 public void keyReleased(KeyEvent e) {
                 }
             });
-        } else {
-            System.out.println("도망쳤습니다.");
+        }else if(HuntingMenu.HuntingStartMenu() == 2) {
+        }
+        else {
+            System.out.println("마을로 돌아갑니다.");
+            vi.goVillage();
         }
     }
 

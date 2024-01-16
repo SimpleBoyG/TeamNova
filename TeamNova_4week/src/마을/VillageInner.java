@@ -58,7 +58,7 @@ public class VillageInner {
 
     public void goStatusWindow(){
         System.out.println("캐릭터 상태창을 확인합니다.");
-        CharacterStatus cs = new CharacterStatus(master,mage);
+        CharacterStatus cs = new CharacterStatus(this,master,mage);
         cs.showAllStatus();
     }
 
@@ -70,7 +70,7 @@ public class VillageInner {
     public void goHunting(){
         System.out.println("사냥터로 향합니다.");
         MonsterSearching ms = new MonsterSearching(master, mage);
-        ms.MonsterSearching();
+        ms.MonsterSearching(this);
     }
 
     public void selectDestination(int selectDes){

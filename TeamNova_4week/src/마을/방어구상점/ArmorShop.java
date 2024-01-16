@@ -3,7 +3,15 @@ package 마을.방어구상점;
 import 마법사.MageClass;
 import 마스터.MasterClass;
 import 마을.VillageInner;
+import 마을.무기상점.무기.Weapon;
+import 마을.무기상점.무기.WeaponFactory;
+import 마을.무기상점.무기.레어무기.예리한양날검;
+import 마을.무기상점.무기.일반무기.양날검;
 import 마을.방어구상점.방어구.Armor;
+import 마을.방어구상점.방어구.ArmorFactory;
+import 마을.방어구상점.방어구.레어방어구.강철갑옷;
+import 마을.방어구상점.방어구.일반방어구.나무갑옷;
+import 마을.방어구상점.방어구.일반방어구.천갑옷;
 import 인벤토리.All_Inventory;
 
 import java.util.HashMap;
@@ -26,9 +34,10 @@ public class ArmorShop {
 
     // 무기 객체를 담을 자료구조
     Map<Integer, Armor> Armors = new HashMap<>();
-    Armor armor1 = new Armor("나무 갑옷", 1000, 10, "마스터");
-    Armor armor2 = new Armor("기본 갑옷", 500, 5, "마스터");
-    Armor armor3 = new Armor("천 로브", 500, 5, "마법사");
+    ArmorFactory armorFactory = new ArmorFactory();
+    Armor armor1 = armorFactory.getArmor(강철갑옷.class);
+    Armor armor2 = armorFactory.getArmor(나무갑옷.class);
+    Armor armor3 = armorFactory.getArmor(천갑옷.class);
 
     Scanner sc = new Scanner(System.in);
 
@@ -36,13 +45,14 @@ public class ArmorShop {
         System.out.println("안녕하세요. 여기는 방어구 상점입니다.");
         System.out.println("방어구를 구매하시겠습니까?");
         System.out.println("1) 예 2) 아니오");
-        int WeaponBuy = sc.nextInt();
+        int ArmorBuy = sc.nextInt();
         // Map에 저장
         Armors.put(1, armor1);
         Armors.put(2, armor2);
         Armors.put(3, armor3);
 
-        if (WeaponBuy == 1) {
+
+        if (ArmorBuy == 1) {
             SelectArmor();
         } else {
             goVillage();
@@ -65,7 +75,17 @@ public class ArmorShop {
         for (Map.Entry<Integer, Armor> entry : Armors.entrySet()) {
             int Key = entry.getKey();
             Armor value = entry.getValue();
-            System.out.println(Key + ") " + "방어구명 : " + value.Name + " / " + "가격 : " + value.Price + " / " + "방어력 : " + value.DefenceValue + " / " + "타입 : " + value.ArmorType);
+            if(value.getArmorType().equals("마스터")) {
+                System.out.println(Key + ") " + "방어구명 : " + value.getName() + " / " +
+                        "가격 : " + value.getPrice()+ " / " +
+                        "방어력 : " + value.getDefence() + " / " +
+                        "타입 : " + value.getArmorType());
+            }else{
+                System.out.println(Key + ") " + "방어구명 : " + value.getName() + " / " +
+                        "가격 : " + value.getPrice() + " / " +
+                        "방어력 : " + value.getDefence() + " / " +
+                        "타입 : " + value.getArmorType());
+            }
         }
     }
 
@@ -83,11 +103,11 @@ public class ArmorShop {
         if(WeaponNum > 0) {
             Armor armor = Armors.get(WeaponNum);
             if (armor != null) {
-                if (master.Cash > armor.Price) {
+                if (master.Cash > armor.getPrice()) {
                     ai.armorInventory.FromShop(armor);
-                    master.Cash = master.Cash - armor.Price;
+                    master.Cash = master.Cash - armor.getPrice();
                     Result = true;
-                    System.out.println(armor.Name + "을 샀습니다.");
+                    System.out.println(armor.getName() + "을 샀습니다.");
                 } else {
                     System.out.println("가진 돈이 부족합니다.");
                     ContinueBuy();

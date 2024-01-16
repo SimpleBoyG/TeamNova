@@ -29,9 +29,17 @@ public class WeaponInventory {
         if (Weapons.isEmpty() == false) {
             for (int i = 0; i < Weapons.size(); i++) {
                 if(Weapons.get(i).getWeaponType().equals("마스터")) {
-                    System.out.println((i + 1) + ". " + "무기명 : " + Weapons.get(i).getName() + " / " + "공격력 : " + Weapons.get(i).getPhysicalAttack() + " / " + "타입 : " + Weapons.get(i).getWeaponType() + " / " + "상태 : " + Weapons.get(i).EquipStatus);
+                    System.out.println((i + 1) + ". " +
+                            "무기명 : " + Weapons.get(i).getName() + " / " +
+                            "공격력 : " + Weapons.get(i).getPhysicalAttack() + " / " +
+                            "타입 : " + Weapons.get(i).getWeaponType() + " / " +
+                            "상태 : " + Weapons.get(i).getEquipStatus());
                 }else{
-                    System.out.println((i + 1) + ". " + "무기명 : " + Weapons.get(i).getName() + " / " + "마법공격력 : " + Weapons.get(i).getMagicAttack() + " / " + "타입 : " + Weapons.get(i).getWeaponType() + " / " + "상태 : " + Weapons.get(i).EquipStatus);
+                    System.out.println((i + 1) + ". " +
+                            "무기명 : " + Weapons.get(i).getName() + " / " +
+                            "마법공격력 : " + Weapons.get(i).getMagicAttack() + " / " +
+                            "타입 : " + Weapons.get(i).getWeaponType() + " / " +
+                            "상태 : " + Weapons.get(i).getEquipStatus());
                 }
             }
             putEquipment();
@@ -54,7 +62,12 @@ public class WeaponInventory {
                 PutWeapon_master(Weapons.get(putIndex));
             }
         } else {
-            PutOffWeapon_mage(putIndex);
+            if(Weapons.get(putIndex) == preWeapon){
+                PutOffWeapon_mage();
+            }else {
+                PutOffWeapon_mage();
+                PutWeapon_mage(Weapons.get(putIndex));
+            }
         }
 
     }
@@ -69,53 +82,38 @@ public class WeaponInventory {
             ai.showWeaponList();
         }
     }
-    // 1) 착용중인 장비를 선택을 할 경우에는 착용이 해제
-    // 2) 새로운 미착용 중인 장비를 선택을 할 경우 착용
+
     public void PutOffWeapon_master() {
-        // 착용중인 장비를 선택을 할 경우에는 착용이 해제
         if(preWeapon != null) {
-            preWeapon.EquipStatus = "<미착용>";
+            preWeapon.setEquipStatus("<<미착용>>");
             System.out.println(preWeapon.getName() + " 장비를 착용 해제 했습니다.");
             master.Attack = master.Attack - preWeapon.getPhysicalAttack();
             preWeapon = null;
-        // 새로운 미착용 중인 장비를 선택을 할 경우 착용
         }
     }
 
-    public void PutOffWeapon_mage(int putIndex) {
-        if (preWeapon == Weapons.get(putIndex)) {
-            Weapons.get(putIndex).EquipStatus = "<미착용>";
-            System.out.println(Weapons.get(putIndex).getName() + " 장비를 착용 해제 했습니다.");
-            mage.MagicAttack = mage.MagicAttack - Weapons.get(putIndex).getPhysicalAttack();
+    public void PutOffWeapon_mage() {
+        if(preWeapon != null) {
+            preWeapon.setEquipStatus("<<미착용>>");
+            System.out.println(preWeapon.getName() + " 장비를 착용 해제 했습니다.");
+            mage.MagicAttack = mage.MagicAttack - preWeapon.getMagicAttack();
             preWeapon = null;
-        } else {
-            for (int i = 0; i < Weapons.size(); i++) {
-                // 마스터 장비만 벗는다.
-                if (Weapons.get(i).EquipStatus.equals("<<착용>>") && Weapons.get(i).getWeaponType().equals("마법사")) {
-                    Weapons.get(i).EquipStatus = "<<미착용>>";
-                    // 마스터 공격력을 장비 만큼 다운
-                    mage.MagicAttack = mage.MagicAttack - Weapons.get(i).getPhysicalAttack();
-                }
-            }
-            // 마스터 장비를 입는다.
-            if (Weapons.get(putIndex).EquipStatus.equals("<<미착용>>") && Weapons.get(putIndex).getWeaponType().equals("마법사")) {
-                Weapons.get(putIndex).EquipStatus = "<<착용>>";
-            }
-            // 마스터의 선택한 장비를 입고 공격력을 올린다.
-            PutWeapon_mage(Weapons.get(putIndex));
         }
-
     }
 
     public void PutWeapon_master(Weapon weapon) {
         master.Attack = master.Attack + weapon.getPhysicalAttack();
+        weapon.setEquipStatus("<<착용>>");
         System.out.println("마스터가 " + "'" + weapon.getName() + "'" + " 을 착용했습니다.");
+        master.equipedWeapon = weapon;
         preWeapon = weapon;
     }
 
     public void PutWeapon_mage(Weapon weapon) {
         mage.MagicAttack = mage.MagicAttack + weapon.getMagicAttack();
+        weapon.setEquipStatus("<<착용>>");
         System.out.println("마법사가 " + "'" + weapon.getName() + "'" + " 을 착용했습니다.");
+        mage.equipedWeapon = weapon;
         preWeapon = weapon;
     }
 }

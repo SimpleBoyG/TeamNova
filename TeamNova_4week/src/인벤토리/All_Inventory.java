@@ -37,8 +37,10 @@ public class All_Inventory {
         switch(EqIndex){
             case 1:
                 weaponInventory.showWeaponInven(this);
+                break;
             case 2:
                 armorInventory.showArmorInven(this);
+                break;
             case 3:
             case 4:
                 ReturnPreWin(vi);

@@ -1,5 +1,7 @@
 package 마법사;
 
+import 마을.무기상점.무기.Weapon;
+import 마을.방어구상점.방어구.Armor;
 import 몬스터.Monster;
 
 public class MageClass {
@@ -9,6 +11,9 @@ public class MageClass {
     public int Hp = 80;
     public int Mp = 20;
     public int Experience;
+
+    public Weapon equipedWeapon;
+    public Armor equipedArmor;
 
     public MageClass(String MageName) {
         this.name = MageName;

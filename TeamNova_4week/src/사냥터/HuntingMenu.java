@@ -10,8 +10,8 @@ public class HuntingMenu {
     public int HuntingStartMenu(){
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("어떤 행동을 취하겠습니까?");
-        System.out.println("1) 사냥하러 간다. 2) 파티 설정은 수정한다.(미구현)");
+        System.out.println("어떤 행동을 하시겠습니까?");
+        System.out.println("1) 사냥하러 간다. 2) 파티 설정은 수정한다.(미구현) 3) 마을로 간다.");
         System.out.println(":");
         int ActionSelect = sc.nextInt();
         return ActionSelect;
@@ -42,7 +42,7 @@ public class HuntingMenu {
     public int MasterMenu(MasterClass master){
         System.out.println(master.name + "님의 공격 차례입니다.");
         System.out.println("어떤 공격을 하시겠어요?");
-        System.out.println("1) 일반공격 2) 방패공격 3) 마법사 방어");
+        System.out.println("1) 일반공격 2) 방패공격 3) 마법사 방어 4) 도망간다");
         System.out.println(":");
         Scanner sc = new Scanner(System.in);
         int Result = sc.nextInt();

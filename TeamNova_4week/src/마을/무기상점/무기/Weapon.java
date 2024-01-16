@@ -1,55 +1,20 @@
 package 마을.무기상점.무기;
 
-public class Weapon {
-    public String Name = "";
-    public int Price = 0;
-    public int PhysicalAttack = 0;
-    public int MagicAttack = 0;
-    public String WeaponType = "";
-    public String EquipStatus = "";
+public abstract class Weapon {
+    public abstract void WeaponSkill();
 
-    public void WeaponSkill(){
-        System.out.println("일반 무기는 무기 스킬이 없습니다.");
-    }
     // Getter
-    public String getName() {
-        return Name;
-    }
+    public abstract String getName();
 
-    public int getPrice() {
-        return Price;
-    }
+    public abstract int getPrice();
 
-    public int getPhysicalAttack() {
-        return PhysicalAttack;
-    }
+    public abstract int getPhysicalAttack();
 
-    public int getMagicAttack() {
-        return MagicAttack;
-    }
+    public abstract int getMagicAttack();
 
-    public String getWeaponType() {
-        return WeaponType;
-    }
+    public abstract String getWeaponType();
 
-    public void setName(String name) {
-        Name = name;
-    }
+    public abstract String getEquipStatus();
 
-    public void setPrice(int price) {
-        Price = price;
-    }
-
-    public void setPhysicalAttack(int physicalAttack) {
-        PhysicalAttack = physicalAttack;
-    }
-
-    public void setMagicAttack(int magicAttack) {
-        MagicAttack = magicAttack;
-    }
-
-    public void setWeaponType(String weaponType) {
-        WeaponType = weaponType;
-    }
-
+    public abstract void setEquipStatus(String str);
 }

@@ -12,6 +12,8 @@ public class ArmorInventory {
     MageClass mage;
     MasterClass master;
     Scanner sc = new Scanner(System.in);
+    // 이전 방어구
+    Armor preArmor;
 
     public ArmorInventory(MasterClass master, MageClass mage){
         this.master = master;
@@ -21,27 +23,49 @@ public class ArmorInventory {
         Armors.add(armor);
     }
 
-    public void showArmorInven(All_Inventory ai){
-        if(Armors.isEmpty() == false){
-            for(int i = 0; i < Armors.size(); i++) {
-                System.out.println((i+1) + ". " + "무기명 : " + Armors.get(i).Name + " / " + "공격력 : " + Armors.get(i).DefenceValue + " / " + "타입 : " + Armors.get(i).ArmorType + " / " + "상태 : " + Armors.get(i).Status);
+    public void showArmorInven(All_Inventory ai) {
+        if (Armors.isEmpty() == false) {
+            for (int i = 0; i < Armors.size(); i++) {
+                if(Armors.get(i).getArmorType().equals("마스터")) {
+                    System.out.println((i + 1) + ". " +
+                            "무기명 : " + Armors.get(i).getName() + " / " +
+                            "방어력 : " + Armors.get(i).getDefence() + " / " +
+                            "타입 : " + Armors.get(i).getArmorType() + " / " +
+                            "상태 : " + Armors.get(i).getEquipStatus());
+                }else{
+                    System.out.println((i + 1) + ". " +
+                            "무기명 : " + Armors.get(i).getName() + " / " +
+                            "방어력 : " + Armors.get(i).getDefence() + " / " +
+                            "타입 : " + Armors.get(i).getArmorType() + " / " +
+                            "상태 : " + Armors.get(i).getEquipStatus());
+                }
             }
             putEquipment();
             ReturnPreWin(ai);
-        }else{
-            System.out.println("인벤토리에 무기가 없습니다.");
+        } else {
+            System.out.println("인벤토리에 방어구가 없습니다.");
             putEquipment();
             ReturnPreWin(ai);
         }
     }
 
-    public void putEquipment(){
+    public void putEquipment() {
         System.out.println("어떤 장비를 착용하시겠습니까?");
         int putIndex = sc.nextInt() - 1;
-        if(Armors.get(putIndex).ArmorType.equals("마스터")){
-            PutOffArmor_master(putIndex);
-        }else{
-            PutOffArmor_mage(putIndex);
+        if (Armors.get(putIndex).getArmorType().equals("마스터")) {
+            if(Armors.get(putIndex) == preArmor){
+                PutOffArmor_master();
+            }else {
+                PutOffArmor_master();
+                PutArmor_master(Armors.get(putIndex));
+            }
+        } else {
+            if(Armors.get(putIndex) == preArmor){
+                PutOffArmor_mage();
+            }else {
+                PutOffArmor_mage();
+                PutArmor_mage(Armors.get(putIndex));
+            }
         }
 
     }
@@ -56,46 +80,36 @@ public class ArmorInventory {
         }
     }
 
-    public void PutOffArmor_master(int putIndex){
-        for(int i = 0; i < Armors.size();i++){
-            // 마스터 장비만 벗는다.
-            if(Armors.get(i).Status.equals("<<착용>>") && Armors.get(i).ArmorType.equals("마스터")){
-                Armors.get(i).Status = "<<미착용>>";
-                // 마스터 공격력을 장비 만큼 다운
-                master.Defence = master.Defence - Armors.get(i).DefenceValue;
-            }
+    public void PutOffArmor_master() {
+        if(preArmor != null) {
+            preArmor.setEquipStatus("<<미착용>>");
+            System.out.println(preArmor.getName() + " 장비를 착용 해제 했습니다.");
+            master.Defence = master.Defence - preArmor.getDefence();
+            preArmor = null;
         }
-        // 마스터 장비를 입는다.
-        if(Armors.get(putIndex).Status.equals("<<미착용>>") && Armors.get(putIndex).ArmorType.equals("마스터")) {
-            Armors.get(putIndex).Status = "<<착용>>";
-        }
-        // 마스터의 선택한 장비를 입고 공격력을 올린다.
-        PutArmor_master(Armors.get(putIndex));
     }
 
-    public void PutOffArmor_mage(int putIndex){
-        for(int i = 0; i < Armors.size();i++){
-            // 마스터 장비만 벗는다.
-            if(Armors.get(i).Status.equals("<<착용>>") && Armors.get(i).ArmorType.equals("마법사")){
-                Armors.get(i).Status = "<<미착용>>";
-                // 마스터 공격력을 장비 만큼 다운
-                mage.Defence = mage.Defence - Armors.get(i).DefenceValue;
-            }
+    public void PutOffArmor_mage() {
+        if(preArmor != null) {
+            preArmor.setEquipStatus("<<미착용>>");
+            System.out.println(preArmor.getName() + " 장비를 착용 해제 했습니다.");
+            mage.Defence = mage.Defence - preArmor.getDefence();
+            preArmor = null;
         }
-        // 마스터 장비를 입는다.
-        if(Armors.get(putIndex).Status.equals("<<미착용>>") && Armors.get(putIndex).ArmorType.equals("마법사")) {
-            Armors.get(putIndex).Status = "<<착용>>";
-        }
-        // 마스터의 선택한 장비를 입고 공격력을 올린다.
-        PutArmor_mage(Armors.get(putIndex));
     }
     public void PutArmor_master(Armor armor){
-        master.Defence = master.Defence + armor.DefenceValue;
-        System.out.println("마스터가 " + "'" +armor.Name + "'" + " 을 착용했습니다.");
+        master.Defence = master.Defence + armor.getDefence();
+        armor.setEquipStatus("<<착용>>");
+        System.out.println("마스터가 " + "'" + armor.getName() + "'" + " 을 착용했습니다.");
+        master.equipedArmor = armor;
+        preArmor = armor;
     }
 
     public void PutArmor_mage(Armor armor){
-        mage.Defence = mage.Defence + armor.DefenceValue;
-        System.out.println("마법사가 " + "'" +armor.Name + "'" + " 을 착용했습니다.");
+        mage.Defence = mage.Defence + armor.getDefence();
+        armor.setEquipStatus("<<착용>>");
+        System.out.println("마법사가 " + "'" + armor.getName() + "'" + " 을 착용했습니다.");
+        mage.equipedArmor = armor;
+        preArmor = armor;
     }
 }

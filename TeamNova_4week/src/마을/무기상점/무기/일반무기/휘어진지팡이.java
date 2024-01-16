@@ -2,12 +2,12 @@ package 마을.무기상점.무기.일반무기;
 
 import 마을.무기상점.무기.Weapon;
 
-public class 양날검 extends Weapon {
-    protected String  Name = "양날검";
+public class 휘어진지팡이 extends Weapon {
+    protected String  Name = "휘어진 지팡이";
     protected int Price = 500;
-    protected int PhysicalAttack = 10;
-    //protected int MagicAttack = 0;
-    protected String WeaponType = "마스터";
+    //protected int PhysicalAttack = 10;
+    protected int MagicAttack = 10;
+    protected String WeaponType = "마법사";
     protected String EquipStatus = "<<미착용>>";
 
     @Override
@@ -20,9 +20,9 @@ public class 양날검 extends Weapon {
     @Override
     public int getPrice() { return Price; }
     @Override
-    public int getPhysicalAttack() { return PhysicalAttack; }
+    public int getPhysicalAttack() { return 0; }
     @Override
-    public int getMagicAttack() { return 0; }
+    public int getMagicAttack() { return MagicAttack; }
     @Override
     public String getWeaponType() { return WeaponType; }
     @Override
