@@ -6,12 +6,10 @@ import 마스터.MasterClass;
 import java.util.Scanner;
 
 public class HuntingMenu {
-
+    Scanner sc = new Scanner(System.in);
     public int HuntingStartMenu(){
-        Scanner sc = new Scanner(System.in);
-
         System.out.println("어떤 행동을 하시겠습니까?");
-        System.out.println("1) 사냥하러 간다. 2) 파티 설정은 수정한다.(미구현) 3) 마을로 간다.");
+        System.out.println("1) 사냥하러 간다. 2) 파티 스킬 설정을 수정한다. 3) 마을로 간다.");
         System.out.println(":");
         int ActionSelect = sc.nextInt();
         return ActionSelect;
@@ -21,7 +19,6 @@ public class HuntingMenu {
         System.out.println("1) 공격한다. 2) 도망간다. ");
         System.out.println(":");
 
-        Scanner sc = new Scanner(System.in);
         int MenuSelect = sc.nextInt();
 
         if(MenuSelect == 1){
@@ -42,9 +39,8 @@ public class HuntingMenu {
     public int MasterMenu(MasterClass master){
         System.out.println(master.name + "님의 공격 차례입니다.");
         System.out.println("어떤 공격을 하시겠어요?");
-        System.out.println("1) 일반공격 2) 방패공격 3) 마법사 방어 4) 도망간다");
+        System.out.println("1) 일반 공격 2) 방패공격 3) 마법사 방어 4) 도망간다");
         System.out.println(":");
-        Scanner sc = new Scanner(System.in);
         int Result = sc.nextInt();
 
         return Result;
@@ -54,11 +50,13 @@ public class HuntingMenu {
     public int MageMenu(MageClass mage){
         System.out.println(mage.name + "님의 공격 차례입니다.");
         System.out.println("어떤 공격을 하시겠어요?");
-        System.out.println("1) SkillLevel1 2) SkillLevel2 3) SkillLevel3 4) SkillLevel4");
+        System.out.printf("1) 지팡이 공격 ");
+        System.out.printf("2) %s ", mage.HaveSkillList.get(0).SkillName);
+        System.out.printf("3) %s ", mage.HaveSkillList.get(1).SkillName);
+        System.out.printf("4) %s ", mage.HaveSkillList.get(2).SkillName);
+        System.out.printf("5) %s \n", mage.HaveSkillList.get(3).SkillName);
         System.out.println(":");
-        Scanner sc = new Scanner(System.in);
         int Result = sc.nextInt();
-
         return Result;
     }
 }

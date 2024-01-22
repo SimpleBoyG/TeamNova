@@ -20,6 +20,6 @@ public class TextColorChange {
     }
     // 마법사 클래스 색상
     public void YellowText(String str){
-        System.out.println(CYAN + str + RESET);
+        System.out.println(YELLOW + str + RESET);
     }
 }

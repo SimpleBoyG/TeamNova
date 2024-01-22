@@ -3,12 +3,8 @@ package 마을.방어구상점;
 import 마법사.MageClass;
 import 마스터.MasterClass;
 import 마을.VillageInner;
-import 마을.무기상점.무기.Weapon;
-import 마을.무기상점.무기.WeaponFactory;
-import 마을.무기상점.무기.레어무기.예리한양날검;
-import 마을.무기상점.무기.일반무기.양날검;
 import 마을.방어구상점.방어구.Armor;
-import 마을.방어구상점.방어구.ArmorFactory;
+import 마을.방어구상점.방어구.ArmorInstanceSend;
 import 마을.방어구상점.방어구.레어방어구.강철갑옷;
 import 마을.방어구상점.방어구.일반방어구.나무갑옷;
 import 마을.방어구상점.방어구.일반방어구.천갑옷;
@@ -34,7 +30,7 @@ public class ArmorShop {
 
     // 무기 객체를 담을 자료구조
     Map<Integer, Armor> Armors = new HashMap<>();
-    ArmorFactory armorFactory = new ArmorFactory();
+    ArmorInstanceSend armorFactory = new ArmorInstanceSend();
     Armor armor1 = armorFactory.getArmor(강철갑옷.class);
     Armor armor2 = armorFactory.getArmor(나무갑옷.class);
     Armor armor3 = armorFactory.getArmor(천갑옷.class);
@@ -90,7 +86,7 @@ public class ArmorShop {
     }
 
     public int BuyArmor() {
-        System.out.println("어떤 무기를 사시겠습니까?< 0. 은 이전 화면으로 돌아갑니다.>");
+        System.out.println("어떤 방어구를 사시겠습니까?< 0. 은 이전 화면으로 돌아갑니다.>");
         int WeaponNum = sc.nextInt();
         if(WeaponNum == 0){
             hereArmorShop();
@@ -98,10 +94,10 @@ public class ArmorShop {
         return WeaponNum;
     }
 
-    public boolean ShopToInven(int WeaponNum) {
+    public boolean ShopToInven(int ArmorNum) {
         boolean Result = false;
-        if(WeaponNum > 0) {
-            Armor armor = Armors.get(WeaponNum);
+        if(ArmorNum > 0) {
+            Armor armor = Armors.get(ArmorNum);
             if (armor != null) {
                 if (master.Cash > armor.getPrice()) {
                     ai.armorInventory.FromShop(armor);

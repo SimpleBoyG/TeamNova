@@ -6,7 +6,10 @@ import 마을.무기상점.WeaponShop;
 import 마을.방어구상점.ArmorShop;
 import 마을.아이템상점.ItemShop;
 import 마을.여관.Inn;
-import 사냥터.MonsterSearching;
+import 사냥터.초급사냥터;
+import 사냥터.중급사냥터;
+import 사냥터.고급사냥터;
+import 사냥터.사냥터;
 import 상태창.CharacterStatus;
 import 인벤토리.All_Inventory;
 
@@ -24,7 +27,7 @@ public class VillageInner {
     }
 
     public void goVillage(){
-        System.out.println("=============마을==============");
+        System.out.println("=============아라한 마을==============");
         System.out.println("마을입니다. 목적지를 선택해주세요.");
         System.out.println("1) 무기 상점 2) 방어구 상점 3) 아이템 상점 4) 여관 5) 상태창 6) 인벤토리 7) 사냥터");
         Scanner sc = new Scanner(System.in);
@@ -46,13 +49,13 @@ public class VillageInner {
 
     public void goItemShop(){
         System.out.println("아이템 상점으로 갑니다.");
-        ItemShop is = new ItemShop();
+        ItemShop is = new ItemShop(this,ai,master);
         is.hereItemShop();
     }
 
     public void goInn(){
         System.out.println("여관으로 갑니다.");
-        Inn Inn = new Inn();
+        Inn Inn = new Inn(this, master, mage);
         Inn.hereInn();
     }
 
@@ -67,10 +70,22 @@ public class VillageInner {
         ai.showAllInventory(this);
     }
 
-    public void goHunting(){
+    public void goHuntArea(){
         System.out.println("사냥터로 향합니다.");
-        MonsterSearching ms = new MonsterSearching(master, mage);
-        ms.MonsterSearching(this);
+        System.out.println("어떤 사냥터로 떠나시겠습니까?");
+        System.out.println("1) 초급 사냥터 2) 중급 사냥터 3) 고급 사냥터");
+        Scanner sc = new Scanner(System.in);
+        int TempSelect = sc.nextInt();
+        if(TempSelect == 1){
+            사냥터 초급사냥터 = new 초급사냥터(master,mage,this);
+            초급사냥터.MonsterSearching();
+        }else if(TempSelect == 2){
+            사냥터 중급사냥터 = new 중급사냥터(master,mage,this);
+        }else{
+            사냥터 초급사냥터 = new 초급사냥터(master,mage,this);
+            초급사냥터.MonsterSearching();
+            //사냥터 고급사냥터 = new 고급사냥터(master,mage,this);
+        }
     }
 
     public void selectDestination(int selectDes){
@@ -94,9 +109,8 @@ public class VillageInner {
                 goInventoryWindow();
                 break;
             default:
-                goHunting();
+                goHuntArea();
                 break;
-
         }
     }
 }

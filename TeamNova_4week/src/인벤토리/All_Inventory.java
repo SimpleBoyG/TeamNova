@@ -19,7 +19,7 @@ public class All_Inventory {
         this.master = master;
         this.mage = mage;
         armorInventory = new ArmorInventory(master, mage);
-        itemInventory = new ItemInventory();
+        itemInventory = new ItemInventory(master, mage);
         weaponInventory = new WeaponInventory(master, mage);
     }
 
@@ -42,8 +42,13 @@ public class All_Inventory {
                 armorInventory.showArmorInven(this);
                 break;
             case 3:
+                itemInventory.showItemInven(this);
             case 4:
                 ReturnPreWin(vi);
+                break;
+            default:
+                ReturnPreWin(vi);
+                break;
         }
     }
 

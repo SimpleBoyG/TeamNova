@@ -1,6 +1,5 @@
 package Main;
 
-import 사냥터.MonsterSearching;
 import 마법사.MageClass;
 import 마스터.MasterClass;
 import 마을.VillageInner;
@@ -23,30 +22,12 @@ public class Main {
         System.out.println("플레이어 이름은 " + PlayerName + " 입니다.");
 
         MasterClass master = new MasterClass(PlayerName);
-        MageClass Mage = new MageClass("마법사");
+        MageClass mage = new MageClass();
+        VillageInner vi = new VillageInner(master,mage);
 
-        while (true) {
-            System.out.println("어디로 이동하시겠습니까?");
-            System.out.println("1) 마을 2) 사냥터");
-            System.out.println(":");
-            int wherePlace;
-            wherePlace = sc.nextInt();
-            VillageInner village = new VillageInner(master,Mage);
-
-            switch (wherePlace) {
-                case 1:
-                    System.out.println("마을로 돌아갑니다.");
-                    village.goVillage();
-                    break;
-                case 2:
-                    System.out.println("사냥터로 향합니다.");
-                    // 몬스터 탐색
-                    MonsterSearching ms = new MonsterSearching(master,Mage);
-                    ms.MonsterSearching(village);
-                    break;
-            }
-            break;
-
-        }
+        //while (true) {
+            System.out.println("여기는 아라한 마을입니다.");
+            vi.goVillage();
+        //}
     }
 }

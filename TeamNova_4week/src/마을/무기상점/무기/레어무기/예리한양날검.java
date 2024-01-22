@@ -33,10 +33,8 @@ public class 예리한양날검 extends Weapon {
     public String getWeaponType() {
         return WeaponType;
     }
-
     @Override
     public String getEquipStatus() { return EquipStatus; }
-
     @Override
     public void setEquipStatus(String str) { this.EquipStatus = str; }
 }

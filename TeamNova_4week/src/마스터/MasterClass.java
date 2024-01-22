@@ -15,6 +15,7 @@ public class MasterClass {
     public int Cash = 5000;
     public Weapon equipedWeapon;
     public Armor equipedArmor;
+    public int FullHp = Hp;
 
     public MasterClass(String name){
         this.name = name;

@@ -4,7 +4,7 @@ import 마법사.MageClass;
 import 마스터.MasterClass;
 import 마을.VillageInner;
 import 마을.무기상점.무기.Weapon;
-import 마을.무기상점.무기.WeaponFactory;
+import 마을.무기상점.무기.WeaponInstanceSend;
 import 마을.무기상점.무기.레어무기.예리한양날검;
 import 마을.무기상점.무기.일반무기.양날검;
 import 마을.무기상점.무기.일반무기.휘어진지팡이;
@@ -30,7 +30,7 @@ public class WeaponShop {
     // 무기 객체를 담을 자료구조
     Map<Integer, Weapon> Weapons = new HashMap<>();
     // 팩토리 객체
-    WeaponFactory weaponFactory = new WeaponFactory();
+    WeaponInstanceSend weaponFactory = new WeaponInstanceSend();
     Weapon weapon1 = weaponFactory.getWeapon(양날검.class);
     Weapon weapon2 = weaponFactory.getWeapon(예리한양날검.class);
     Weapon weapon3 = weaponFactory.getWeapon(휘어진지팡이.class);
@@ -123,7 +123,6 @@ public class WeaponShop {
         int WeaponBuy = sc.nextInt();
         if (WeaponBuy == 1) {
             SelectWeapon();
-            ContinueBuy();
         } else {
             goVillage();
         }

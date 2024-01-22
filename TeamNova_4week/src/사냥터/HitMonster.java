@@ -10,9 +10,12 @@ public class HitMonster {
     MasterClass master;
     MageClass mage;
 
-    HitMonster() {
+    사냥터 사냥터;
+
+    public HitMonster(사냥터 사냥터) {
         Random rd = new Random();
         MeetingCount = rd.nextInt(10);
+        this.사냥터 = 사냥터;
     }
 
     // 몬스터 MeetingCount
@@ -25,10 +28,10 @@ public class HitMonster {
         boolean Result = false;
         while (true) {
             if (MonsterCount == MeetingCount) {
-                System.out.println((MeetingCount+1) + " 번 만에 몬스터를 만났다");
+                System.out.printf("%d 번 만에 몬스터를 만났다.\n",(MeetingCount+1));
                 InitMeetingCount();
                 Result = true;
-                HitMonster();
+                HittedMonster();
                 break;
             } else {
                 System.out.println("몬스터를 만나지 못했다.");
@@ -38,13 +41,12 @@ public class HitMonster {
         return Result;
     }
 
-    public void HitMonster() {
+    public void HittedMonster() {
         // 사냥 메뉴 전시 1) 공격한다 2) 도망친다
         HuntingMenu HM = new HuntingMenu();
         if (HM.HuntingMenu() == 1) {
             // 배틀 존으로 들어간다
-            BattleBeginnerStep bbs = new BattleBeginnerStep();
-            bbs.BattleZone(master,mage);
+            사냥터.BattleZone();
         }
     }
 
