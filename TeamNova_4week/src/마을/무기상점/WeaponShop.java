@@ -67,7 +67,7 @@ public class WeaponShop {
     }
 
     public void showWeapon() {
-        System.out.println("가진돈 : " + master.Cash + " GOLD");
+        System.out.println("가진돈 : " + master.Gold + " GOLD");
         System.out.println("================ 무기목록 ===============");
 
         for (Map.Entry<Integer, Weapon> entry : Weapons.entrySet()) {
@@ -101,9 +101,9 @@ public class WeaponShop {
         if(WeaponNum > 0) {
             Weapon weapon = Weapons.get(WeaponNum);
             if (weapon != null) {
-                if (master.Cash > weapon.getPrice()) {
+                if (master.Gold > weapon.getPrice()) {
                     ai.weaponInventory.FromShop(weapon);
-                    master.Cash = master.Cash - weapon.getPrice();
+                    master.Gold = master.Gold - weapon.getPrice();
                     Result = true;
                     System.out.println(weapon.getName() + "을 샀습니다.");
                 } else {

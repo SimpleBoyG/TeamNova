@@ -56,7 +56,7 @@ public class ItemShop {
     }
 
     public void showItem() {
-        System.out.println("가진돈 : " + master.Cash + " GOLD");
+        System.out.println("가진돈 : " + master.Gold + " GOLD");
         System.out.println("================ Item목록 ===============");
 
         for (Map.Entry<Integer, Item> entry : Items.entrySet()) {
@@ -83,9 +83,9 @@ public class ItemShop {
         if(ItemNum > 0) {
             Item item = Items.get(ItemNum);
             if (item != null) {
-                if (master.Cash > item.getPrice()) {
+                if (master.Gold > item.getPrice()) {
                     ai.itemInventory.FromShop(item);
-                    master.Cash = master.Cash - item.getPrice();
+                    master.Gold = master.Gold - item.getPrice();
                     Result = true;
                     System.out.println(item.getName() + "을 샀습니다.");
                 } else {

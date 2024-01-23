@@ -29,7 +29,7 @@ public class CharacterStatus {
         System.out.println("공격력 : " + master.Attack);
         System.out.println("방어력 : " + master.Defence);
         System.out.println("경험치 : " + master.Experience);
-        System.out.println("GOLD : " + master.Cash);
+        System.out.println("GOLD : " + master.Gold);
         System.out.println("============ 착용중인 장비 ===============");
         if(master.equipedWeapon==null){
             System.out.println("무기 : ---------------------------");

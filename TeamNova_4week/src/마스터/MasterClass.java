@@ -11,8 +11,9 @@ public class MasterClass {
     public int Defence = 5;
     public int Hp = 100;
     public int Mp = 10;
-    public int Experience;
-    public int Cash = 5000;
+    public int Level = 1;
+    public int Experience = 100;
+    public int Gold = 5000;
     public Weapon equipedWeapon;
     public Armor equipedArmor;
     public int FullHp = Hp;

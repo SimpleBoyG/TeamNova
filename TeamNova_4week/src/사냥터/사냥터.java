@@ -29,15 +29,6 @@ public class 사냥터 {
         this.vi = vi;
     }
 
-    // 캐릭터 상태 정보를 설정하는 메소드
-    public void setCharacterStatus(MasterClass master, MageClass mage){};
-
-    // 마스터가 배틀할 때
-    public void MasterBattle(MasterClass master){};
-
-    // 메이지가 배틀할 때
-    public void MageBattle(MageClass fire){};
-
     // 배틀 존
     public void BattleZone(){
         System.out.println("배틀이 시작됩니다.");
@@ -87,26 +78,6 @@ public class 사냥터 {
         return Result;
     }
 
-    public boolean showActionSelect(MasterClass master, Monster monster) {
-        boolean Result = true;
-        switch (hm.MasterMenu(master)) {
-            case 1:
-                master.Attack(monster);
-                break;
-            case 2:
-                Result = master.ShildAttack(monster);
-                break;
-            case 3:
-                master.MageGuard();
-                break;
-            default:
-                master.Run();
-                Result = false;
-                break;
-        }
-        return Result;
-    }
-
     public void showMasterStatus(MasterClass master) {
         String TempStr = "=========" + master.name + "============";
         textColor.CyanText(TempStr);
@@ -130,7 +101,7 @@ public class 사냥터 {
     }
 
     public void showMonsterStatus(Monster monster) {
-        String TempStr = "=========" + monster.name + "============";
+        String TempStr = "=========" + monster.Name + "============";
         textColor.RedText(TempStr);
         if(monster.Hp > 0) {
             TempStr = "HP : " + monster.Hp;
@@ -143,9 +114,9 @@ public class 사냥터 {
     }
 
     public void showAllStatus(MasterClass master, MageClass mage, Monster monster) {
+        showMonsterStatus(monster);
         showMasterStatus(master);
         showMageStatus(mage);
-        showMonsterStatus(monster);
     }
 
     public void MonsterSearching(){
@@ -158,6 +129,18 @@ public class 사냥터 {
         }else{
             vi.goVillage();
         }
+    }
+
+    public void EndAddGold(){
+        System.out.println("✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧");
+        System.out.println("골드를 얻었습니다.");
+        System.out.println("✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧");
+    }
+
+    public void EndAddExp(){
+        System.out.println("✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧");
+        System.out.println("경험치를 얻었습니다.");
+        System.out.println("✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧");
     }
 }
 

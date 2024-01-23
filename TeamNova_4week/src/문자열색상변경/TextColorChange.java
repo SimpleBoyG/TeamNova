@@ -10,16 +10,26 @@ public class TextColorChange {
     public static final String PURPLE = "\u001B[35m";
     public static final String CYAN = "\u001B[36m";
 
-    // 몬스터 클래스 색상
+
     public void RedText(String str){
         System.out.println(RED + str + RESET);
     }
-    // 마스터 클래스 색상
+
     public void CyanText(String str){
         System.out.println(CYAN + str + RESET);
     }
-    // 마법사 클래스 색상
+
     public void YellowText(String str){
         System.out.println(YELLOW + str + RESET);
+    }
+
+    public void BlueText(String str){
+        System.out.println(BLUE + str + RESET);
+    }
+    public void GreenText(String str){
+        System.out.println(GREEN + str + RESET);
+    }
+    public void PurpleText(String str){
+        System.out.println(PURPLE + str + RESET);
     }
 }

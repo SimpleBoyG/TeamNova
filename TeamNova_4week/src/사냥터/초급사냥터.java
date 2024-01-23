@@ -10,42 +10,33 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class 초급사냥터 extends 사냥터{
-    private String[] MonsterName = {"토끼", "슬라임", "오크"};
-    public TextColorChange textColor = new TextColorChange();
-    Random rd = new Random();
-    int MonsterIndex = rd.nextInt(3);
-    HuntingMenu hm = new HuntingMenu();
-
     public 초급사냥터(MasterClass master, MageClass mage, VillageInner vi) {
         super(master, mage, vi);
     }
-
+    TextColorChange tcc = new TextColorChange();
+    Random rd = new Random();
+    int MonsterIndex = rd.nextInt(3);
     Monster 토끼 = new Monster("토끼",5,0,50,10,10);
     Monster 슬라임 = new Monster("슬라임",10,5,75,15,15);
-    Monster 오크 = new Monster("오크",15,10,100,20,20);
+    Monster 오크 = new Monster("고블린",15,10,100,20,20);
 
     Monster monster[] = {토끼, 슬라임, 오크};
     @Override
     public Monster createBattleMonster() {
-        System.out.println("몬스터는 " + monster[MonsterIndex].name + "입니다.");
+        String strTemp = """
+                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣶⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                        ⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇⠀⠀⠀⠀
+                        ⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀
+                        ⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⢿⣿⣿⡇⠀⠀⠀⠀
+                        ⠀⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄⠀⠀⠀
+                        ⠀⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧⠀⠀
+                        ⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀
+                        """;
+        tcc.RedText(strTemp);
+        strTemp = "몬스터는 ✴" + monster[MonsterIndex].Name + "✴ 입니다";
+        tcc.RedText(strTemp);
+        System.out.println("✴" + monster[MonsterIndex].Name + "✴ 가 공격을 하려고 합니다.");
         return monster[MonsterIndex];
-    }
-
-    // 캐릭터 상태 정보를 설정하는 메소드
-    public void setCharacterStatus(MasterClass master, MageClass mage) {
-        this.master = master;
-        this.mage = mage;
-    }
-
-    // 마스터가 배틀할 때
-    public void MasterBattle(MasterClass master) {
-        System.out.println("마스터가 공격합니다");
-
-    }
-
-    // 메이지가 배틀할 때
-    public void MageBattle(MageClass fire) {
-        System.out.println("메이지가 공격합니다");
     }
 
     // 배틀 존
@@ -54,10 +45,9 @@ public class 초급사냥터 extends 사냥터{
         // 새로운 몬스터 생성
         Monster monster = createBattleMonster();
         // 배틀이 시작됩니다.
-        System.out.println("초급 사냥터로 이동했습니다.");
         System.out.println("배틀이 시작됩니다.");
         boolean bMasterMenu = true;
-        boolean bMageMenu = true;
+        boolean bMageMenu;
         
         // 배틀 시작시에 전체 스테이터스 전시
         super.showAllStatus(master, mage, monster);
@@ -75,6 +65,11 @@ public class 초급사냥터 extends 사냥터{
             }
         }
         System.out.println("배틀이 종료되었습니다.");
+        // 경험치 획득
+        EndAddExp();
+        // Gold 획득
+        EndAddGold();
+
         System.out.println("사냥을 계속 하시겠습니까?");
         System.out.println("1) 예 2) 아니오");
         Scanner sc = new Scanner(System.in);
@@ -84,5 +79,29 @@ public class 초급사냥터 extends 사냥터{
         }else{
             vi.goVillage();
         }
+    }
+
+    @Override
+    public void EndAddGold(){
+        String strTemp = "✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧";
+        tcc.YellowText(strTemp);
+        System.out.println("골드를 얻었습니다.");
+        master.Gold = master.Gold + monster[MonsterIndex].HaveGold;
+        System.out.printf("얻은 골드 : %d\n",monster[MonsterIndex].HaveGold);
+        System.out.printf("현재 골드 : %d\n",master.Gold);
+        tcc.YellowText(strTemp);
+    }
+    @Override
+    public void EndAddExp(){
+        String strTemp = "✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧";
+        tcc.GreenText(strTemp);
+        System.out.println("경험치를 얻었습니다.");
+        master.Experience = master.Experience - monster[MonsterIndex].Exp;
+        mage.Experience = mage.Experience - monster[MonsterIndex].Exp;
+        System.out.println();
+        System.out.printf("획득 경험치 : %d\n",monster[MonsterIndex].Exp);
+        System.out.printf("마스터 경험치 : %d\n",master.Experience);
+        System.out.printf("마법사 경험치 : %d\n",mage.Experience);
+        tcc.GreenText(strTemp);
     }
 }

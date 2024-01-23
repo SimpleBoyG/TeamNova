@@ -39,7 +39,10 @@ public class HuntingMenu {
     public int MasterMenu(MasterClass master){
         System.out.println(master.name + "님의 공격 차례입니다.");
         System.out.println("어떤 공격을 하시겠어요?");
-        System.out.println("1) 일반 공격 2) 방패공격 3) 마법사 방어 4) 도망간다");
+        System.out.printf("1) 일반공격 <데미지 %d> ",master.Attack);
+        System.out.printf("2) 방패공격 <데미지 %d> ",master.Attack+5);
+        System.out.printf("3) 대신 막기 ");
+        System.out.printf("4) 도망 ");
         System.out.println(":");
         int Result = sc.nextInt();
 
@@ -50,11 +53,15 @@ public class HuntingMenu {
     public int MageMenu(MageClass mage){
         System.out.println(mage.name + "님의 공격 차례입니다.");
         System.out.println("어떤 공격을 하시겠어요?");
-        System.out.printf("1) 지팡이 공격 ");
-        System.out.printf("2) %s ", mage.HaveSkillList.get(0).SkillName);
-        System.out.printf("3) %s ", mage.HaveSkillList.get(1).SkillName);
-        System.out.printf("4) %s ", mage.HaveSkillList.get(2).SkillName);
-        System.out.printf("5) %s \n", mage.HaveSkillList.get(3).SkillName);
+        System.out.printf("1) 지팡이 공격(데미지 : %d) ", mage.MagicAttack);
+        int iTemp = mage.HaveSkillList.get(0).Add_MagicAttack;
+        System.out.printf("2) %s <데미지 %d> ", mage.HaveSkillList.get(0).SkillName,iTemp + mage.MagicAttack);
+        iTemp = mage.HaveSkillList.get(1).Add_MagicAttack;
+        System.out.printf("3) %s <데미지 %d> ", mage.HaveSkillList.get(1).SkillName,iTemp + mage.MagicAttack);
+        iTemp = mage.HaveSkillList.get(2).Add_MagicAttack;
+        System.out.printf("4) %s <데미지 %d> ", mage.HaveSkillList.get(2).SkillName,iTemp + mage.MagicAttack);
+        iTemp = mage.HaveSkillList.get(3).Add_MagicAttack;
+        System.out.printf("5) %s <데미지 %d> \n", mage.HaveSkillList.get(3).SkillName,iTemp + mage.MagicAttack);
         System.out.println(":");
         int Result = sc.nextInt();
         return Result;

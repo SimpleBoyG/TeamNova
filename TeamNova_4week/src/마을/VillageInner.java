@@ -77,15 +77,19 @@ public class VillageInner {
         Scanner sc = new Scanner(System.in);
         int TempSelect = sc.nextInt();
         if(TempSelect == 1){
+            System.out.println("초급 사냥터로 향합니다.");
             사냥터 초급사냥터 = new 초급사냥터(master,mage,this);
             초급사냥터.MonsterSearching();
         }else if(TempSelect == 2){
+            System.out.println("중급 사냥터로 향합니다.");
             사냥터 중급사냥터 = new 중급사냥터(master,mage,this);
+            중급사냥터.MonsterSearching();
         }else{
-            사냥터 초급사냥터 = new 초급사냥터(master,mage,this);
-            초급사냥터.MonsterSearching();
-            //사냥터 고급사냥터 = new 고급사냥터(master,mage,this);
+            System.out.println("중급 사냥터로 향합니다.");
+            사냥터 고급사냥터 = new 고급사냥터(master,mage,this);
+            고급사냥터.MonsterSearching();
         }
+
     }
 
     public void selectDestination(int selectDes){
