@@ -74,9 +74,9 @@ public class ArmorInventory {
         System.out.println(":");
         int Answer = sc.nextInt();
         if(Answer == 1){
-            ai.showWeaponList();
+            ai.showInventoryList();
         }else{
-            ai.showWeaponList();
+            ai.showInventoryList();
         }
     }
 

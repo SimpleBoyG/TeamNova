@@ -6,6 +6,7 @@ import 마을.VillageInner;
 import 몬스터.Monster;
 import 문자열색상변경.TextColorChange;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,13 +17,31 @@ public class 초급사냥터 extends 사냥터{
     TextColorChange tcc = new TextColorChange();
     Random rd = new Random();
     int MonsterIndex = rd.nextInt(3);
-    Monster 토끼 = new Monster("토끼",5,0,50,10,10);
-    Monster 슬라임 = new Monster("슬라임",10,5,75,15,15);
-    Monster 오크 = new Monster("고블린",15,10,100,20,20);
+    final Monster 토끼 = new Monster("토끼",5,0,50,10,10);
+    Monster 복제_토끼 = new Monster("토끼",5,0,50,10,10);
+    final Monster 슬라임 = new Monster("슬라임",10,5,75,15,15);
+    Monster 복제_슬라임 = new Monster("슬라임",10,5,75,15,15);
+    final Monster 고블린 = new Monster("고블린",15,10,100,20,20);
+    Monster 복제_고블린 = new Monster("고블린",15,10,100,20,20);
+    Monster monster[] = {토끼, 슬라임, 고블린};
+    public Monster copyMonster[] = {복제_토끼,복제_슬라임,복제_고블린};
+    public Monster CreateMonster(){
+        Random rd = new Random();
+        int MonsterIndex = rd.nextInt(3);
 
-    Monster monster[] = {토끼, 슬라임, 오크};
+        // 만약 사냥당한 몬스터가 있으면 다시 몬스터를 생성
+        for(int i = 0; i < copyMonster.length; i++ ){
+            if(copyMonster[i].Hp <= 0)
+            {
+                copyMonster[i] = monster[i];
+            }
+        }
+        return copyMonster[MonsterIndex];
+    }
+
     @Override
     public Monster createBattleMonster() {
+        Monster monster = CreateMonster();
         String strTemp = """
                         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣶⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                         ⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇⠀⠀⠀⠀
@@ -33,75 +52,9 @@ public class 초급사냥터 extends 사냥터{
                         ⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀
                         """;
         tcc.RedText(strTemp);
-        strTemp = "몬스터는 ✴" + monster[MonsterIndex].Name + "✴ 입니다";
+        strTemp = "몬스터는 ✴" + monster.Name + "✴ 입니다";
         tcc.RedText(strTemp);
-        System.out.println("✴" + monster[MonsterIndex].Name + "✴ 가 공격을 하려고 합니다.");
-        return monster[MonsterIndex];
-    }
-
-    // 배틀 존
-    @Override
-    public void BattleZone() {
-        // 새로운 몬스터 생성
-        Monster monster = createBattleMonster();
-        // 배틀이 시작됩니다.
-        System.out.println("배틀이 시작됩니다.");
-        boolean bMasterMenu = true;
-        boolean bMageMenu;
-        
-        // 배틀 시작시에 전체 스테이터스 전시
-        super.showAllStatus(master, mage, monster);
-        
-        while (monster.Hp > 0 && bMasterMenu != false){
-            // 마스터 메뉴 선택
-            bMasterMenu = MasterBattleAction(master, monster);
-            if (bMasterMenu == true) {
-                showAllStatus(master, mage, monster);
-            }
-            bMageMenu = MageBattleAction(mage, monster);
-            // 공격후 상태 확인
-            if (bMageMenu == true) {
-                showAllStatus(master, mage, monster);
-            }
-        }
-        System.out.println("배틀이 종료되었습니다.");
-        // 경험치 획득
-        EndAddExp();
-        // Gold 획득
-        EndAddGold();
-
-        System.out.println("사냥을 계속 하시겠습니까?");
-        System.out.println("1) 예 2) 아니오");
-        Scanner sc = new Scanner(System.in);
-        int TempSelect = sc.nextInt();
-        if(TempSelect == 1){
-            super.MonsterSearching();
-        }else{
-            vi.goVillage();
-        }
-    }
-
-    @Override
-    public void EndAddGold(){
-        String strTemp = "✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧";
-        tcc.YellowText(strTemp);
-        System.out.println("골드를 얻었습니다.");
-        master.Gold = master.Gold + monster[MonsterIndex].HaveGold;
-        System.out.printf("얻은 골드 : %d\n",monster[MonsterIndex].HaveGold);
-        System.out.printf("현재 골드 : %d\n",master.Gold);
-        tcc.YellowText(strTemp);
-    }
-    @Override
-    public void EndAddExp(){
-        String strTemp = "✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧";
-        tcc.GreenText(strTemp);
-        System.out.println("경험치를 얻었습니다.");
-        master.Experience = master.Experience - monster[MonsterIndex].Exp;
-        mage.Experience = mage.Experience - monster[MonsterIndex].Exp;
-        System.out.println();
-        System.out.printf("획득 경험치 : %d\n",monster[MonsterIndex].Exp);
-        System.out.printf("마스터 경험치 : %d\n",master.Experience);
-        System.out.printf("마법사 경험치 : %d\n",mage.Experience);
-        tcc.GreenText(strTemp);
+        System.out.println("✴" + monster.Name + "✴ (이)가 공격을 하려고 합니다.");
+        return monster;
     }
 }

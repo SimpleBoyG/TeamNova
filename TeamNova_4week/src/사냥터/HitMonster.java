@@ -30,11 +30,15 @@ public class HitMonster {
     public boolean HitMonsterStatus(int MonsterCount) {
         boolean Result = false;
         while (true) {
+            // 몬스터 무한 서칭 방지
+            if(MeetingCount == 0){
+                MeetingCount = 1;
+            }
+
             if (MonsterCount == MeetingCount) {
                 String strTemp = "(!) 몬스터를 만났다.";
                 tcc.GreenText(strTemp);
                 InitMeetingCount();
-                사냥터.BattleZone();
                 Result = true;
                 break;
             } else {

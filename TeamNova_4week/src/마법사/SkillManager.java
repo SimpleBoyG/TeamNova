@@ -10,10 +10,10 @@ public class SkillManager {
 
     ArrayList<Skill> SkillPackage = new ArrayList<>();
 
-    Skill FireSkill_Level1 = new Fire("파이어 볼", 1, 20, 10);
-    Skill FireSkill_Level2 = new Fire("파이어 애로우", 2, 30, 15);
-    Skill FireSkill_Level3 = new Fire("파이어 스피어", 3, 40, 20);
-    Skill FireSkill_Level4 = new Fire("파이어 익스플로젼", 4, 50, 25);
+    public Skill FireSkill_Level1 = new Fire("파이어 볼", 1, 20, 10);
+    public Skill FireSkill_Level2 = new Fire("파이어 애로우", 2, 30, 15);
+    public Skill FireSkill_Level3 = new Fire("파이어 스피어", 3, 40, 20);
+    public Skill FireSkill_Level4 = new Fire("파이어 익스플로젼", 4, 50, 25);
 
     Skill WaterSkill_Level1 = new Water("아쿠아 볼", 1, 20, 10);
     Skill WaterSkill_Level2 = new Water("아쿠아 애로우", 2, 30, 15);

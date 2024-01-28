@@ -25,11 +25,11 @@ public class All_Inventory {
 
     public void showAllInventory(VillageInner vi){
         this.vi = vi;
-        showWeaponList();
+        showInventoryList();
     }
 
-    public void showWeaponList(){
-        System.out.println("어떤 장비 목록을 보시겠습니까?");
+    public void showInventoryList(){
+        System.out.println("어떤 목록을 보시겠습니까?");
         System.out.println("1) 무기창 2) 방어구창 3) 아이템창 4) 이전 메뉴");
 
         Scanner sc = new Scanner(System.in);

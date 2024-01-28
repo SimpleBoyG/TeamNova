@@ -47,7 +47,7 @@ public class ItemShop {
     }
 
     public void SelectItem() {
-        System.out.println("어떤 무기를 구매하시겠습니까?");
+        System.out.println("어떤 아이템을 구매하시겠습니까?");
         showItem();
         boolean SaveInvenSuccess = ShopToInven(BuyItem());
         if(SaveInvenSuccess == true){
@@ -105,7 +105,6 @@ public class ItemShop {
         int ItemBuy = sc.nextInt();
         if (ItemBuy == 1) {
             SelectItem();
-            ContinueBuy();
         } else {
             goVillage();
         }

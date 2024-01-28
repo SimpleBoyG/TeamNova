@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class SkillSet {
     ArrayList<Skill> SkillPackage = new ArrayList<>();
-    ArrayList<Skill> HaveSkillSet = new ArrayList<>();
+    ArrayList<Skill> HaveSkillSet = new ArrayList<>(){};
     MageClass mage = null;
 
     SkillManager sm = new SkillManager();
@@ -15,6 +15,11 @@ public class SkillSet {
 
     public SkillSet(MageClass mage) {
         this.mage = mage;
+        HaveSkillSet.add(sm.FireSkill_Level1);
+        HaveSkillSet.add(sm.FireSkill_Level2);
+        HaveSkillSet.add(sm.FireSkill_Level3);
+        HaveSkillSet.add(sm.FireSkill_Level4);
+        mage.HaveSkillList = HaveSkillSet;
     }
 
     public boolean showSkillList() {

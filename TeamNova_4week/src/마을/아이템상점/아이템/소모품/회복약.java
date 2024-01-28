@@ -6,7 +6,7 @@ import 마을.아이템상점.아이템.Item;
 public class 회복약 extends Item {
     String Name = "회복약";
     int RecoveryPoint = 50;
-    int price = super.PriceRate * 200;
+    int price = super.PriceRate + 100;
 
     @Override
     public int getRecoveryPoint() {

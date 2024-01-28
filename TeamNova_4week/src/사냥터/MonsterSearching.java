@@ -14,6 +14,7 @@ public class MonsterSearching {
     MageClass mage;
     VillageInner vi;
     사냥터 사냥터;
+    JFrame frame;
     private static final String[] IMAGES_KEYBOARD = { // 이미지 경로 문자열 저장
             "Image/keyboard.jpg",
             "Image/keyboard_down.png",
@@ -30,7 +31,7 @@ public class MonsterSearching {
     }
 
     public void MonsterSearching() {
-        JFrame frame = new JFrame("조작키");
+        frame = new JFrame("조작키");
 
         JTextArea textArea = new JTextArea();
         textArea.setEditable(false);
@@ -60,7 +61,6 @@ public class MonsterSearching {
 
         // 객체 선언
         HitMonster HitMonster = new HitMonster(사냥터);
-        HuntingMenu HuntingMenu = new HuntingMenu();
 
         System.out.println("맵을 탐험합니다.");
         System.out.println("방향키를 조정해주세요.");
@@ -79,33 +79,36 @@ public class MonsterSearching {
                     System.out.printf("============ %d =============\n", MonsterCount);
                     System.out.println(arrowUnicode + " 방향으로 걸었습니다");
                     System.out.println("==========================");
+                    imgLabel.setIcon(new ImageIcon(IMAGES_KEYBOARD[4]));
                     initMonsterCount(HitMonster);
                     // 이미지 전시
-                    imgLabel.setIcon(new ImageIcon(IMAGES_KEYBOARD[4]));
+
                 } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                     char arrowUnicode = '\u25BC';
                     MonsterCount++;
                     System.out.printf("============ %d =============\n", MonsterCount);
                     System.out.println(arrowUnicode + " 방향으로 걸었습니다");
                     System.out.println("==========================");
-                    initMonsterCount(HitMonster);
                     imgLabel.setIcon(new ImageIcon(IMAGES_KEYBOARD[1]));
+                    initMonsterCount(HitMonster);
+
                 } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     char arrowUnicode = '\u25C0';
                     MonsterCount++;
                     System.out.printf("============ %d =============\n", MonsterCount);
                     System.out.println(arrowUnicode + " 방향으로 걸었습니다");
                     System.out.println("==========================");
-                    initMonsterCount(HitMonster);
                     imgLabel.setIcon(new ImageIcon(IMAGES_KEYBOARD[2]));
+                    initMonsterCount(HitMonster);
+
                 } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     char arrowUnicode = '\u25B6';
                     MonsterCount++;
                     System.out.printf("============ %d =============\n", MonsterCount);
                     System.out.println(arrowUnicode + " 방향으로 걸었습니다");
                     System.out.println("==========================");
-                    initMonsterCount(HitMonster);
                     imgLabel.setIcon(new ImageIcon(IMAGES_KEYBOARD[3]));
+                    initMonsterCount(HitMonster);
                 }
             }
 
@@ -121,6 +124,8 @@ public class MonsterSearching {
         HitMonster.setCharacterInfo(master, mage);
         if (HitMonster.HitMonsterStatus(MonsterCount) == true) {
             MonsterCount = 0;
+            frame.dispose();
+            사냥터.BattleZone();
             Result = true;
         }
         return Result;

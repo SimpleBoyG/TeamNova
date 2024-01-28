@@ -14,7 +14,6 @@ public class Main {
         //================= 초기 셋팅 =========================
         // Master 상태 세팅
         String PlayerName;
-
         System.out.println("플레이어 이름을 입력해주세요.");
         System.out.println(":");
 
@@ -25,9 +24,7 @@ public class Main {
         MageClass mage = new MageClass();
         VillageInner vi = new VillageInner(master,mage);
 
-        //while (true) {
-            System.out.println("여기는 아라한 마을입니다.");
-            vi.goVillage();
-        //}
+        System.out.println("여기는 아라한 마을입니다.");
+        vi.goVillage();
     }
 }

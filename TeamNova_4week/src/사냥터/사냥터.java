@@ -8,6 +8,7 @@ import 문자열색상변경.TextColorChange;
 
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class 사냥터 {
     public Monster monster;
@@ -31,27 +32,66 @@ public class 사냥터 {
 
     // 배틀 존
     public void BattleZone(){
+        // 새로운 몬스터 생성
+        monster = createBattleMonster();
+        // 배틀이 시작됩니다.
         System.out.println("배틀이 시작됩니다.");
+        int iMasterMenu = 1;
+        boolean bMageMenu;
+
+        // 배틀 시작시에 전체 스테이터스 전시
+        showAllStatus(master, mage, monster);
+
+        while (monster.Hp > 0 && iMasterMenu != 0){
+            // 마스터 메뉴 선택
+            iMasterMenu = MasterBattleAction(master, monster);
+            if (iMasterMenu != 0) {
+                showAllStatus(master, mage, monster);
+                bMageMenu = MageBattleAction(mage, monster);
+                // 공격후 상태 확인
+                if (bMageMenu == true) {
+                    showAllStatus(master, mage, monster);
+                }
+                System.out.println("배틀이 종료되었습니다.");
+                // 경험치 획득
+                EndAddExp();
+                // Gold 획득
+                EndAddGold();
+
+                System.out.println("사냥을 계속 하시겠습니까?");
+                System.out.println("1) 예 2) 아니오");
+                System.out.println(":");
+                Scanner sc = new Scanner(System.in);
+                int TempSelect = sc.nextInt();
+                if(TempSelect == 1){
+                    MonsterSearching();
+                }else{
+                    vi.goVillage();
+                }
+            }else{
+                MonsterSearching();
+            }
+        }
+
     }
 
-    public boolean MasterBattleAction(MasterClass master, Monster monster) {
-        boolean Result = true;
+    public int MasterBattleAction(MasterClass master, Monster monster) {
+        int iResult = 0;
         switch (hm.MasterMenu(master)) {
             case 1:
-                master.Attack(monster);
+                iResult = master.Attack(monster);
                 break;
             case 2:
-                Result = master.ShildAttack(monster);
+                iResult = master.ShildAttack(monster);
                 break;
             case 3:
-                master.MageGuard();
+                iResult = master.UseItem();
                 break;
             default:
-                master.Run();
-                Result = false;
+                iResult = master.Run();;
                 break;
         }
-        return Result;
+        return iResult;
     }
 
     public boolean MageBattleAction(MageClass mage, Monster monster) {
@@ -85,6 +125,8 @@ public class 사냥터 {
         textColor.CyanText(TempStr);
         TempStr = "MP : " + master.Mp;
         textColor.CyanText(TempStr);
+        TempStr = "물리 공격력 : " + master.Attack;
+        textColor.CyanText(TempStr);
         TempStr = "========================================";
         textColor.CyanText(TempStr);
     }
@@ -95,6 +137,8 @@ public class 사냥터 {
         TempStr = "HP : " + mage.Hp;
         textColor.YellowText(TempStr);
         TempStr = "MP : " + mage.Mp;
+        textColor.YellowText(TempStr);
+        TempStr = "마법 공격력 : " + mage.MagicAttack;
         textColor.YellowText(TempStr);
         TempStr = "========================================";
         textColor.YellowText(TempStr);
@@ -108,6 +152,8 @@ public class 사냥터 {
         }else{
             TempStr = "HP : 0";
         }
+        textColor.RedText(TempStr);
+        TempStr = "방어력 : "  + monster.Defence;
         textColor.RedText(TempStr);
         TempStr = "========================================";
         textColor.RedText(TempStr);
@@ -132,15 +178,27 @@ public class 사냥터 {
     }
 
     public void EndAddGold(){
-        System.out.println("✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧");
+        String strTemp = "✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧";
+        textColor.YellowText(strTemp);
         System.out.println("골드를 얻었습니다.");
-        System.out.println("✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧");
+        System.out.println();
+        master.Gold = master.Gold + monster.HaveGold;
+        System.out.printf("얻은 골드 : %d\n",monster.HaveGold);
+        System.out.printf("현재 골드 : %d\n",master.Gold);
+        textColor.YellowText(strTemp);
     }
 
     public void EndAddExp(){
-        System.out.println("✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧");
+        String strTemp = "✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧";
+        textColor.GreenText(strTemp);
         System.out.println("경험치를 얻었습니다.");
-        System.out.println("✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧");
+        master.Experience = master.Experience - monster.Exp;
+        mage.Experience = mage.Experience - monster.Exp;
+        System.out.println();
+        System.out.printf("획득 경험치 : %d\n",monster.Exp);
+        System.out.printf("마스터 경험치 : %d\n",master.Experience);
+        System.out.printf("마법사 경험치 : %d\n",mage.Experience);
+        textColor.GreenText(strTemp);
     }
 }
 

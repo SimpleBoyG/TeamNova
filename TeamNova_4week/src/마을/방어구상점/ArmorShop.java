@@ -87,11 +87,11 @@ public class ArmorShop {
 
     public int BuyArmor() {
         System.out.println("어떤 방어구를 사시겠습니까?< 0. 은 이전 화면으로 돌아갑니다.>");
-        int WeaponNum = sc.nextInt();
-        if(WeaponNum == 0){
+        int ArmorNum = sc.nextInt();
+        if(ArmorNum == 0){
             hereArmorShop();
         }
-        return WeaponNum;
+        return ArmorNum;
     }
 
     public boolean ShopToInven(int ArmorNum) {
@@ -121,7 +121,6 @@ public class ArmorShop {
         int ArmorBuy = sc.nextInt();
         if (ArmorBuy == 1) {
             SelectArmor();
-            ContinueBuy();
         } else {
             goVillage();
         }

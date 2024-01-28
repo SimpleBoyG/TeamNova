@@ -66,8 +66,8 @@ public class CharacterStatus {
 
     public void StatusToVillage() {
         Scanner sc = new Scanner(System.in);
-        int goVillage = sc.nextInt();
         System.out.println("마을로 돌아갑니다.(아무 숫자나 입력해주세요.)");
+        int goVillage = sc.nextInt();
         if(goVillage > 0){
             vi.goVillage();
         }
