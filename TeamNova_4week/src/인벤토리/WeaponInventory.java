@@ -29,13 +29,13 @@ public class WeaponInventory {
     public void showWeaponInven(All_Inventory ai) {
         if (Weapons.isEmpty() == false) {
             for (int i = 0; i < Weapons.size(); i++) {
-                if(Weapons.get(i).getWeaponType().equals("마스터")) {
+                if (Weapons.get(i).getWeaponType().equals("마스터")) {
                     System.out.println((i + 1) + ". " +
                             "무기명 : " + Weapons.get(i).getName() + " / " +
                             "공격력 : " + Weapons.get(i).getPhysicalAttack() + " / " +
                             "타입 : " + Weapons.get(i).getWeaponType() + " / " +
                             "상태 : " + Weapons.get(i).getEquipStatus());
-                }else{
+                } else {
                     System.out.println((i + 1) + ". " +
                             "무기명 : " + Weapons.get(i).getName() + " / " +
                             "마법공격력 : " + Weapons.get(i).getMagicAttack() + " / " +
@@ -52,24 +52,29 @@ public class WeaponInventory {
     }
 
     public void putEquipment() {
-        System.out.println("어떤 장비를 착용하시겠습니까?");
-        int putIndex = sc.nextInt() - 1;
-        if (Weapons.get(putIndex).getWeaponType().equals("마스터")) {
-            if(Weapons.get(putIndex) == preWeapon_Master){
-                PutOffWeapon_master();
-            }else {
-                PutOffWeapon_master();
-                PutWeapon_master(Weapons.get(putIndex));
+        System.out.println("어떤 장비를 착용하시겠습니까? ('0' 선택시 이전창으로 돌아갑니다.)");
+        System.out.println(":");
+        int putIndex = sc.nextInt();
+        if (putIndex != 0) {
+            putIndex = putIndex - 1;
+            if (Weapons.get(putIndex).getWeaponType().equals("마스터")) {
+                if (Weapons.get(putIndex) == preWeapon_Master) {
+                    PutOffWeapon_master();
+                } else {
+                    PutOffWeapon_master();
+                    PutWeapon_master(Weapons.get(putIndex));
+                }
+            } else {
+                if (Weapons.get(putIndex) == preWeapon_Mage) {
+                    PutOffWeapon_mage();
+                } else {
+                    PutOffWeapon_mage();
+                    PutWeapon_mage(Weapons.get(putIndex));
+                }
             }
         } else {
-            if(Weapons.get(putIndex) == preWeapon_Mage){
-                PutOffWeapon_mage();
-            }else {
-                PutOffWeapon_mage();
-                PutWeapon_mage(Weapons.get(putIndex));
-            }
+            System.out.println("아무 장비도 선택하지 않았습니다.");
         }
-
     }
 
     public void ReturnPreWin(All_Inventory ai) {
@@ -84,7 +89,7 @@ public class WeaponInventory {
     }
 
     public void PutOffWeapon_master() {
-        if(preWeapon_Master != null) {
+        if (preWeapon_Master != null) {
             preWeapon_Master.setEquipStatus("<<미착용>>");
             System.out.println(preWeapon_Master.getName() + " 장비를 착용 해제 했습니다.");
             master.Attack = master.Attack - preWeapon_Master.getPhysicalAttack();
@@ -93,7 +98,7 @@ public class WeaponInventory {
     }
 
     public void PutOffWeapon_mage() {
-        if(preWeapon_Mage != null) {
+        if (preWeapon_Mage != null) {
             preWeapon_Mage.setEquipStatus("<<미착용>>");
             System.out.println(preWeapon_Mage.getName() + " 장비를 착용 해제 했습니다.");
             mage.MagicAttack = mage.MagicAttack - preWeapon_Mage.getMagicAttack();
@@ -116,4 +121,16 @@ public class WeaponInventory {
         mage.equipedWeapon = weapon;
         preWeapon_Mage = weapon;
     }
+
+    // 인벤토리에 같은 무기가 있는지 확인
+    public Boolean HaveWeaponCheck(Weapon weapon) {
+        boolean haveCheck = true;
+        for (int i = 0; i < Weapons.size(); i++)
+            if (Weapons.get(i).getName().equals(weapon.getName())) {
+                System.out.println("이미 소유한 무기입니다.");
+                haveCheck = false;
+            }
+        return haveCheck;
+    }
+
 }

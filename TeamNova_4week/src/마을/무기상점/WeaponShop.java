@@ -101,13 +101,18 @@ public class WeaponShop {
         if(WeaponNum > 0) {
             Weapon weapon = Weapons.get(WeaponNum);
             if (weapon != null) {
-                if (master.Gold > weapon.getPrice()) {
-                    ai.weaponInventory.FromShop(weapon);
-                    master.Gold = master.Gold - weapon.getPrice();
-                    Result = true;
-                    System.out.println(weapon.getName() + "을 샀습니다.");
-                } else {
-                    System.out.println("가진 돈이 부족합니다.");
+                if(ai.weaponInventory.HaveWeaponCheck(weapon) != false) {
+                    if (master.Gold > weapon.getPrice()) {
+                        ai.weaponInventory.FromShop(weapon);
+                        master.Gold = master.Gold - weapon.getPrice();
+                        Result = true;
+                        System.out.println(weapon.getName() + "을 샀습니다.");
+                    } else {
+                        System.out.println("가진 돈이 부족합니다.");
+                        ContinueBuy();
+                    }
+                }else{
+                    System.out.println("다른 무기를 구매해주세요.");
                     ContinueBuy();
                 }
             } else {

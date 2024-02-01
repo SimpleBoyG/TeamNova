@@ -1,4 +1,4 @@
-package 상태창;
+package 마을.상태창;
 
 import 마법사.MageClass;
 import 마스터.MasterClass;
@@ -24,12 +24,14 @@ public class CharacterStatus {
     public void showMasterStatus(){
         System.out.println("============ 마스터 ===============");
         System.out.println("이름 : " + master.name);
+        System.out.println("Level : " + master.Level);
         System.out.println("HP : " + master.Hp);
         System.out.println("MP : " + master.Mp);
         System.out.println("공격력 : " + master.Attack);
         System.out.println("방어력 : " + master.Defence);
         System.out.println("경험치 : " + master.Experience);
         System.out.println("GOLD : " + master.Gold);
+        System.out.println("==================================");
         System.out.println("============ 착용중인 장비 ===============");
         if(master.equipedWeapon==null){
             System.out.println("무기 : ---------------------------");
@@ -41,6 +43,7 @@ public class CharacterStatus {
         }else{
             System.out.println("방어구 : " + master.equipedArmor.getName());
         }
+        System.out.println("========================================");
 
     }
 
@@ -51,6 +54,7 @@ public class CharacterStatus {
         System.out.println("마법 공격력 : " + mage.MagicAttack);
         System.out.println("방어력 : " + mage.Defence);
         System.out.println("경험치 : " + mage.Experience);
+        System.out.println("==================================");
         System.out.println("============ 착용중인 장비 ===============");
         if(mage.equipedWeapon==null){
             System.out.println("무기 : ---------------------------");
@@ -62,6 +66,7 @@ public class CharacterStatus {
         }else{
             System.out.println("방어구 : " + mage.equipedArmor.getName());
         }
+        System.out.println("========================================");
     }
 
     public void StatusToVillage() {

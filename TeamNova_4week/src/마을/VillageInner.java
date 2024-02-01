@@ -13,7 +13,7 @@ import 사냥터.던전.초급던전;
 import 사냥터.던전.중급던전;
 import 사냥터.던전.고급던전;
 import 사냥터.사냥터;
-import 상태창.CharacterStatus;
+import 마을.상태창.CharacterStatus;
 import 시간.낮과밤;
 import 인벤토리.All_Inventory;
 
@@ -61,6 +61,10 @@ public class VillageInner {
 ⠀⠀⠀⠀⠀⠀⠀⠀⠸⠒⠒⠒⠒⠒⠒⠒⠒⠲⠸⠒⠒⠆⠗⠲⠸⠒⠒⠒⠲⠸⡠⡠⡠⡠⢠⠠⡠⠠⡰⠠⡨⠠⡣⡠⠸⡠⢄⠤⡠⢄⢼⢀⢐⢸⢐⢸⢀⠨⠠⡠⠠⠠⠠⠠⣃⢀⢀⢐⢂⢀⢅⢀⢇⢀⢇⠠⡀⡀⡂⡂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠠⠠⠠⠠⠠⠠⠁⠃⠈⠈⠈⠈⠈⠈⠈⠈⠈⠈⠈⠈⠈⠈⠀⠁⠁⠈⠈⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
         """);
+        // 시간 설정
+        this.낮과밤 = 낮과밤.getInstance();
+        낮과밤.SwitchDay();
+
         System.out.println("마을입니다. 목적지를 선택해주세요.");
         System.out.println("1) 무기 상점 2) 방어구 상점 3) 아이템 상점 4) 여관 5) 상태창 6) 인벤토리 7) 사냥터");
         Scanner sc = new Scanner(System.in);
@@ -191,10 +195,9 @@ public class VillageInner {
                 goInventoryWindow();
                 break;
             default:
-                this.낮과밤 = 낮과밤.getInstance();
-                낮과밤.ReDay();
+
                 String strTemp = 낮과밤.getDayAndNight();
-                if (strTemp.equals("night")) {
+                if (strTemp.equals("day")) {
                     goHuntAreaAndDungeon();
                 } else {
                     goHuntArea();

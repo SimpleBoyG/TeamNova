@@ -5,6 +5,7 @@ import 마을.무기상점.무기.Weapon;
 import 마을.방어구상점.방어구.Armor;
 import 마을.아이템상점.아이템.Item;
 import 몬스터.Monster;
+import 문자열색상변경.TextColorChange;
 import 인벤토리.ItemInventory;
 
 public class MasterClass {
@@ -12,18 +13,18 @@ public class MasterClass {
     public int Attack = 10;
     public int Defence = 5;
     public int MaxHp = 100;
-    public int Hp = 50;
-    public int MaxMp = 10;
-    public int Mp = 10;
+    public int Hp = MaxHp;
+    public int MaxMp = 20;
+    public int Mp = MaxMp;
     public int Level = 1;
-    public int Experience = 100;
-    public int Gold = 5000;
+    public int MaxExperience = 1;
+    public int Experience = MaxExperience;
+    public int Gold = 10000;
     public Weapon equipedWeapon;
     public Armor equipedArmor;
     public ItemInventory itemInventory;
     public Item Item;
-    public int FullHp = Hp;
-
+    TextColorChange tcc = new TextColorChange();
     public MasterClass(String name) {
         this.name = name;
     }
@@ -87,5 +88,19 @@ public class MasterClass {
             iResult = 2;
         }
         return iResult;
+    }
+
+    public void LevelUpMaster(){
+        String strTemp = "!!!!!!!!!!!!!!!!!!!!! 마스터가 레벨업 했습니다 !!!!!!!!!!!!!!!!!!!";
+        tcc.YellowText(strTemp);
+        Level = Level + 1;
+        MaxHp = MaxHp + 50;
+        Hp = MaxHp;
+        MaxMp = MaxMp + 30;
+        Mp = MaxMp;
+        Attack = Attack + 10;
+        Defence = Defence + 5;
+        MaxExperience = MaxExperience + 50;
+        Experience = MaxExperience;
     }
 }

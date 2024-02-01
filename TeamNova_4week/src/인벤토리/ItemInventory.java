@@ -15,7 +15,7 @@ public class ItemInventory {
     MageClass mage;
     MasterClass master;
     Scanner sc = new Scanner(System.in);
-
+    int SelectCount = 0;
     int indexItem = 0;
 
     public ItemInventory(MasterClass master, MageClass mage) {
@@ -27,15 +27,25 @@ public class ItemInventory {
     public void FromShop(Item item) {
         // 각 아이템에 추가
         // Add to specific items
+
         if (item.getName().equals("회복약")) {
-            회복약.add(item);
-            Items[0] = 회복약;
+            Items[0] = ItemCount(회복약,item);
         } else if (item.getName().equals("고급 회복약")) {
-            고급회복약.add(item);
-            Items[1] = 고급회복약;
+            Items[1] = ItemCount(고급회복약,item);
         }
+    }
 
-
+    public ArrayList<Item> ItemCount(ArrayList<Item> ItemName,Item item){
+        int ItemCount = 0;
+        System.out.println(item.getName() + "을 선택하셨습니다.");
+        System.out.println("몇개를 구입하겠습니까?");
+        System.out.println(":");
+        ItemCount = sc.nextInt();
+        SelectCount = ItemCount;
+        for(int i = 0; i < ItemCount; i++) {
+            ItemName.add(item);
+        }
+        return ItemName;
     }
 
     // 아이템 인벤토리에서 전시할 아이템 항목
@@ -106,13 +116,17 @@ public class ItemInventory {
     }
 
     public int ItemCount(ArrayList<Item> item) {
-        int TempCount;
+        int TempCount = 0;
         if (item == null) {
             TempCount = 0;
         } else {
             TempCount = item.size();
         }
         return TempCount;
+    }
+
+    public int getSelectItemCount(){
+        return SelectCount;
     }
 
     // 소비 아이템 선택

@@ -22,7 +22,7 @@ public class Main {
 
         MasterClass master = new MasterClass(PlayerName);
         MageClass mage = new MageClass();
-        VillageInner vi = new VillageInner(master,mage);
+        VillageInner vi = new VillageInner(master, mage);
 
         System.out.println("여기는 아라한 마을입니다.");
         vi.goVillage();

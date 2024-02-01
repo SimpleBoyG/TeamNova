@@ -21,7 +21,7 @@ public class ArmorShop {
     VillageInner vi;
     All_Inventory ai;
 
-    public ArmorShop(VillageInner vi, All_Inventory ai,MasterClass master, MageClass mage){
+    public ArmorShop(VillageInner vi, All_Inventory ai, MasterClass master, MageClass mage) {
         this.vi = vi;
         this.ai = ai;
         this.master = master;
@@ -59,7 +59,7 @@ public class ArmorShop {
         System.out.println("어떤 무기를 구매하시겠습니까?");
         showArmor();
         boolean SaveInvenSuccess = ShopToInven(BuyArmor());
-        if(SaveInvenSuccess == true){
+        if (SaveInvenSuccess == true) {
             ContinueBuy();
         }
     }
@@ -71,12 +71,12 @@ public class ArmorShop {
         for (Map.Entry<Integer, Armor> entry : Armors.entrySet()) {
             int Key = entry.getKey();
             Armor value = entry.getValue();
-            if(value.getArmorType().equals("마스터")) {
+            if (value.getArmorType().equals("마스터")) {
                 System.out.println(Key + ") " + "방어구명 : " + value.getName() + " / " +
-                        "가격 : " + value.getPrice()+ " / " +
+                        "가격 : " + value.getPrice() + " / " +
                         "방어력 : " + value.getDefence() + " / " +
                         "타입 : " + value.getArmorType());
-            }else{
+            } else {
                 System.out.println(Key + ") " + "방어구명 : " + value.getName() + " / " +
                         "가격 : " + value.getPrice() + " / " +
                         "방어력 : " + value.getDefence() + " / " +
@@ -88,7 +88,7 @@ public class ArmorShop {
     public int BuyArmor() {
         System.out.println("어떤 방어구를 사시겠습니까?< 0. 은 이전 화면으로 돌아갑니다.>");
         int ArmorNum = sc.nextInt();
-        if(ArmorNum == 0){
+        if (ArmorNum == 0) {
             hereArmorShop();
         }
         return ArmorNum;
@@ -96,16 +96,21 @@ public class ArmorShop {
 
     public boolean ShopToInven(int ArmorNum) {
         boolean Result = false;
-        if(ArmorNum > 0) {
+        if (ArmorNum > 0) {
             Armor armor = Armors.get(ArmorNum);
             if (armor != null) {
-                if (master.Gold > armor.getPrice()) {
-                    ai.armorInventory.FromShop(armor);
-                    master.Gold = master.Gold - armor.getPrice();
-                    Result = true;
-                    System.out.println(armor.getName() + "을 샀습니다.");
-                } else {
-                    System.out.println("가진 돈이 부족합니다.");
+                if (ai.armorInventory.HaveArmorCheck(armor) != false) {
+                    if (master.Gold > armor.getPrice()) {
+                        ai.armorInventory.FromShop(armor);
+                        master.Gold = master.Gold - armor.getPrice();
+                        Result = true;
+                        System.out.println(armor.getName() + "을 샀습니다.");
+                    } else {
+                        System.out.println("가진 돈이 부족합니다.");
+                        ContinueBuy();
+                    }
+                }else{
+                    System.out.println("다른 방어구를 구매해주세요.");
                     ContinueBuy();
                 }
             } else {
@@ -126,7 +131,7 @@ public class ArmorShop {
         }
     }
 
-    public void goVillage(){
+    public void goVillage() {
         System.out.println("마을로 갑니다.");
         vi.goVillage();
     }

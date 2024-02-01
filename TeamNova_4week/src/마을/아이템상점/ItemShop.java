@@ -85,9 +85,9 @@ public class ItemShop {
             if (item != null) {
                 if (master.Gold > item.getPrice()) {
                     ai.itemInventory.FromShop(item);
-                    master.Gold = master.Gold - item.getPrice();
+                    master.Gold = master.Gold - (item.getPrice() * ai.itemInventory.getSelectItemCount());
                     Result = true;
-                    System.out.println(item.getName() + "을 샀습니다.");
+                    System.out.printf("%s 을(를) %d개 구매했습니다.\n",item.getName(),ai.itemInventory.getSelectItemCount());
                 } else {
                     System.out.println("가진 돈이 부족합니다.");
                     ContinueBuy();

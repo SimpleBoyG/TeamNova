@@ -18,8 +18,8 @@ public class Inn {
     public void hereInn(){
         System.out.println("안녕하세요. 여기는 여관입니다.");
         System.out.println("잠을 청합니다. 모든 상태가 회복됩니다.");
-        master.Hp = master.FullHp;
-        mage.Hp = mage.FullHp;
+        master.Hp = master.MaxHp;
+        mage.Hp = mage.MaxHp;
         vi.goVillage();
     }
 }

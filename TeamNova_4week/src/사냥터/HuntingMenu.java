@@ -46,6 +46,9 @@ public class HuntingMenu {
         System.out.println(":");
         int Result = sc.nextInt();
 
+        if(master.Hp == 0){
+            Result = 0;
+        }
         return Result;
     }
 
@@ -63,6 +66,7 @@ public class HuntingMenu {
         iTemp = mage.HaveSkillList.get(3).Add_MagicAttack;
         System.out.printf("5) %s <데미지 : %d> \n", mage.HaveSkillList.get(3).SkillName,iTemp + mage.MagicAttack);
         System.out.println(":");
+
         int Result = sc.nextInt();
         return Result;
     }

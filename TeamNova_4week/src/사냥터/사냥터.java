@@ -43,33 +43,60 @@ public class 사냥터 {
         showAllStatus(master, mage, monster);
 
         while (monster.Hp > 0 && iMasterMenu != 0){
-            // 마스터 메뉴 선택
-            iMasterMenu = MasterBattleAction(master, monster);
-            if (iMasterMenu != 0) {
-                showAllStatus(master, mage, monster);
-                bMageMenu = MageBattleAction(mage, monster);
-                // 공격후 상태 확인
-                if (bMageMenu == true) {
+            // 마스터 공격 메뉴 선택
+            if(master.Hp > 0 && mage.Hp > 0) {
+                iMasterMenu = MasterBattleAction(master, monster);
+                if (iMasterMenu != 0) {
                     showAllStatus(master, mage, monster);
-                }
-                System.out.println("배틀이 종료되었습니다.");
-                // 경험치 획득
-                EndAddExp();
-                // Gold 획득
-                EndAddGold();
+                    // 마법사 공격 메뉴 선택
+                    MageBattleAction(mage, monster);
+                    // 공격후 상태 확인
+                    showAllStatus(master, mage, monster);
 
-                System.out.println("사냥을 계속 하시겠습니까?");
-                System.out.println("1) 예 2) 아니오");
-                System.out.println(":");
-                Scanner sc = new Scanner(System.in);
-                int TempSelect = sc.nextInt();
-                if(TempSelect == 1){
-                    MonsterSearching();
-                }else{
-                    vi.goVillage();
+
+                    // 몬스터 공격 쓰레드 시작 - 쓰레드는 단독으로 돌아간다
+                    Monster.ThreadStop = true;
+                    boolean bMonsterAction = MonsterBattleAction();
+
+                    // 몬스터 승리
+                    if (bMonsterAction == false && master.Hp <= 0 && mage.Hp <= 0) {
+                        System.out.println("배틀이 종료되었습니다.");
+                        Monster.ThreadStop = false;
+                        break;
+                    }
+
+                    // 마스터, 메이지 승리
+                    if (monster.Hp <= 0) {
+                        System.out.println("배틀이 종료되었습니다.");
+                        Monster.ThreadStop = false;
+                        // 경험치 획득
+                        EndAddExp();
+                        // Gold 획득
+                        EndAddGold();
+                        break;
+                    }
                 }
             }else{
+                System.out.println("마을로 돌아갑니다.");
+                Monster.ThreadStop = false;
+                vi.goVillage();
+            }
+        }
+
+        if(iMasterMenu == 0){
+            Monster.ThreadStop = false;
+            MonsterSearching();
+        }else {
+            Monster.ThreadStop = false;
+            System.out.println("사냥을 계속 하시겠습니까?");
+            System.out.println("1) 예 2) 아니오");
+            System.out.println(":");
+            Scanner sc = new Scanner(System.in);
+            int TempSelect = sc.nextInt();
+            if (TempSelect == 1) {
                 MonsterSearching();
+            } else {
+                vi.goVillage();
             }
         }
 
@@ -94,10 +121,12 @@ public class 사냥터 {
         return iResult;
     }
 
-    public boolean MageBattleAction(MageClass mage, Monster monster) {
-        boolean Result = true;
+    public void MageBattleAction(MageClass mage, Monster monster) {
         int TempSelect = hm.MageMenu(mage);
         switch (TempSelect) {
+            case 1:
+                mage.CommonAttack(monster);
+                break;
             case 2:
                 mage.Use_Skill(TempSelect-2,monster);
                 break;
@@ -115,17 +144,55 @@ public class 사냥터 {
                 System.out.println("턴이 넘어갑니다.");
                 break;
         }
-        return Result;
+    }
+
+    public boolean MonsterBattleAction(){
+        boolean bSuccessAttack = monster.MonsterAction(master,mage,this);
+        return bSuccessAttack;
     }
 
     public void showMasterStatus(MasterClass master) {
         String TempStr = "=========" + master.name + "============";
         textColor.CyanText(TempStr);
-        TempStr = "HP : " + master.Hp;
+        TempStr = "Level : " + + master.Level;
         textColor.CyanText(TempStr);
-        TempStr = "MP : " + master.Mp;
+        if(master.Hp < 0){
+            master.Hp = 0;
+            TempStr = "HP : " + master.Hp;
+        }else{
+            TempStr = "HP : " + master.Hp;
+        }
+        textColor.CyanText(TempStr);
+        if(master.Hp < 0){
+            master.Mp = 0;
+            TempStr = "MP : " + master.Mp;
+        }else{
+            TempStr = "MP : " + master.Mp;
+        }
+
         textColor.CyanText(TempStr);
         TempStr = "물리 공격력 : " + master.Attack;
+        textColor.CyanText(TempStr);
+        TempStr = "방어력 : " + master.Defence;
+        textColor.CyanText(TempStr);
+        TempStr = "========================================";
+        textColor.CyanText(TempStr);
+    }
+
+    public void showLevelUpMasterStatus(MasterClass master) {
+        String TempStr = "=========" + master.name + "============";
+        textColor.CyanText(TempStr);
+        TempStr = "Level : " + + master.Level;
+        textColor.CyanText(TempStr);
+        TempStr = "HP : " + master.Hp + "<< Hp + 50 >>";
+        textColor.CyanText(TempStr);
+        TempStr = "MP : " + master.Mp + "<< Mp + 30 >>";
+        textColor.CyanText(TempStr);
+        TempStr = "물리 공격력 : " + master.Attack + "<< 공격력 + 10 >>";
+        textColor.CyanText(TempStr);
+        TempStr = "방어력 : " + master.Defence + "<< 공격력 + 5 >>";
+        textColor.CyanText(TempStr);
+        TempStr = "경험치 : " + master.MaxExperience + "<< 경험치 + 50 >>";
         textColor.CyanText(TempStr);
         TempStr = "========================================";
         textColor.CyanText(TempStr);
@@ -134,11 +201,42 @@ public class 사냥터 {
     public void showMageStatus(MageClass mage) {
         String TempStr = "=========" + mage.name + "============";
         textColor.YellowText(TempStr);
-        TempStr = "HP : " + mage.Hp;
+        if(mage.Hp < 0){
+            mage.Hp = 0;
+            TempStr = "HP : " + mage.Hp;
+        }else{
+            TempStr = "HP : " + mage.Hp;
+        }
         textColor.YellowText(TempStr);
-        TempStr = "MP : " + mage.Mp;
+        if(mage.Mp < 0){
+            mage.Mp = 0;
+            TempStr = "MP : " + mage.Mp;
+        }else{
+            TempStr = "MP : " + mage.Mp;
+        }
         textColor.YellowText(TempStr);
         TempStr = "마법 공격력 : " + mage.MagicAttack;
+        textColor.YellowText(TempStr);
+        TempStr = "방어력 : " + mage.Defence;
+        textColor.YellowText(TempStr);
+        TempStr = "========================================";
+        textColor.YellowText(TempStr);
+    }
+
+    public void showLevelUpMageStatus(MageClass mage) {
+        String TempStr = "=========" + mage.name + "============";
+        textColor.YellowText(TempStr);
+        TempStr = "Level : " + + mage.Level;
+        textColor.YellowText(TempStr);
+        TempStr = "HP : " + mage.Hp + "<< Hp + 30 >>";
+        textColor.YellowText(TempStr);
+        TempStr = "MP : " + mage.Mp + "<< Mp + 50 >>";
+        textColor.YellowText(TempStr);
+        TempStr = "마법 공격력 : " + mage.MagicAttack + "<< 마법 공격력 + 10>>";
+        textColor.YellowText(TempStr);
+        TempStr = "방어력 : " + mage.Defence + "<< 방어력 + 5 >>";
+        textColor.YellowText(TempStr);
+        TempStr = "경험치 : " + mage.MaxExperience + "<< 경험치 + 50 >>";
         textColor.YellowText(TempStr);
         TempStr = "========================================";
         textColor.YellowText(TempStr);
@@ -150,8 +248,11 @@ public class 사냥터 {
         if(monster.Hp > 0) {
             TempStr = "HP : " + monster.Hp;
         }else{
-            TempStr = "HP : 0";
+            monster.Hp = 0;
+            TempStr = "HP : " + monster.Hp;
         }
+        textColor.RedText(TempStr);
+        TempStr = "공격력 : "  + monster.Attack;
         textColor.RedText(TempStr);
         TempStr = "방어력 : "  + monster.Defence;
         textColor.RedText(TempStr);
@@ -196,8 +297,27 @@ public class 사냥터 {
         mage.Experience = mage.Experience - monster.Exp;
         System.out.println();
         System.out.printf("획득 경험치 : %d\n",monster.Exp);
-        System.out.printf("마스터 경험치 : %d\n",master.Experience);
-        System.out.printf("마법사 경험치 : %d\n",mage.Experience);
+        
+        // 마스터 경험치 표시
+        if(master.Experience <= 0){
+            master.Experience = 0;
+            System.out.printf("마스터 경험치 : %d\n",master.Experience);
+            master.LevelUpMaster();
+            showLevelUpMasterStatus(master);
+        }else{
+            System.out.printf("마스터 경험치 : %d\n",master.Experience);
+        }
+
+        // 메이지 경험치 표시
+        if(mage.Experience <= 0){
+            mage.Experience = 0;
+            System.out.printf("마법사 경험치 : %d\n",mage.Experience);
+            mage.LevelUpMage();
+            showLevelUpMageStatus(mage);
+        }else{
+            System.out.printf("마법사 경험치 : %d\n",mage.Experience);
+        }
+
         textColor.GreenText(strTemp);
     }
 }
