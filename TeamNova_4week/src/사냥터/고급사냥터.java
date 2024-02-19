@@ -1,9 +1,9 @@
 package 사냥터;
 
-import 마법사.MageClass;
-import 마스터.MasterClass;
+import 캐릭터.마법사.MageClass;
+import 캐릭터.마스터.MasterClass;
 import 마을.VillageInner;
-import 몬스터.Monster;
+import 캐릭터.몬스터.Monster;
 import 문자열색상변경.TextColorChange;
 
 import java.util.Random;
@@ -13,9 +13,9 @@ public class 고급사냥터 extends 사냥터{
         super(master, mage, vi);
     }
     TextColorChange tcc = new TextColorChange();
-    Monster 엔트 = new Monster("엔트",30,40,300,300,45);
-    Monster 스켈레톤 = new Monster("스켈레톤",40,30,180,200,40);
-    Monster 리자드맨 = new Monster("리자드맨",55,20,250,250,40);
+    Monster 엔트 = new Monster("엔트",30,30,40,300,300,45);
+    Monster 스켈레톤 = new Monster("스켈레톤",35,40,30,180,200,40);
+    Monster 리자드맨 = new Monster("리자드맨",40,55,20,250,250,40);
     HuntingMenu HM = new HuntingMenu();
     Monster monster[] = {엔트, 스켈레톤, 리자드맨};
     public Monster copyMonster[] = monster.clone();

@@ -1,9 +1,8 @@
 package 인벤토리;
 
-import 마법사.MageClass;
-import 마스터.MasterClass;
+import 캐릭터.마법사.MageClass;
+import 캐릭터.마스터.MasterClass;
 import 마을.VillageInner;
-import 문자열색상변경.TextColorChange;
 
 import java.util.Scanner;
 
@@ -13,13 +12,13 @@ public class All_Inventory {
     MasterClass master;
     MageClass mage;
     public ArmorInventory armorInventory;
-    public ItemInventory itemInventory;
+    public ExpendablesInventory itemInventory;
     public WeaponInventory weaponInventory;
     public All_Inventory(MasterClass master, MageClass mage){
         this.master = master;
         this.mage = mage;
         armorInventory = new ArmorInventory(master, mage);
-        itemInventory = new ItemInventory(master, mage);
+        itemInventory = new ExpendablesInventory(master, mage);
         weaponInventory = new WeaponInventory(master, mage);
     }
 
@@ -42,7 +41,7 @@ public class All_Inventory {
                 armorInventory.showArmorInven(this);
                 break;
             case 3:
-                itemInventory.showItemInven(this);
+                itemInventory.showVillageItemInven(this);
             case 4:
                 ReturnPreWin(vi);
                 break;

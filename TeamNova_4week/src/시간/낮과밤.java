@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class 낮과밤 {
     private static 낮과밤 Instance;
-    private 낮과밤(){}
     Random rd = new Random();
     private String DayAndNight = "day";
     public static 낮과밤 getInstance(){
@@ -38,6 +37,9 @@ public class 낮과밤 {
         };
 
         Thread 실행할쓰레드 = new Thread(실행할코드);
+        // 쓰레드가 이미 실행중인지 확인 후 실행중이지 않다면 실행
         실행할쓰레드.start();
+
+
     }
 }

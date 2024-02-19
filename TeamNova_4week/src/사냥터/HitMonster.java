@@ -1,8 +1,8 @@
 package 사냥터;
 
-import 마법사.MageClass;
-import 마스터.MasterClass;
-import 몬스터.Monster;
+import 캐릭터.마법사.MageClass;
+import 캐릭터.마스터.MasterClass;
+import 캐릭터.몬스터.Monster;
 import 문자열색상변경.TextColorChange;
 
 import java.util.Random;

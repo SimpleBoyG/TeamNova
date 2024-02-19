@@ -1,7 +1,7 @@
 package 사냥터;
 
-import 마법사.MageClass;
-import 마스터.MasterClass;
+import 캐릭터.마법사.MageClass;
+import 캐릭터.마스터.MasterClass;
 
 import java.util.Scanner;
 
@@ -9,25 +9,25 @@ public class HuntingMenu {
     Scanner sc = new Scanner(System.in);
     public int HuntingStartMenu(){
         System.out.println("어떤 행동을 하시겠습니까?");
-        System.out.println("1) 사냥하러 간다. 2) 파티 스킬 설정을 수정한다. 3) 마을로 간다.");
+        System.out.println("1) 사냥하러 간다. 2) 마법사 스킬 설정을 수정한다. 3) 마을로 간다.");
         System.out.println(":");
         int ActionSelect = sc.nextInt();
         return ActionSelect;
     }
-    public int HuntingMenu(){
-        System.out.println("어떤 행동을 취하겠습니까?");
-        System.out.println("1) 공격한다. 2) 도망간다. ");
-        System.out.println(":");
-
-        int MenuSelect = sc.nextInt();
-
-        if(MenuSelect == 1){
-            AttackSelect();
-        }else{
-            RunSelect();
-        }
-        return MenuSelect;
-    }
+//    public int HuntingMenu(){
+//        System.out.println("어떤 행동을 취하겠습니까?");
+//        System.out.println("1) 공격한다. 2) 도망간다. ");
+//        System.out.println(":");
+//
+//        int MenuSelect = sc.nextInt();
+//
+//        if(MenuSelect == 1){
+//            AttackSelect();
+//        }else{
+//            RunSelect();
+//        }
+//        return MenuSelect;
+//    }
     public void RunSelect(){
         System.out.println("도망칩니다.");
     }
@@ -37,7 +37,7 @@ public class HuntingMenu {
 
     // 마스터 메뉴
     public int MasterMenu(MasterClass master){
-        System.out.println(master.name + "님의 공격 차례입니다.");
+        System.out.println(master.Name + "님의 공격 차례입니다.");
         System.out.println("어떤 공격을 하시겠어요?");
         System.out.printf("1) 일반공격 <데미지 : %d> \n",master.Attack);
         System.out.printf("2) 방패공격 <데미지 : %d> \n",master.Attack+5);
@@ -54,9 +54,9 @@ public class HuntingMenu {
 
     // 마법사 메뉴
     public int MageMenu(MageClass mage){
-        System.out.println(mage.name + "님의 공격 차례입니다.");
+        System.out.println(mage.Name + "님의 공격 차례입니다.");
         System.out.println("어떤 공격을 하시겠어요?");
-        System.out.printf("1) 지팡이 공격<데미지 : %d> \n", mage.MagicAttack);
+        System.out.printf("1) 일반 공격<데미지 : %d> \n", mage.MagicAttack);
         int iTemp = mage.HaveSkillList.get(0).Add_MagicAttack;
         System.out.printf("2) %s <데미지 : %d> \n", mage.HaveSkillList.get(0).SkillName,iTemp + mage.MagicAttack);
         iTemp = mage.HaveSkillList.get(1).Add_MagicAttack;

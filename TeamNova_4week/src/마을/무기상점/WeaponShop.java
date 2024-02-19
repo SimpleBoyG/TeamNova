@@ -1,13 +1,13 @@
 package 마을.무기상점;
 
-import 마법사.MageClass;
-import 마스터.MasterClass;
+import 캐릭터.마법사.MageClass;
+import 캐릭터.마스터.MasterClass;
 import 마을.VillageInner;
-import 마을.무기상점.무기.Weapon;
-import 마을.무기상점.무기.WeaponInstanceSend;
-import 마을.무기상점.무기.레어무기.예리한양날검;
-import 마을.무기상점.무기.일반무기.양날검;
-import 마을.무기상점.무기.일반무기.휘어진지팡이;
+import 아이템.무기.Weapon;
+import 아이템.무기.WeaponInstanceSend;
+import 아이템.무기.레어무기.예리한양날검;
+import 아이템.무기.일반무기.양날검;
+import 아이템.무기.일반무기.휘어진지팡이;
 import 인벤토리.All_Inventory;
 
 import java.util.HashMap;
@@ -34,10 +34,6 @@ public class WeaponShop {
     Weapon weapon1 = weaponFactory.getWeapon(양날검.class);
     Weapon weapon2 = weaponFactory.getWeapon(예리한양날검.class);
     Weapon weapon3 = weaponFactory.getWeapon(휘어진지팡이.class);
-
-    //VillageInner vi = new VillageInner(master, fire, water);
-    // 무기 저장
-    //Weapons.put(weapon1,0);
     Scanner sc = new Scanner(System.in);
 
     public void hereWeaponShop() {

@@ -1,13 +1,13 @@
 package 마을.방어구상점;
 
-import 마법사.MageClass;
-import 마스터.MasterClass;
+import 캐릭터.마법사.MageClass;
+import 캐릭터.마스터.MasterClass;
 import 마을.VillageInner;
-import 마을.방어구상점.방어구.Armor;
-import 마을.방어구상점.방어구.ArmorInstanceSend;
-import 마을.방어구상점.방어구.레어방어구.강철갑옷;
-import 마을.방어구상점.방어구.일반방어구.나무갑옷;
-import 마을.방어구상점.방어구.일반방어구.천갑옷;
+import 아이템.방어구.Armor;
+import 아이템.방어구.ArmorInstanceSend;
+import 아이템.방어구.레어방어구.강철갑옷;
+import 아이템.방어구.일반방어구.나무갑옷;
+import 아이템.방어구.일반방어구.천갑옷;
 import 인벤토리.All_Inventory;
 
 import java.util.HashMap;

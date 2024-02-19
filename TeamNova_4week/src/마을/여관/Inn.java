@@ -1,7 +1,7 @@
 package 마을.여관;
 
-import 마법사.MageClass;
-import 마스터.MasterClass;
+import 캐릭터.마법사.MageClass;
+import 캐릭터.마스터.MasterClass;
 import 마을.VillageInner;
 
 public class Inn {
@@ -18,6 +18,8 @@ public class Inn {
     public void hereInn(){
         System.out.println("안녕하세요. 여기는 여관입니다.");
         System.out.println("잠을 청합니다. 모든 상태가 회복됩니다.");
+
+        
         master.Hp = master.MaxHp;
         mage.Hp = mage.MaxHp;
         vi.goVillage();

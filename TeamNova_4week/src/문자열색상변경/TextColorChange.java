@@ -1,6 +1,18 @@
 package 문자열색상변경;
 
+import org.w3c.dom.Text;
+
 public class TextColorChange {
+
+    private static TextColorChange TextColorInstance;
+
+    public static TextColorChange GetInstance(){
+        if(TextColorInstance == null){
+            TextColorInstance = new TextColorChange();
+        }
+        return TextColorInstance;
+    }
+
     public static final String RESET = "\u001B[0m";
     public static final String BLACK = "\u001B[30m";
     public static final String RED = "\u001B[31m";

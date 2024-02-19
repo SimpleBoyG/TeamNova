@@ -1,7 +1,7 @@
 package 사냥터;
 
-import 마법사.MageClass;
-import 마스터.MasterClass;
+import 캐릭터.마법사.MageClass;
+import 캐릭터.마스터.MasterClass;
 import 마을.VillageInner;
 
 import javax.swing.*;

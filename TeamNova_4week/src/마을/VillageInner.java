@@ -1,10 +1,12 @@
 package 마을;
 
-import 마법사.MageClass;
-import 마스터.MasterClass;
+import BGM.BGMPlayer;
+import BGM.ThreadManager;
+import 캐릭터.마법사.MageClass;
+import 캐릭터.마스터.MasterClass;
 import 마을.무기상점.WeaponShop;
 import 마을.방어구상점.ArmorShop;
-import 마을.아이템상점.ItemShop;
+import 마을.소모품상점.ItemShop;
 import 마을.여관.Inn;
 import 사냥터.초급사냥터;
 import 사냥터.중급사냥터;
@@ -24,6 +26,7 @@ public class VillageInner {
     MageClass mage;
     낮과밤 낮과밤;
     All_Inventory ai;
+    BGMPlayer BGMPlayer = BGM.BGMPlayer.getInstance();
 
     public VillageInner(MasterClass master, MageClass mage) {
         this.master = master;
@@ -61,9 +64,13 @@ public class VillageInner {
 ⠀⠀⠀⠀⠀⠀⠀⠀⠸⠒⠒⠒⠒⠒⠒⠒⠒⠲⠸⠒⠒⠆⠗⠲⠸⠒⠒⠒⠲⠸⡠⡠⡠⡠⢠⠠⡠⠠⡰⠠⡨⠠⡣⡠⠸⡠⢄⠤⡠⢄⢼⢀⢐⢸⢐⢸⢀⠨⠠⡠⠠⠠⠠⠠⣃⢀⢀⢐⢂⢀⢅⢀⢇⢀⢇⠠⡀⡀⡂⡂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠠⠠⠠⠠⠠⠠⠁⠃⠈⠈⠈⠈⠈⠈⠈⠈⠈⠈⠈⠈⠈⠈⠀⠁⠁⠈⠈⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
         """);
-        // 시간 설정
-        this.낮과밤 = 낮과밤.getInstance();
-        낮과밤.SwitchDay();
+        // BGM 쓰레드 선언
+
+        ThreadManager threadManager = ThreadManager.getInstance();
+        threadManager.ThreadTerminate(2);
+        threadManager.createThread1();
+        BGMPlayer.pause();
+        threadManager.ThreadStart(1);
 
         System.out.println("마을입니다. 목적지를 선택해주세요.");
         System.out.println("1) 무기 상점 2) 방어구 상점 3) 아이템 상점 4) 여관 5) 상태창 6) 인벤토리 7) 사냥터");
@@ -170,8 +177,6 @@ public class VillageInner {
                 System.out.println("사냥터를 잘못 선택했습니다");
                 break;
         }
-
-
     }
 
     public void selectDestination(int selectDes) {
@@ -195,7 +200,7 @@ public class VillageInner {
                 goInventoryWindow();
                 break;
             default:
-
+                낮과밤 = 시간.낮과밤.getInstance();
                 String strTemp = 낮과밤.getDayAndNight();
                 if (strTemp.equals("day")) {
                     goHuntAreaAndDungeon();

@@ -1,9 +1,8 @@
 package 인벤토리;
 
-import 마법사.MageClass;
-import 마스터.MasterClass;
-import 마을.무기상점.무기.Weapon;
-import 마을.방어구상점.방어구.Armor;
+import 캐릭터.마법사.MageClass;
+import 캐릭터.마스터.MasterClass;
+import 아이템.방어구.Armor;
 
 import java.util.ArrayList;
 import java.util.Scanner;
